@@ -1,0 +1,532 @@
+body{
+  font-family:Inter;
+}
+/* start header */
+.header{
+  color:#041f27;
+}
+a{
+  color: #041f27 !important;
+  text-decoration: none !important;
+}
+.title{
+  margin-top: 45px !important;
+  font-size:32px;
+  font-family:Inter;
+  font-weight: 860;    
+  font-style: italic;
+}
+.title_label{
+  margin-left: 16px;
+}
+.favorites{
+  margin-top: 55px !important;
+  font-size: 18px;
+  font-family:Inter;
+  font-weight: 350; 
+}
+.favo{
+  margin-top: 5px;
+  padding-right: 0px;
+}
+a.favorites_label{
+  color: #041f27;
+  text-decoration: none;
+  cursor: pointer;
+}
+.suitcase{
+  margin-top: 55px !important;
+  font-size: 18px;
+  font-family:Inter;
+  font-weight: 350;
+  padding-right: 0px; 
+}
+a.suitcase_label{
+  color: #041f27;
+  text-decoration: none;
+  cursor: pointer;
+}
+.enter{
+  margin-top: 44px !important;
+  display: flex;
+  justify-content: right;
+}
+.enter_button{
+  height: 60px;
+  width: 210px;
+  border-radius: 30px;
+  border: #ECECEC;
+  background-color: #ECECEC;
+  font-size:20px;
+  font-family:Inter;
+  font-weight: 350;
+  }
+
+.card{
+    background-color: #F8F8F8 !important;
+    border-color: #F8F8F8 !important;
+    border-radius: 30px !important;
+    margin-top: 55px;
+}
+.hotel_title{
+    font-size: 32px;
+    font-weight: 500;
+}
+.address{
+    margin-top: 5px;
+}
+.favorites_hotel{
+    display: flex;
+    justify-content: right;
+}
+.btn_favorites{
+    border: none;
+    background-color: #F8F8F8;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+}
+.photoes_hotel{
+    margin-top: 20px !important;
+}
+.photo_1{
+    height: 365px !important;
+    width: 640px !important;
+}
+.photo_2{
+    height: 175px !important;
+    width: 290px !important;
+} 
+.go{
+    margin-left: 10px;
+}
+.more_photo{
+    padding-left: 9px !important;
+}
+.more_photo_2{
+    padding-left: 9px !important;
+    margin-top: 15px !important;
+}
+/* end header */
+
+.content{
+  margin-top: 80px !important;
+}
+.card_order{
+  border-radius: 20px;
+  background-color: #F8F8F8;
+  color: #041f27;
+  padding-bottom: 15px !important;
+}
+.info{
+  padding-top: 10px;
+  padding-left: 24px !important;
+  padding-right: 24px;
+}
+.title_hotel{
+  padding-left: 24px !important;
+  padding-top: 24px;
+  font-size: 30px;
+  font-weight: 500;
+}
+.ramka{
+  background-color: #5895A7;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  height: 25px;
+  width: 35px !important;
+  font-weight: 400;
+  margin-left: 4px;
+}
+.geoo{
+  margin-top: -6px;
+}
+.adres{
+  padding-top: 2px !important;
+  font-size: 16px;
+  font-weight: 500;
+}
+.title_room{
+  margin-top: 30px;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.order_number_img{
+  height: 195px;
+  width: 330px;
+  /* margin-right: 30px !important; */
+  border-radius: 15px;
+}
+.date{
+  margin-top: 15px;
+  font-size: 20px;
+}
+.dd{
+  font-weight: 500;
+}
+.tire{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.tt{
+  font-weight: 400;
+}
+.tire_tt{
+  color: #F8F8F8;
+}
+.people{
+  margin-top: 10px;
+  font-size: 20px;
+}
+.info2{
+  padding-left: 24px;
+  padding-right: 24px;
+  margin-top: 10px !important;
+}
+.title_number_info{
+  font-size: 22px;
+  margin-top: 30px !important;
+}
+.number_info{
+  font-size: 18px;
+  margin-top: 15px !important;
+}
+li{
+  font-weight: 500;
+}
+.card_eat{
+  margin-top: 60px;
+  border-radius: 20px;
+  border: #F5F5F5 3px solid;
+  color: #041f27;
+  padding-bottom: 15px !important;
+}
+.title_eat{
+  font-weight: 400;
+  padding-left: 24px;
+  font-size: 24px;
+  padding-top: 24px !important;
+}
+.select_eat{
+  font-size: 20px;
+  padding-left: 24px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+.eat_btn{
+  display: flex;
+  justify-content: right;
+  padding-right: 40px !important;
+}
+.eat_price{
+  font: bold !important;
+}
+.eat_button{
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ECECEC;
+  width: 180px;
+  height: 40px;
+}
+.card_client_info{
+  padding-bottom: 30px !important;
+  margin-top: 60px;
+  border-radius: 20px;
+  border: #F5F5F5 3px solid;  color: #041f27;
+  padding-bottom: 15px !important;
+}
+.client_info{
+
+  font-size: 18px;
+  font-weight: 400;
+  padding-top: 20px;
+  padding-left: 24px;
+  padding-bottom: 30px;
+}
+.furname_name{
+  font-size: 16px;
+  font-weight: 500;
+  padding-bottom: 10px;
+  padding-left: 24px;
+}
+.furname_name_input{
+  padding-left: 24px;
+}
+.input_info{
+  color: #041F27;
+  border: #989898 2px solid;
+  border-radius: 10px;
+  height: 45px;
+  width: 300px;
+}
+.end_str{
+  padding-bottom: 30px !important;
+}
+.content{
+  padding-bottom: 30px;
+}
+
+
+.result_order{
+  position: relative;
+  padding-right: 0px !important;
+}
+.card_order_2{
+  position: sticky;
+  top: 30px;
+  border-radius: 20px;
+  border: #041F27 1px solid;
+  background-color: #fff;
+  color: #041f27;
+  padding-bottom: 15px !important;
+  width: 100%;
+}
+.title_itog{
+  padding-left: 30px;
+  padding-top: 24px;
+  font-size: 26px;
+  font-weight: 400;
+}
+.count_nigth_price{
+  padding-left: 30px;
+  padding-top: 24px;
+  font-size: 20px;
+}
+.price{
+  display: flex;
+  justify-content: right;
+  padding-right: 40px !important;
+}
+.line_div{
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.line{
+  height: 2px;
+  background-color: #D9D9D9;
+}
+.eat_itog{
+  padding-top: 15px;
+  padding-left: 30px;
+  font-size: 18px;
+}
+.button_itog{
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+  /* padding-left: 24px; */
+  font-size: 20px;
+  padding-bottom: 20px;
+}
+.button_finish{
+  height: 50px;
+  width: 220px;
+  color: #fff !important;
+  background-color: #0F4757;
+  border-radius: 20px;
+  border: none;
+}
+/* модалка авторизованного пользователя */
+.modal_header_auth{
+  margin-top: 20px !important;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.email_label{
+  font-size: 28px;
+  font-weight: 400;
+  color: #041F27;
+}
+.email{
+  font-size: 26px;
+  font-weight: 400;
+  color: #041F27;
+}
+.linked_cards{
+  font-size: 24px;
+  padding-left: 35px;
+  margin-top: 30px !important;
+}
+.card_card{
+  padding-left: 30px;
+  margin-top: 30px !important;
+}
+.card_bank{
+  border-radius: 5px;
+  color: #fff !important;
+  font-size: 16px;
+  height: 67px !important;
+  width: 120px;
+  background-color: #F08A48 !important;
+  border: none !important;
+}
+.number{
+  display: flex;
+  justify-content: right;
+  padding-right: 10px;
+  padding-top: 5px;
+}
+.date_active{
+  display: flex;
+  justify-content: left;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.btn_unite{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+.untie_it{
+  color: #fff !important;
+  height: 45px;
+  width: 180px;
+  border-radius: 10px;
+  border: none;
+  background-color: #0F4757;
+  font-size: 20px;
+}
+.modal_logout_div{
+  margin-top: 50px;
+  padding-bottom: 10px;
+}
+.log_out_modal{
+  color: #fff;
+  font-size: 28px;
+  height: 65px;
+  width: 240px;
+  border: none;
+  background-color: #041F27;
+  border-radius: 10px;
+}
+/* конец авторизованной модалки */
+/* Модальное окно */
+.close_close{
+  padding-top: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: right;
+}
+.modal_header{
+  padding-top: 30px;
+  /* background-color: aqua; */
+  display: flex;
+  justify-content: center;
+}
+.titte_window{
+  font-size: 40px;
+  color: #041F27;
+  font-weight: 400;
+}
+.email_div{
+  margin-top: 50px;
+  /* font-size: 30px; */
+}
+.password_div{
+  margin-top: 30px;
+}
+.password_div_2{
+  margin-top: 30px;
+}
+input.modal_input{
+  font-size: 24px;
+  padding-left: 24px;
+  border-radius: 10px;
+  border: #D9D9D9 3px solid;
+  width: 300px;
+  height: 60px;
+}
+input.modal_input:focus{
+  outline: #D9D9D9;
+}
+.modal_input::placeholder{
+  font-size: 20px;
+  /* padding-left: 25px; */
+  font-family:Inter;
+  font-weight: 350;
+}
+.modal_login_div{
+  margin-top: 50px;
+}
+.log_in_modal{
+  color: #fff;
+  font-size: 28px;
+  height: 65px;
+  width: 240px;
+  border: none;
+  background-color: #0F4757;
+  border-radius: 10px;
+}
+.reg_in_modal{
+  color: #fff;
+  font-size: 24px;
+  height: 65px;
+  width: 280px;
+  border: none;
+  background-color: #0F4757;
+  border-radius: 10px;
+}
+.modal_footer{
+  font-weight: 400;
+  color: #041F27;
+  margin-top: 30px;
+  font-size: 20px;
+  padding-bottom: 30px;
+}
+a.registr_button{
+  text-decoration: none;
+  font-weight: 500;
+  color: #041F27;
+  cursor: pointer;
+}
+a.login_button{
+  text-decoration: none;
+  font-weight: 500;
+  color: #041F27;
+  cursor: pointer;
+}
+/* конец модального */
+
+input.input_info{
+  outline: none;
+  padding-left: 10px;
+  font-size: 20px;
+}
+/* hover кнопочек и ссылок*/
+button.enter_button:hover{
+  background-color: #e2e2e2;
+}
+button.eat_button:hover{
+  background-color: #e2e2e2;
+}
+button.button_finish:hover{
+  background-color: #0d3c49;
+}
+a.title_hotel_a:hover{
+  color: #2e6b7e !important;
+}
+/* конец hover */
+
+body::-webkit-scrollbar {
+  width: 12px; /* ширина scrollbar */
+
+  }
+  
+  body::-webkit-scrollbar-track {
+  background: #F5F5F5; /* цвет дорожки */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+  background-color: #0F4757; /* цвет плашки */
+  border-radius: 20px; /* закругления плашки */
+  border: 1px solid white; /*padding вокруг плашки*/
+  }

@@ -1,0 +1,214 @@
+.container{
+    /* background-color: aquamarine; */
+}
+.header{
+    color:#041f27;
+}
+.title{
+    /* background-color: blue; */
+    margin-top: 45px !important;
+    font-size:32px;
+    font-family:Inter;
+    font-weight: 860;    
+    font-style: italic;
+}
+.title_label{
+    margin-left: 16px;
+}
+.favorites{
+    /* background-color: pink; */
+    margin-top: 55px !important;
+    font-size: 20px;
+    font-family:Inter;
+    font-weight: 350; 
+}
+.favo{
+    margin-top: 5px;
+    padding-right: 0px;
+}
+a.favorites_label{
+    color: #041f27;
+    text-decoration: none;
+    cursor: pointer;
+}
+.suitcase{
+    /* background-color: red; */
+    margin-top: 55px !important;
+    font-size: 20px;
+    font-family:Inter;
+    font-weight: 350;
+    padding-right: 0px; 
+}
+a.suitcase_label{
+    color: #041f27;
+    text-decoration: none;
+    cursor: pointer;
+}
+.enter{
+    /* background-color: blueviolet; */
+    margin-top: 44px !important;
+    display: flex;
+    justify-content: right;
+}
+.enter_button{
+    height: 60px;
+    width: 210px;
+    border-radius: 30px;
+    border: #ECECEC;
+    background-color: #ECECEC;
+    font-size:20px;
+    font-family:Inter;
+    font-weight: 350;
+    }
+
+.content{
+    margin-top: 60px;
+}
+.cities_div{
+    position: sticky;
+    top: 30px;
+    margin-top: 105px;
+    font-size: 24px;
+    color: #041f27;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    padding-left: 40px;
+}
+.cities_div{
+    background-color: #F5F5F5;
+    border-radius: 15px;
+    border-color: #F5F5F5;
+}
+
+a{
+    color: #041f27 !important;
+    text-decoration: none;
+}
+.favorites_hotel_label{
+    color: #041f27;
+    font-size: 30px;
+}
+.line{
+    margin-top: 15px;
+    background-color: #041f27;
+    height: 3px;
+}
+.card{
+    border-color: #041F27;
+    margin-top: 45px;
+    height: 260px;
+    border-radius: 20px !important;
+}
+.img_hotel{
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    height: 260px;
+}
+.photo{
+    margin-left: 20px !important;
+}
+.image_room{
+    height: 205px;
+    width: 215px;
+}
+.title_hotel{
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 500;
+}
+.heart{
+    /* background-color: blue; */
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.img_heart {
+    display: flex;
+    justify-content: center;
+    height: 23px;
+    width: 50px !important;
+    background-color: #fff;
+    border-color: #fff;
+    outline: none;
+    border: none !important;
+}
+.img_heart:active{
+    border-style: outset;
+    border: none;
+}
+.adres{
+    margin-top: 10px;
+    display: flex;
+    align-items: end;
+}
+.ramka{
+    background-color: #5895A7;
+    margin-top: 30px;
+    height: 30px;
+    width: 40px;
+    font-size: 16px;
+    color: white;
+    border-radius: 10px;
+    border-color: #5895A7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.price{
+    margin-top: 12px;
+}
+.price_p{
+    font-size: 24px;
+    font-weight: 400;
+}
+.dop{
+    font-size: 16px;
+}
+.select{
+    display: flex;
+    justify-content: right;
+    align-items: end;
+}
+.select_button{
+    font-size: 18px;
+    background-color: #0F4757;
+    border-radius: 30px;
+    border-color: #0F4757;
+    color: #fff;
+    border: none;
+    height: 45px;
+    width: 160px;
+    margin-right: 20px;
+}
+.select_button:active{
+    border-style: outset;
+    border: none;
+}
+
+/* hover кнопочек и ссылок*/
+button.enter_button:hover{
+    background-color: #e2e2e2;
+}
+button.select_button:hover{
+    background-color: #0d3c49;
+}
+a.city:hover{
+    color: #2e6b7e !important;
+}
+/* конец hover */
+
+body::-webkit-scrollbar {
+    width: 12px; /* ширина scrollbar */
+  
+    }
+    
+    body::-webkit-scrollbar-track {
+    background: #F5F5F5; /* цвет дорожки */
+    }
+    
+    body::-webkit-scrollbar-thumb {
+    background-color: #0F4757; /* цвет плашки */
+    border-radius: 20px; /* закругления плашки */
+    border: 1px solid white; /*padding вокруг плашки*/
+    }
