@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'pols/history.css' %}">
     <title>Мои поездки</title>
@@ -110,7 +111,7 @@
                                     <label>Сумма брони: {{ booking.price_per_room }} ₽</label>
                                 </div>
                                 <div class="replace col-4">
-                                    <button class="replace_button">Повторить</button>
+                                    <button class="replace_button" data-bs-toggle="modal" href="#exampleModalToggle">Повторить</button>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +122,108 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<!-- модальное окно для отзыва -->
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal_header">
+              <label class="titte_window">Ваш отзыв</label>
+            </div>
 
+            <div class="form-group">
+                <label>Общая оценка:</label>
+                <div class=" d-flex justify-content-start">
+                    <div class="star-rating d-flex">
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2"><i class="fas fa-star"></i></label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1"><i class="fas fa-star"></i></label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Оценка по критериям (1-10):</label>
+                
+                <div class="criteria">
+                    <div class="criteria-name">Расположение:</div>
+                    <input type="range" class="range-slider" name="location" min="1" max="10" value="5">
+                    <div class="range-value">5</div>
+                </div>
+                
+                <div class="criteria">
+                    <div class="criteria-name">Чистота:</div>
+                    <input type="range" class="range-slider" name="cleanliness" min="1" max="10" value="5">
+                    <div class="range-value">5</div>
+                </div>
+                
+                <div class="criteria">
+                    <div class="criteria-name">Комфорт:</div>
+                    <input type="range" class="range-slider" name="comfort" min="1" max="10" value="5">
+                    <div class="range-value">5</div>
+                </div>
+                
+                <div class="criteria">
+                    <div class="criteria-name">Персонал:</div>
+                    <input type="range" class="range-slider" name="staff" min="1" max="10" value="5">
+                    <div class="range-value">5</div>
+                </div>
+                
+                <div class="criteria">
+                    <div class="criteria-name">Соотношение цены и качества:</div>
+                    <input type="range" class="range-slider" name="value" min="1" max="10" value="5">
+                    <div class="range-value">5</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Ваш комментарий:</label>
+                <textarea id="comment" name="comment" placeholder="Опишите ваши впечатления..." required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Отправить отзыв</button>
+          </div>
+        </div>
+      </div>
+    <!--  -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        // Обновление значений рядом с ползунками
+        document.querySelectorAll('.range-slider').forEach(slider => {
+            const valueDisplay = slider.nextElementSibling;
+            valueDisplay.textContent = slider.value;
+            
+            slider.addEventListener('input', () => {
+                valueDisplay.textContent = slider.value;
+            });
+        });
+
+        // Обработка отправки формы
+        document.getElementById('reviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Собираем данные формы
+            const formData = {
+                rating: document.querySelector('input[name="rating"]:checked')?.value,
+                location: document.querySelector('input[name="location"]').value,
+                cleanliness: document.querySelector('input[name="cleanliness"]').value,
+                comfort: document.querySelector('input[name="comfort"]').value,
+                staff: document.querySelector('input[name="staff"]').value,
+                value: document.querySelector('input[name="value"]').value,
+                comment: document.getElementById('comment').value
+            };
+            
+            console.log('Отправленные данные:', formData);
+            alert('Спасибо за ваш отзыв!');
+            this.reset();
+        });
+    </script>
 </body>
 </html>
