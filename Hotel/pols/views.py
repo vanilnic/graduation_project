@@ -303,7 +303,7 @@ def payments(request, id_room, arrival, departure, people):
     if request.method == 'POST':
         if len(request.POST['number_card']) == 16 and len(request.POST['cvv_card']) == 3:
             Booking.objects.create(quantity_people=people_f, arrival=arrival, departure=departure, price_per_room=total_price, user=request.user, room=room)
-            return redirect('succefilly')
+            return redirect('index')
         else:
             print('lox')
             return render(request, 'pols/payments.html',

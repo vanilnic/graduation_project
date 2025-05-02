@@ -362,13 +362,19 @@ a.login_button{
   color: #041F27;
   cursor: pointer;
 }
-/* конец модального окна */
+
+/* модальное после оплаты */
+.label_pay{
+  font-size: 24px;
+  font-weight: 400;
+  padding: 0px 40px 14px 40px;
+}
+
 
 /* hover кнопочек и ссылок*/
 button.enter_button:hover{
   background-color: #e2e2e2;
 }
-
 /* конец hover */
 
 body::-webkit-scrollbar {

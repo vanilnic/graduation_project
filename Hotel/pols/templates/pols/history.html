@@ -97,17 +97,21 @@
                             </div>
                             <div class="titlenumber_status row">
                                 <div class="title_number col-8">
-                                    <label>{{ booking.room.title }}</label>
+                                    <label><a href="#">{{ booking.room.title }}</a></label>
                                 </div>
                                 <div class="col-4">
-
+                                    <div class="status">
+                                        <label>Статус: Завершён</label>
+                                    </div>
                                 </div>
                             </div>
                             <div class="price_replace row">
                                 <div class="price col-8">
                                     <label>Сумма брони: {{ booking.price_per_room }} ₽</label>
                                 </div>
-
+                                <div class="replace col-4">
+                                    <button class="replace_button">Повторить</button>
+                                </div>
                             </div>
                         </div>
                     </div>
