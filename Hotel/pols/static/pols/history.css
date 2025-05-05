@@ -241,14 +241,14 @@ h2 {
 }
 .range-slider {
     flex-grow: 1;
-    margin: 0 15px;
+    margin: 0 15px; 
 }
 .range-value {
     width: 30px;
     text-align: center;
     font-weight: bold;
 }
-textarea {
+textarea.otz_text {
     width: 100%;
     height: 150px;
     padding: 10px;
@@ -256,20 +256,38 @@ textarea {
     border-radius: 5px;
     resize: vertical;
 }
+textarea.otz_text:focus{
+    outline: #ddd;
+    border-color: #ddd;
+}
+textarea.otz_text:focus::-webkit-scrollbar {
+    width: 10px; /* ширина scrollbar */
+    }
+    
+    textarea.otz_text:focus::-webkit-scrollbar-track {
+    background: white; /* цвет дорожки */
+    }
+    
+    textarea.otz_text:focus::-webkit-scrollbar-thumb {
+    background-color: #c2c2c2; /* цвет плашки */
+    border-radius: 20px; /* закругления плашки */
+    border: 2px solid white; /*padding вокруг плашки*/
+    }
 .submit-btn {
-    background-color: #4CAF50;
+    background-color: #0F4757;
+    height: 50px;
+    width: 200px;
     color: white;
     border: none;
-    /* padding: 12px 25px; */
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
     display: block;
-    /* margin: 30px auto; */
     transition: background-color 0.3s;
+    margin-bottom: 30px;
 }
 .submit-btn:hover {
-    background-color: #45a049;
+    background-color: #0d3c49;
 }
 /*  */
 
