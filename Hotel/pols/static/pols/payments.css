@@ -154,6 +154,9 @@ input.card_input:focus{
 .card_date{
   width: 245px;
 }
+.card_date::-webkit-calendar-picker-indicator {
+  display: none !important;
+}
 .card_cvv{
   width: 195px;
 }
