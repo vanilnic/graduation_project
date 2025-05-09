@@ -50,8 +50,8 @@
             <form class="search d-flex align-items-center" method="post">
                 {% csrf_token %}
                 <input class="city_input" type="text" placeholder="Город" name="city">
-                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд" name="arrival">
-                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд" name="departure">
+                <input class="date" type="date" min="2025-06-08" max="2025-07-08" placeholder="Заезд" name="arrival">
+                <input class="date" type="date" min="2025-06-08" max="2025-07-08" placeholder="Выезд" name="departure">
                 <select class="form-select people" aria-label="Пример выбора по умолчанию" name="people">
                     <option selected disabled>Гости</option>
                     <option value="1">1 взрослый</option>
@@ -110,10 +110,10 @@
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Moscow.png' %}">
                                 </div>
-                                <div class="price">
+                                <div class="price d-flex justify-content-start">
                                     <label class="price_label"><a href="{% url 'offers_city' city='Москва' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
-                                <div class="title_city">
+                                <div class="title_city d-flex justify-content-start">
                                     <label class="title_city_label"><a href="{% url 'offers_city' city='Москва' arrival=arrival departure=departure people=people %}">Москва</a></label>
                                 </div>
                             </button>
@@ -123,10 +123,10 @@
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Saint-Petersburg.png' %}">
                                 </div>
-                                <div class="price">
+                                <div class="price d-flex justify-content-start">
                                     <label class="price_label"><a href="{% url 'offers_city' city='Санкт-Петербург' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
-                                <div class="title_city">
+                                <div class="title_city d-flex justify-content-start">
                                     <label class="title_city_label"><a href="{% url 'offers_city' city='Санкт-Петербург' arrival=arrival departure=departure people=people %}">Санкт-Петербург</a></label>
                                 </div>
                             </button>
@@ -136,10 +136,10 @@
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Sochi.png' %}">
                                 </div>
-                                <div class="price">
+                                <div class="price d-flex justify-content-start">
                                     <label class="price_label"><a href="{% url 'offers_city' city='Сочи' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
-                                <div class="title_city">
+                                <div class="title_city d-flex justify-content-start">
                                     <label class="title_city_label"><a href="{% url 'offers_city' city='Сочи' arrival=arrival departure=departure people=people %}">Сочи</a></label>
                                 </div>
                             </button>
@@ -149,10 +149,10 @@
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Kazan.png' %}">
                                 </div>
-                                <div class="price">
+                                <div class="price d-flex justify-content-start">
                                     <label class="price_label"><a href="{% url 'offers_city' city='Казань' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
-                                <div class="title_city">
+                                <div class="title_city d-flex justify-content-start">
                                     <label class="title_city_label"><a href="{% url 'offers_city' city='Казань' arrival=arrival departure=departure people=people %}">Казань</a></label>
                                 </div>
                             </button>
@@ -167,10 +167,10 @@
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Anapa.png' %}">
                                 </div>
-                                <div class="price">
+                                <div class="price d-flex justify-content-start">
                                     <label class="price_label"><a href="{% url 'offers_city' city='Анапа' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
-                                <div class="title_city">
+                                <div class="title_city d-flex justify-content-start">
                                     <label class="title_city_label"><a href="{% url 'offers_city' city='Анапа' arrival=arrival departure=departure people=people %}">Анапа</a></label>
                                 </div>
                             </button>
@@ -180,10 +180,10 @@
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Rostov-on-Don.png' %}">
                                 </div>
-                                <div class="price">
+                                <div class="price d-flex justify-content-start">
                                     <label class="price_label"><a href="{% url 'offers_city' city='Ростов-на-Дону' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
-                                <div class="title_city">
+                                <div class="title_city d-flex justify-content-start">
                                     <label class="title_city_label"><a href="{% url 'offers_city' city='Ростов-на-Дону' arrival=arrival departure=departure people=people %}">Ростов-на-Дону</a></label>
                                 </div>
                             </button>
@@ -193,10 +193,10 @@
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Nizhniy_Novgorod.png' %}">
                                 </div>
-                                <div class="price">
+                                <div class="price d-flex justify-content-start">
                                     <label class="price_label"><a href="{% url 'offers_city' city='Нижний Новгород' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
-                                <div class="title_city">
+                                <div class="title_city d-flex justify-content-start">
                                     <label class="title_city_label"><a href="{% url 'offers_city' city='Нижний Новгород' arrival=arrival departure=departure people=people %}">Нижний Новгород</a></label>
                                 </div>
                             </button>
@@ -206,10 +206,10 @@
                                 <div class="qw_city_img pt-1">
                                     <img class="card-img-top" src="{% static 'pols/images/Gelendzhik.png' %}">
                                 </div>
-                                <div class="price">
+                                <div class="price d-flex justify-content-start">
                                     <label class="price_label"><a href="{% url 'offers_city' city='Геленджик' arrival=arrival departure=departure people=people %}">от 2000₽/ночь</a></label>
                                 </div>
-                                <div class="title_city">
+                                <div class="title_city d-flex justify-content-start">
                                     <label class="title_city_label"><a href="{% url 'offers_city' city='Геленджик' arrival=arrival departure=departure people=people %}">Геленджик</a></label>
                                 </div>
                             </button>

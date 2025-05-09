@@ -63,9 +63,12 @@
                                 <div class="ramka_main col-1">
                                     <label>{{ hotel.CSI }}</label>
                                 </div>
-                                <div class="col">
-                                <img src="{% static 'pols/images/geo.png'%}">
-                                <label>{{ hotel.address }}</label>
+                                <div class="reviews col-auto">
+                                    <a href="#review_section" style="font-weight: 600;">Отзывы (1)</a>
+                                </div>
+                                <div class="d-flex align-items-center col p-0">
+                                    <img src="{% static 'pols/images/geo.png'%}">
+                                    <label>{{ hotel.address }}</label>
                                 </div>
                             </div>
                         </div>
@@ -190,10 +193,13 @@
                         {% endfor %}
                     </div>
                     <div class="reviews">
-                        <div class="cards_reviews m-0">
+                        <div>
+                            <label class="title_info" id="review_section">Отзывы</div>
+                        </div>
+                        <div class="cards_reviews mt-3 m-0">
                             <div class="card_review row row-cols-2 justify-content-between p-0">
                                 <!-- карточка с отзывом -->
-                                <div class="card_r col p-0">
+                                <div class="card_r col">
                                     <div class="cc_rew">
                                         <div class="row m-0">
                                             <label class="col p-0" style="font-size: 22px;">Иван</label>
@@ -220,9 +226,9 @@
                             </div>      
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
                 
-                <div class="similar_estimation col-3 ps-4">
+                <div class="similar_estimation col-3 pe-0 ps-4">
                     <div class="similar">
 <!--                        <label class="similar_label">Похожие отели</label>-->
                         <div class="hotels">

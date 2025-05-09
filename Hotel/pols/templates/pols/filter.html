@@ -50,8 +50,8 @@
             <form class="search d-flex align-items-center" method="post">
                 {% csrf_token %}
                 <input class="city_input" type="text" placeholder="Город" value="{{ city }}" name="city" maxlength="30">
-                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд" value="{{ arrival }}" name="arrival">
-                <input class="date" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд" value="{{ departure }}" name="departure">
+                <input class="date" type="date" min="2024-06-08" max="2025-07-08" placeholder="Заезд" value="{{ arrival }}" name="arrival">
+                <input class="date" type="date" min="2024-06-08" max="2025-07-08" placeholder="Выезд" value="{{ departure }}" name="departure">
                 <select class="form-select people" aria-label="Пример выбора по умолчанию" value="{{ people }}" name="people">
                     <option selected>{{ people }}</option>
                     <option value="1 взрослый">1 взрослый</option>
