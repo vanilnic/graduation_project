@@ -90,3 +90,13 @@ class Options(models.Model):
     title = models.CharField(max_length=45)
     description = models.TextField()
     rooms = models.ManyToManyField(Rooms)
+
+class Reviews(models.Model):
+    booking_id = models.ForeignKey(Booking, on_delete=models.CASCADE)
+    stars = models.IntegerField()
+    location = models.IntegerField()
+    сleanliness = models.IntegerField()
+    price_quality = models.IntegerField()
+    service = models.IntegerField()
+    wifi = models.IntegerField()
+    comments = models.TextField(null=True)
