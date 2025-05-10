@@ -409,6 +409,7 @@ body::-webkit-scrollbar {
 
 
 @media (max-width: 1399.98px) {
+  /* Шапка */
   .qw{
     padding: 0px !important;
   }
@@ -422,26 +423,30 @@ body::-webkit-scrollbar {
     width: 190px;
     font-size: 18px;
     }
-    .search{
-      margin-top: 60px;
-    }
-    .search_button{
-      font-size: 26px;
-      margin-left: 0px;
-      width: 20%;
-    }
-    .card{
-      margin: 3px;
-      width: 270px;
-    }
-    .title_city_label{
-      font-size: 26px;
-    }
+  /* поиск */
+  .search{
+    margin-top: 60px;
+  }
+  .search_button{
+    font-size: 26px;
+    margin-left: 0px;
+    width: 20%;
+  }
+  /* города */
+  .card{
+    margin: 3px;
+    width: 270px;
+  }
+  .title_city_label{
+    font-size: 26px;
+  }
 }
 @media (max-width: 1199.98px) {
+  /* шапка */
   .qwe{
     width: 10% !important;
   }
+  /* поиск */
   .city_input{
     padding-left: 15px;
     margin-left: 15px;
@@ -464,6 +469,7 @@ body::-webkit-scrollbar {
     margin-left: 0px;
     width: 15%;
   }
+  /* инфо */
   .info{
     margin-top: 60px !important;
     font-size: 20px;
@@ -476,6 +482,7 @@ body::-webkit-scrollbar {
     width: 80px;
     height: 80px;
   }
+  /* города */
   .popular_cities{
     margin-top: 50px ;
     margin-bottom: 50px;
@@ -586,16 +593,11 @@ body::-webkit-scrollbar {
   .car-4{
     display: none !important;
   }
-  /* 
-  .car-3{
-    display: initial !important;
-  }
-  .car-2{
-    display: none !important;
-  } */
+   /* шапка */
   .qwe{
     width: 100% !important;
   }
+  /* инфо */
   .info {
     flex-direction: column;
     margin-top: 40px !important;
@@ -603,9 +605,6 @@ body::-webkit-scrollbar {
   .qw_info {
     width: 100% !important;
     margin-bottom: 20px;
-  }
-  .qw.card{
-    width: calc(25% - 20px);
   }
   .info_card {
     width: 100% !important;
@@ -619,15 +618,10 @@ body::-webkit-scrollbar {
   }
 }
 @media (max-width: 575.98px) {
+  /* шапка */
   .header{
     width: 100%;
   }
-  /* .car-2{
-    display: initial !important;
-  }
-  .car-3{
-    display: none !important;
-  } */
   .favorites{
     margin-top: 30px !important;
     margin-left: 0px !important;
@@ -638,6 +632,7 @@ body::-webkit-scrollbar {
   .enter{
     margin-top: 20px !important;
   }
+  /* поиск */
   .search {
     margin-top: 40px;
     flex-direction: column;
@@ -653,6 +648,7 @@ body::-webkit-scrollbar {
     margin-top: 10px !important;
     font-size: 20px !important;
   }
+  /* инфо */
   .info {
     flex-direction: column;
     margin-top: 40px !important;
@@ -671,6 +667,7 @@ body::-webkit-scrollbar {
     padding: 10px;
     font-size: 18px !important;
   }
+  /* города */
   .popular_cities{
     margin-bottom: 10px;
     /* width: 100% !important; */
@@ -694,6 +691,7 @@ body::-webkit-scrollbar {
 
 }
 @media (max-width: 385.98px) {
+  /* шапка */
   a.suitcase_label, a.favorites_label {
     display: none !important;
   }

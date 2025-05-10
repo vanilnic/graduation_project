@@ -16,8 +16,13 @@ a.title_label{
 .title_label{
   margin-left: 16px;
 }
+.qwe{
+  flex: 0 0 auto;
+  width: 25% !important;
+}
 .favorites{
   /* background-color: pink; */
+  margin-right: 3rem !important;
   margin-top: 55px !important;
   font-size: 18px;
   font-family:Inter;
@@ -466,4 +471,166 @@ body::-webkit-scrollbar {
   background-color: #0F4757; /* цвет плашки */
   border-radius: 20px; /* закругления плашки */
   border: 1px solid white; /*padding вокруг плашки*/
+  }
+
+
+  @media (max-width: 1399.98px) {
+    /* Шапка */
+    .qw{
+      padding: 0px !important;
+    }
+    .favorites{
+      margin-right: 0rem !important;
+    }
+    .enter{
+      padding-left: 0px !important;
+    }
+    .enter_button{
+      width: 190px;
+      font-size: 18px;
+      }
+    /* поиск */
+    .search{
+      margin-top: 60px;
+    }
+    .search_button{
+      font-size: 26px;
+      margin-left: 0px;
+      width: 20%;
+    }
+  }
+  @media (max-width: 1199.98px) {
+    /* шапка */
+    .qwe{
+      width: 10% !important;
+    }
+    /* поиск */
+    .city_input{
+      padding-left: 15px;
+      margin-left: 15px;
+      height: 70px;
+      width: 250px;
+    }
+    .date{
+      padding-left: 15px;
+      padding-right: 15px;
+      margin-left: 13px;
+      width: 170px;
+    }
+    .people{
+      padding-left: 15px;
+      margin-left: 13px;
+      width: 180px !important;
+    }
+    .search_button{
+      font-size: 25px;
+      margin-left: 0px;
+      width: 15%;
+    }
+  }
+  @media (max-width: 995.98px) {
+    /* .container{ 
+      max-width: 90% !important;
+      margin: 0% 5% !important;
+    }  */
+    /* Шапка */
+    .logo_img{
+      margin-top: 5px;
+      height: 95px;
+      width: 125px;
+    }
+    .title{
+      font-size:28px;
+    }
+    .favorites, .suitcase{
+      font-size: 16px;
+      font-weight: 450;
+    }
+    .enter_button{
+      font-size: 0 !important;
+      color: transparent !important;
+      background-color: transparent;
+      background-image: url(../pols/images/profile.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 40px;
+      width: 40px !important;
+      height: 40px !important;
+      padding: 0 !important;
+    }
+    /* Поиск */
+    .search {
+      margin-top: 40px;
+      flex-direction: column;
+      height: auto;
+      padding: 15px 10px !important;
+    }
+    .city_input, .date, .people, .search_button {
+      width: 100% !important;
+      margin: 5px 0 !important;
+      height: 50px !important;
+    }
+    .form-select {
+      padding-left: 15px !important; 
+    }
+    .search_button {
+      margin-top: 10px !important;
+      font-size: 20px !important;
+    }
+  }
+  @media (max-width: 767.98px) {
+     /* шапка */
+     .header{
+      width: 100% !important;
+    }
+    .qwe{
+      width: 100% !important;
+    }
+  }
+  @media (max-width: 575.98px) {
+    /* шапка */
+    .header{
+      width: 100%;
+    }
+    .favorites{
+      margin-top: 30px !important;
+      margin-left: 0px !important;
+    }
+    .suitcase{
+      margin-top: 30px !important;
+    }
+    .enter{
+      margin-top: 20px !important;
+    }
+    /* поиск */
+    .search {
+      margin-top: 40px;
+      flex-direction: column;
+      height: auto;
+      padding: 15px 10px !important;
+    }
+    .city_input, .date, .people, .search_button {
+      width: 100% !important;
+      margin: 5px 0 !important;
+      height: 50px !important;
+    }
+    .search_button {
+      margin-top: 10px !important;
+      font-size: 20px !important;
+    }
+  }
+  @media (max-width: 385.98px) {
+    /* шапка */
+    a.suitcase_label, a.favorites_label {
+      display: none !important;
+    }
+    .favo {
+      padding: 0 !important;
+      margin: 0 !important;
+      width: auto !important;
+    }
+    .suitcase{
+      margin-left: 30px !important;
+    }
+    
   }

@@ -15,35 +15,14 @@
 <body>
     <div class="container p-0">
         <header class="header row">
-            <div class="logo ps-0 col-1">
+            <div class="logo ps-0 col-auto">
                 <a href="{% url 'index' %}"><img src="{% static 'pols/images/logo.png'%}"></a>
-                <!-- <img src="img/logo.png"> -->
             </div>
-            <div class="title col-2">
-                <a class="title_label" href="{% url 'index' %}">HotelHaven</a>
-                <!-- <label class="title_label">HotelHaven</label> -->
-            </div>
-            <div class="qw col-3"></div>
-            <div class="favorites col-2 row">
-                <div class="qw col-3"></div>
-                <div class="col-1 p-0">
-                    <!-- <img src="img/heart_off.png"> -->
-                </div>
-                <div class="favo col-2 ps-3">
-                    <!-- <a class="favorites_label">Избранное</a> -->
-                </div>
-            </div>
-            <div class="suitcase col-2 row">
-                <div class="qw col-2"></div>
-                <div class="qw col-1">
-                    <!-- <img src="img/suitcase.png"> -->
-                </div>
-                <div class="favo ps-3 col">
-                    <!-- <a class="suitcase_label">Мои поездки</a> -->
-                </div>
+            <div class="title col-auto p-0">
+                <a class="title_label m-0" href="{% url 'index' %}">HotelHaven</a>
             </div>
             <div class="enter col">
-                <button class="enter_button" onclick="window.history.back()">Назад</button>
+                <button class="enter_button" type="submit" onclick="window.history.back()">Назад</button>
             </div>
         </header>
 

@@ -14,34 +14,34 @@
 <body>
     <div class="container p-0">
         <header class="header row">
-            <div class="logo ps-0 col-1">
-                <a href="{% url 'index' %}"><img src="{% static 'pols/images/logo.png'%}"></a>
+            <div class="logo p-0 col-auto">
+                <a href="{% url 'index' %}"><img class="logo_img" src="{% static 'pols/images/logo.png'%}"></a>
+                <!-- <img src="img/logo.png"> -->
             </div>
-            <div class="title col-2">
-                <a class="title_label" href="{% url 'index' %}">HotelHaven</a>
+            <div class="title col-auto p-0">
+                <a class="title_label m-0" href="{% url 'index' %}">HotelHaven</a>
             </div>
-            <div class="qw col-3"></div>
-            <div class="favorites col-2 row">
-                <div class="qw col-3"></div>
-                <div class="col-1 p-0">
-                    <img src="{% static 'pols/images/heart_off.png'%}">
+            <div class="qwe col-auto p-0"></div>
+            <div class="favorites ps-3 col-auto row">
+                <div class="col-auto p-0">
+                    <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/heart_off.png'%}"></a>
                 </div>
-                <div class="favo col-2 ps-3">
+                <div class="favo col-auto">
                     <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
                 </div>
             </div>
-            <div class="suitcase col-2 row">
-                <div class="qw col-2"></div>
-                <div class="qw col-1">
-                    <img src="{% static 'pols/images/suitcase.png'%}">
+            <div class="suitcase col-auto row">
+                <!-- <div class="qw col-2"></div> -->
+                <div class="qw col-auto p-0">
+                    <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/suitcase.png'%}"></a>
                 </div>
-                <div class="favo ps-3 col">
+                <div class="favo col-auto">
                     <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
                 </div>
             </div>
-            <div class="enter col">
-                <button class="enter_button" data-bs-toggle="modal" href="#exampleModalToggle{{ log_in_people }}">Личный кабинет</button>
-            </div>
+                <div class="enter col">
+                    <button class="enter_button" data-bs-toggle="modal" href="#exampleModalToggle{{ log_in_people }}">Личный кабинет</button>
+                </div>
         </header>
 
         <div class="container-fluid">

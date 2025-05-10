@@ -14,14 +14,12 @@
 <body>
     <div class="container p-0">
         <header class="header row">
-            <div class="logo ps-0 col-1">
+            <div class="logo ps-0 col-auto">
                 <a href="{% url 'index' %}"><img src="{% static 'pols/images/logo.png'%}"></a>
             </div>
-            <div class="title col-2">
-                <a class="title_label" href="{% url 'index' %}">HotelHaven</a>
+            <div class="title col-auto p-0">
+                <a class="title_label m-0" href="{% url 'index' %}">HotelHaven</a>
             </div>
-            <div class="qw col-1"></div>
-            
             <div class="enter col">
                 <button class="enter_button" type="submit" onclick="window.history.back()">Назад</button>
             </div>

@@ -317,3 +317,56 @@ body::-webkit-scrollbar {
     border-radius: 20px; /* закругления плашки */
     border: 1px solid white; /*padding вокруг плашки*/
     }
+
+
+@media (max-width: 1199.98px) {
+/* шапка */
+.qwe{
+    width: 10% !important;
+}
+}
+@media (max-width: 995.98px) {
+/* .container{ 
+    max-width: 90% !important;
+    margin: 0% 5% !important;
+}  */
+/* Шапка */
+.logo_img{
+    margin-top: 5px;
+    height: 95px;
+    width: 125px;
+}
+.title{
+    font-size:28px;
+}
+.enter_button{
+    font-size: 0 !important;
+    color: transparent !important;
+    background-color: transparent;
+    background-image: url(../pols/images/profile.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+}
+}
+@media (max-width: 767.98px) {
+    /* шапка */
+.header{
+    width: 100% !important;
+}
+.qwe{
+    width: 100% !important;
+}
+}
+@media (max-width: 575.98px) {
+/* шапка */
+.header{
+    width: 100%;
+}
+.enter{
+    margin-top: 45px !important;
+}
+}

@@ -13,38 +13,34 @@
 </head>
 <body>
     <div class="container p-0">
-        <header class="header row">
-            <div class="logo ps-0 col-1">
-                <a href="{% url 'index' %}"><img src="{% static 'pols/images/logo.png'%}"></a>
-                <!-- <img src="img/logo.png"> -->
+      <header class="header row">
+        <div class="logo p-0 col-auto">
+            <a href="{% url 'index' %}"><img class="logo_img" src="{% static 'pols/images/logo.png'%}"></a>
+        </div>
+        <div class="title col-auto p-0">
+            <a class="title_label m-0" href="{% url 'index' %}">HotelHaven</a>
+        </div>
+        <div class="qwe col-auto p-0"></div>
+        <div class="favorites ps-3 col-auto row">
+            <div class="col-auto p-0">
+                <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/heart_off.png'%}"></a>
             </div>
-            <div class="title col-2">
-                <a class="title_label" href="{% url 'index' %}">HotelHaven</a>
-                <!-- <label class="title_label">HotelHaven</label> -->
+            <div class="favo col-auto">
+                <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
             </div>
-            <div class="qw col-3"></div>
-            <div class="favorites col-2 row">
-                <div class="qw col-3"></div>
-                <div class="col-1 p-0">
-                    <img src="{% static 'pols/images/heart_off.png'%}">
-                </div>
-                <div class="favo col-2 ps-3">
-                    <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
-                </div>
+        </div>
+        <div class="suitcase col-auto row">
+            <div class="qw col-auto p-0">
+                <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/suitcase.png'%}"></a>
             </div>
-            <div class="suitcase col-2 row">
-                <div class="qw col-2"></div>
-                <div class="qw col-1">
-                    <img src="{% static 'pols/images/suitcase.png'%}">
-                </div>
-                <div class="favo ps-3 col">
-                    <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
-                </div>
+            <div class="favo col-auto">
+                <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
             </div>
+        </div>
             <div class="enter col">
                 <button class="enter_button" data-bs-toggle="modal" href="#exampleModalToggle{{ log_in_people }}">Личный кабинет</button>
             </div>
-        </header>
+    </header>
 
         <div class="container-fluid p-0">
             <form class="search d-flex align-items-center" method="post">
@@ -53,11 +49,11 @@
                 <input class="date" type="date" min="2024-06-08" max="2025-07-08" placeholder="Заезд" value="{{ arrival }}" name="arrival">
                 <input class="date" type="date" min="2024-06-08" max="2025-07-08" placeholder="Выезд" value="{{ departure }}" name="departure">
                 <select class="form-select people" aria-label="Пример выбора по умолчанию" value="{{ people }}" name="people">
-                    <option selected>{{ people }}</option>
-                    <option value="1 взрослый">1 взрослый</option>
-                    <option value="2 взрослых">2 взрослых</option>
-                    <option value="3 взрослых">3 взрослых</option>
-                    <option value="4 взрослых">4 взрослых</option>
+                    <option class="font_select" selected>{{ people }}</option>
+                    <option class="font_select" value="1 взрослый">1 взрослый</option>
+                    <option class="font_select" value="2 взрослых">2 взрослых</option>
+                    <option class="font_select" value="3 взрослых">3 взрослых</option>
+                    <option class="font_select" value="4 взрослых">4 взрослых</option>
                   </select>
                 <button class="search_button" type="submit" name="search">Найти</button>
             </form>
