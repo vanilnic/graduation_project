@@ -187,7 +187,16 @@ input.date{
   margin: 6px;
   height: 425px;
   width: 310px;
+  /* width: calc(25% - 20px);  */
 }
+
+/* .car-2{
+  display: none !important;
+}
+.car-3{
+  display: none !important;
+} */
+
 .price{
   margin-top: 20px;
   margin-left: 5px;
@@ -488,5 +497,213 @@ body::-webkit-scrollbar {
   }
 }
 @media (max-width: 995.98px) {
+  /* .container{ 
+    max-width: 90% !important;
+    margin: 0% 5% !important;
+  }  */
+  /* Шапка */
+  .logo_img{
+    margin-top: 5px;
+    height: 95px;
+    width: 125px;
+  }
+  .title{
+    font-size:28px;
+  }
+  .favorites, .suitcase{
+    font-size: 16px;
+    font-weight: 450;
+  }
+  .enter_button{
+    font-size: 0 !important;
+    color: transparent !important;
+    background-color: transparent;
+    background-image: url(../pols/images/profile.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 40px;
+    width: 40px !important;
+    height: 40px !important;
+    padding: 0 !important;
+  }
+  /* Поиск */
+  .search {
+    margin-top: 40px;
+    flex-direction: column;
+    height: auto;
+    padding: 15px 10px !important;
+  }
+  .city_input, .date, .people, .search_button {
+    width: 100% !important;
+    margin: 5px 0 !important;
+    height: 50px !important;
+  }
+  .form-select {
+    padding-left: 15px !important; 
+  }
+  .search_button {
+    margin-top: 10px !important;
+    font-size: 20px !important;
+  }
+  /* Информация */
+  .info{
+    margin-top: 60px !important;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .info_card{
+    height: fit-content;
+    width: 230px;
+  }
+  .info_img{
+    margin-top: 20px !important;
+    width: 60px;
+    height: 60px;
+  }
+  .info_label{
+    padding: 10px;
+    height: 150px !important; 
+  }
+  /* Города */
+  .popular_cities{
+    margin-bottom: 0px;
+  }
+  .popular_cities_label{
+    font-size: 26px;
+  }
+  .card{
+    width: 165px;
+  }
+  .price_label{
+    font-size: 15px;
+  }
+  .title_city_label{
+    font-size: 16px;
+  }
+
+}
+@media (max-width: 767.98px) {
+  .car-4{
+    display: none !important;
+  }
+  /* 
+  .car-3{
+    display: initial !important;
+  }
+  .car-2{
+    display: none !important;
+  } */
+  .qwe{
+    width: 100% !important;
+  }
+  .info {
+    flex-direction: column;
+    margin-top: 40px !important;
+  }
+  .qw_info {
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+  .qw.card{
+    width: calc(25% - 20px);
+  }
+  .info_card {
+    width: 100% !important;
+    height: auto !important;
+    padding: 15px;
+  }
+  .info_label {
+    height: auto !important;
+    padding: 10px;
+    font-size: 18px !important;
+  }
+}
+@media (max-width: 575.98px) {
+  .header{
+    width: 100%;
+  }
+  /* .car-2{
+    display: initial !important;
+  }
+  .car-3{
+    display: none !important;
+  } */
+  .favorites{
+    margin-top: 30px !important;
+    margin-left: 0px !important;
+  }
+  .suitcase{
+    margin-top: 30px !important;
+  }
+  .enter{
+    margin-top: 20px !important;
+  }
+  .search {
+    margin-top: 40px;
+    flex-direction: column;
+    height: auto;
+    padding: 15px 10px !important;
+  }
+  .city_input, .date, .people, .search_button {
+    width: 100% !important;
+    margin: 5px 0 !important;
+    height: 50px !important;
+  }
+  .search_button {
+    margin-top: 10px !important;
+    font-size: 20px !important;
+  }
+  .info {
+    flex-direction: column;
+    margin-top: 40px !important;
+  }
+  .qw_info {
+    width: 100% !important;
+    margin-bottom: 20px;
+  }
+  .info_card {
+    width: 100% !important;
+    height: auto !important;
+    padding: 15px;
+  }
+  .info_label {
+    height: auto !important;
+    padding: 10px;
+    font-size: 18px !important;
+  }
+  .popular_cities{
+    margin-bottom: 10px;
+    /* width: 100% !important; */
+  }
+  .popular_cities_label{
+    font-size: 26px;
+  }
+  .card{
+    width: 94%
+  }
+  .carousel-control-next, .carousel-control-prev {
+    width: 15% !important;
+    background-color: #041f27;
+  }
+  .price_label{
+    font-size: 15px;
+  }
+  .title_city_label{
+    font-size: 16px;
+  }
+
+}
+@media (max-width: 385.98px) {
+  a.suitcase_label, a.favorites_label {
+    display: none !important;
+  }
+  .favo {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+  }
+  .suitcase{
+    margin-left: 30px !important;
+  }
   
 }
