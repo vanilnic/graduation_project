@@ -1,17 +1,14 @@
 body{
-  /* font-style: italic; */
   font-family:Inter;
 }
 .header{
   color:#041f27;
-  
 }
 a{
   color: #041f27 !important;
   text-decoration: none !important;
 }
 .title{
-  /* background-color: blue; */
   margin-top: 45px !important;
   font-size:32px;
   font-family:Inter;
@@ -21,8 +18,12 @@ a{
 .title_label{
   margin-left: 16px;
 }
+.qwe{
+  flex: 0 0 auto;
+  width: 25% !important;
+}
 .favorites{
-  /* background-color: pink; */
+  margin-right: 3rem !important;
   margin-top: 55px !important;
   font-size: 18px;
   font-family:Inter;
@@ -391,3 +392,101 @@ body::-webkit-scrollbar {
   border-radius: 20px; /* закругления плашки */
   border: 1px solid white; /*padding вокруг плашки*/
   }
+
+
+
+
+
+
+
+@media (max-width: 1399.98px) {
+  .qw{
+    padding: 0px !important;
+  }
+  .favorites{
+    margin-right: 0rem !important;
+  }
+  .enter{
+    padding-left: 0px !important;
+  }
+  .enter_button{
+    width: 190px;
+    font-size: 18px;
+    }
+    .search{
+      margin-top: 60px;
+    }
+    .search_button{
+      font-size: 26px;
+      margin-left: 0px;
+      width: 20%;
+    }
+    .card{
+      margin: 3px;
+      width: 270px;
+    }
+    .title_city_label{
+      font-size: 26px;
+    }
+}
+@media (max-width: 1199.98px) {
+  .qwe{
+    width: 10% !important;
+  }
+  .city_input{
+    padding-left: 15px;
+    margin-left: 15px;
+    height: 70px;
+    width: 250px;
+  }
+  .date{
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 13px;
+    width: 170px;
+  }
+  .people{
+    padding-left: 15px;
+    margin-left: 13px;
+    width: 180px !important;
+  }
+  .search_button{
+    font-size: 25px;
+    margin-left: 0px;
+    width: 15%;
+  }
+  .info{
+    margin-top: 60px !important;
+    font-size: 20px;
+  }
+  .info_card{
+    height: fit-content;
+    width: 300px;
+  }
+  .info_img{
+    width: 80px;
+    height: 80px;
+  }
+  .popular_cities{
+    margin-top: 50px ;
+    margin-bottom: 50px;
+  }
+  .popular_cities_label{
+    font-size: 28px;
+  }
+  .card{
+    width: 225px;
+  }
+  .price_label{
+    font-size: 18px;
+  }
+  .title_city_label{
+    font-size: 22px;
+  }
+  .cards-wrapper{
+    display: flex;
+  }
+}
+@media (max-width: 995.98px) {
+  
+}
