@@ -1,3 +1,34 @@
+//проверка авторизации
+document.addEventListener("DOMContentLoaded", function() {
+    const favoriteBtn = document.getElementById("favorites-btn");
+    const tripsBtn = document.getElementById("trips-btn");
+    // Функция для отображения модального окна
+    const showModal = () => {
+        const modal = new bootstrap.Modal(document.getElementById("exampleModalToggle"));
+        modal.show();
+    };
+    // Проверка на авторизацию при нажатии на "Избранное"
+    if (favoriteBtn) {
+        favoriteBtn.addEventListener("click", function(event) {
+            if (!window.isAuthenticated) {
+                event.preventDefault();
+                showModal();
+            }
+        });
+    }
+    // Проверка на авторизацию при нажатии на "Мои поездки"
+    if (tripsBtn) {
+        tripsBtn.addEventListener("click", function(event) {
+            if (!window.isAuthenticated) {
+                event.preventDefault();
+                showModal();
+            }
+        });
+    }
+});
+
+
+
 // payments
 // для input номера карты
 document.querySelector('.card_number').addEventListener('input', function(e) {

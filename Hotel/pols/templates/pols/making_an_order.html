@@ -27,7 +27,7 @@
                     <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/heart_off.png'%}"></a>
                 </div>
                 <div class="favo col-auto">
-                    <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
+                    <a href="{% url 'favorites' %}" class="favorites_label" id="favorites-btn">Избранное</a>
                 </div>
             </div>
             <div class="suitcase col-auto row">
@@ -36,7 +36,7 @@
                     <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/suitcase.png'%}"></a>
                 </div>
                 <div class="favo col-auto">
-                    <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
+                    <a href="{% url 'travel_history' %}" class="suitcase_label" id="trips-btn">Мои поездки</a>
                 </div>
             </div>
                 <div class="enter col">
@@ -51,7 +51,7 @@
                     <div class="card_order">
 
                         <div class="title_hotel row">
-                            <a class="title_hotel_a" href="{% url 'hotel_id_hotel' id_hotel_id=hotel arrival=arrival departure=departure people=people %}">{{ room.hotel.name }}</a>
+                           <a class="title_hotel_a" href="{% url 'hotel_id_hotel' id_hotel_id=hotel arrival=arrival departure=departure people=people %}">{{ room.hotel.name }}</a>
                         </div>
                         <div class="info row">
                             <div class="title_hotel_info_number col-7">
@@ -150,7 +150,7 @@
                             <label>Данные гостей</label>
                         </div>
                         <div class="client_info">
-                            <label>Гость. Взрослый, на которого оформляется бронь</label>
+                            <label>Гость. Взрослый, на которого оформляется бронь</label>
                         </div>
                         <div class="furname_name row">
                             <div class="col-6">
@@ -321,8 +321,10 @@
   </div>
   <!-- конец окна -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <link rel="script" href="../js/script.js">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        window.isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}" === "true";
+    </script>
+    <script src="{% static 'pols/script.js' %}"></script>    
 </body>
 </html>

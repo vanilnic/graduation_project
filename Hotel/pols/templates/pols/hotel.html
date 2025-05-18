@@ -29,7 +29,7 @@
                     <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/heart_off.png'%}"></a>
                 </div>
                 <div class="favo col-auto">
-                    <a href="{% url 'favorites' %}" class="favorites_label">Избранное</a>
+                    <a href="{% url 'favorites' %}" class="favorites_label" id="favorites-btn">Избранное</a>
                 </div>
             </div>
             <div class="suitcase col-auto row">
@@ -38,7 +38,7 @@
                     <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/suitcase.png'%}"></a>
                 </div>
                 <div class="favo col-auto">
-                    <a href="{% url 'travel_history' %}" class="suitcase_label">Мои поездки</a>
+                    <a href="{% url 'travel_history' %}" class="suitcase_label" id="trips-btn">Мои поездки</a>
                 </div>
             </div>
                 <div class="enter col">
@@ -405,5 +405,9 @@
   <!-- конец окна -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script>
+        window.isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}" === "true";
+    </script>
+    <script src="{% static 'pols/script.js' %}"></script>
 </body>
 </html>

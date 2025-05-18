@@ -301,7 +301,7 @@ def payments(request, id_room, arrival, departure, people):
         if request.user.is_authenticated:
             return render(request, 'pols/payments.html', {'room': room, 'arrival': arrival, 'departure': departure, 'people': people, 'total_price': total_price})
     if request.method == 'POST':
-        if len(request.POST['number_card']) == 16 and len(request.POST['cvv_card']) == 3:
+        if len(request.POST['number_card']) == 19 and len(request.POST['cvv_card']) == 3:
             Booking.objects.create(quantity_people=people_f, arrival=arrival, departure=departure, price_per_room=total_price, user=request.user, room=room)
             return redirect('index')
         else:
