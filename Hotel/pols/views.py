@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model, authenticate, login
 from django.shortcuts import render, redirect, reverse
 from django.views.generic import DetailView
 from datetime import datetime, timedelta
-from django.db.models import Count
+from django.db.models import Count, Min
 from .forms import *
 from .models import *
 from django import forms
@@ -147,8 +147,9 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
 
 def favorites(request, city=None):
     favorites = Favorites.objects.all().filter(user=request.user)
-    cities = Hotel.objects.all().values('city').annotate(count=Count('id')).values_list('city', flat=True)
-    print(Hotel.objects.all().values('city').annotate(count=Count('id')).values_list('city', flat=True))
+    cities = Hotel.objects.filter(id__in=favorites.values_list('hotel_id', flat=True)).values('city').annotate(count=Count('id')).values_list('city', flat=True)
+    # cities = Hotel.objects.all().values('city').annotate(count=Count('id')).values_list('city', flat=True)
+    # print(Hotel.objects.all().values('city').annotate(count=Count('id')).values_list('city', flat=True))
     print(cities)
     if city is not None:
         favorites = Favorites.objects.all().filter(user=request.user, hotel__in=Hotel.objects.all().filter(city=city))
@@ -199,11 +200,6 @@ def hotel(request, id_hotel_id, arrival, departure, people):
     print(hotels)
     # print(Rooms.objects.all()
 
-    in_favorites = False
-    if request.user.is_authenticated:
-        print('проверка')
-        in_favorites = Favorites.objects.filter(hotel=Hotel.objects.get(id=id_hotel_id), user=request.user).exists()
-
     log_in_people = 3
     if request.method == 'GET':
         if request.user.is_authenticated:
@@ -240,9 +236,9 @@ def hotel(request, id_hotel_id, arrival, departure, people):
                 return redirect('hotel_id')
         elif 'addhotel' in request.POST:
             User = get_user_model()
-            # print(1)
-            # print(Hotel.objects.get(id=id_hotel_id))
-            # print(User.objects.all().filter(email=request.user))
+            print(1)
+            print(Hotel.objects.get(id=id_hotel_id))
+            print(User.objects.all().filter(email=request.user))
             price = Rooms.objects.all().filter(hotel=Hotel.objects.get(id=id_hotel_id)).order_by("price_per_night")[0].price_per_night
             try:
                 print(Favorites.objects.all().filter(hotel = Hotel.objects.get(id=id_hotel_id), user = request.user)[0])
@@ -253,9 +249,7 @@ def hotel(request, id_hotel_id, arrival, departure, people):
 
                 except:
                     return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'arrival':arrival, 'departure':departure, 'people':people})
-        elif 'removehotel' in request.POST:
-            Favorites.objects.filter(hotel=Hotel.objects.get(id=id_hotel_id), user=request.user).delete()
-            context['in_favorites'] = False
+
         elif 'search' in request.POST:
             return redirect('hotel_id_hotel', id_hotel_id=id_hotel_id, arrival=request.POST['arrival'], departure=request.POST['departure'], people=request.POST['people'])
     else:

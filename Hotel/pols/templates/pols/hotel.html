@@ -70,22 +70,9 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <form class="favorites_hotel col-1 pt-1" method="post">
-                            {% csrf_token %}
-                            <button class="btn_favorites" name="addhotel" type="submit"><img src="{% static 'pols/images/heart_off_max.png' %}"></button>
-                        </form> -->
-
                         <form class="favorites_hotel col-1 pt-1" method="post">
                             {% csrf_token %}
-                            {% if in_favorites %}
-                                <button name="removehotel" type="submit" class="btn_favorites">
-                                    <img src="{% static 'pols/images/heart_on_max.png' %}" alt="Удалить из избранного">
-                                </button>
-                            {% else %}
-                                <button name="addhotel" type="submit" class="btn_favorites">
-                                    <img src="{% static 'pols/images/heart_off_max.png' %}" alt="Добавить в избранное">
-                                </button>
-                            {% endif %}
+                            <button class="btn_favorites" name="addhotel" type="submit"><img src="{% static 'pols/images/heart_off_max.png' %}"></button>
                         </form>
 
                         <div class="container-fluid">
