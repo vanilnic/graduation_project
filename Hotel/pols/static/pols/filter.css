@@ -264,7 +264,7 @@ select{
   align-items: end;
 }
 a.hotel_a{
-  white-space: nowrap;
+  white-space: normal;
   color: #0F4757 !important;
   font-size: 20px;
   text-decoration: none;

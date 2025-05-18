@@ -110,7 +110,7 @@
                     {% for room in rooms %}
                     <div class="card">
                         <div class="qw row">
-                            <div class="room_img col-5">
+                            <div class="room_img col-5 d-flex align-items-center">
                                 <div class="otstup_card">
                                 <div id="carouselExampleIndicators{{ room.id }}" class="carousel slide">
                                     <div class="carousel-indicators">
@@ -140,10 +140,10 @@
                                     <label>{{ room.price_per_night }} ₽</label>
                                 </div>
                                 <div class="hotel_and_button pt-2 row">
-                                    <div class="hotel col ps-0">
+                                    <div class="hotel col ps-0 text-truncate">
                                         <a class="hotel_a " href="{% url 'hotel_id_hotel' id_hotel_id=room.hotel.id arrival=arrival departure=departure people=people %}">{{ room.hotel.name }}</a>
                                     </div>
-                                    <form class="select_div col " method="get" action="{% url 'order_add' id_room=room.id arrival=arrival departure=departure people=people %}">
+                                    <form class="select_div col-auto" method="get" action="{% url 'order_add' id_room=room.id arrival=arrival departure=departure people=people %}">
                                         <button class="select_room" >Выбрать</button>
                                     </form>
                                 </div>

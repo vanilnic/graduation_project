@@ -62,7 +62,7 @@
                                     <label>{{ hotel.CSI }}</label>
                                 </div>
                                 <div class="reviews col-auto">
-                                    <a href="#review_section" style="font-weight: 600;">Отзывы (1)</a>
+                                    <a href="#review_section" style="font-weight: 600;">Отзывы ({{reviews_count}})</a>
                                 </div>
                                 <div class="d-flex align-items-center col p-0">
                                     <img src="{% static 'pols/images/geo.png'%}">
@@ -70,9 +70,22 @@
                                 </div>
                             </div>
                         </div>
-                        <form class="favorites_hotel col-1 pt-1" method="post">
+                        <!-- <form class="favorites_hotel col-1 pt-1" method="post">
                             {% csrf_token %}
                             <button class="btn_favorites" name="addhotel" type="submit"><img src="{% static 'pols/images/heart_off_max.png' %}"></button>
+                        </form> -->
+
+                        <form class="favorites_hotel col-1 pt-1" method="post">
+                            {% csrf_token %}
+                            {% if in_favorites %}
+                                <button name="removehotel" type="submit" class="btn_favorites">
+                                    <img src="{% static 'pols/images/heart_on_max.png' %}" alt="Удалить из избранного">
+                                </button>
+                            {% else %}
+                                <button name="addhotel" type="submit" class="btn_favorites">
+                                    <img src="{% static 'pols/images/heart_off_max.png' %}" alt="Добавить в избранное">
+                                </button>
+                            {% endif %}
                         </form>
 
                         <div class="container-fluid">
@@ -139,6 +152,9 @@
                                           <div class="carousel-item active">
                                             <img class="image_room" src="{{ room.img1 }}">
                                           </div>
+
+                                        <!-- {% static '{{ room.img1 }}'%} -->
+
                                           <div class="carousel-item">
                                             <img class="image_room" src="{{ room.img2 }}">
                                           </div>
@@ -194,32 +210,37 @@
                         <div>
                             <label class="title_info" id="review_section">Отзывы</div>
                         </div>
+                        {% if not reviews %}
+                            <p class="no-reviews-message pt-3 pb-5" style="font-size: 20px;">Отзывов ещё нет</p>
+                        {% endif %}
                         <div class="cards_reviews mt-3 m-0">
                             <div class="card_review row row-cols-2 justify-content-between p-0">
                                 <!-- карточка с отзывом -->
+                                {% for review in reviews %}
                                 <div class="card_r col">
                                     <div class="cc_rew">
                                         <div class="row m-0">
-                                            <label class="col p-0" style="font-size: 22px;">Иван</label>
+                                            <label class="col p-0" style="font-size: 22px;">{{review.booking.user.first_name}}</label>
                                             <div class="col d-flex justify-content-end p-0">
                                                 <div>
-                                                    <label style="font-size: 22px;">5★</label>
+                                                    <label style="font-size: 22px;">{{ review.stars }}★</label>
                                                 </div>   
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-column">
-                                            <label class="pt-2" style="font-size: 18px;">24.04.2025 — 30.04.2025</label>
-                                            <label class="pt-1" style="font-size: 18px;">Семейный однокомнатный номер</label>
-                                            <label class="pt-2" style="font-size: 16px;">Расположение — 10</label>
-                                            <label style="font-size: 16px;">Чистота номеров — 10</label>
-                                            <label style="font-size: 16px;">Соотношение цены и качества — 10</label>
-                                            <label style="font-size: 16px;">Качество обслуживания — 10</label>
-                                            <label style="font-size: 16px;">Качество WiFi — 10</label>
-                                            <label class="pt-2" style="font-size: 18px; font-weight: 600;">Комментарий</label>
-                                            <label style="font-size: 18px;">Всё хорошо</label>
+                                        <div class="d-flex flex-column" style="font-weight: 450;">
+                                            <label class="pt-2" style="font-size: 18px;">{{ review.booking.arrival|date:"j E" }} — {{ review.booking.departure|date:"j E Y" }}</label>
+                                            <label class="pt-1" style="font-size: 18px;">{{ review.booking.room.title }}</label>
+                                            <label class="pt-4" style="font-size: 16px;">Расположение — {{ review.location }}</label>
+                                            <label style="font-size: 16px;">Чистота номеров — {{ review.сleanliness }}</label>
+                                            <label style="font-size: 16px;">Соотношение цены и качества — {{ review.price_quality }}</label>
+                                            <label style="font-size: 16px;">Качество обслуживания — {{ review.service }}</label>
+                                            <label style="font-size: 16px;">Качество WiFi — {{ review.wifi }}</label>
+                                            <label class="pt-3" style="font-size: 18px; font-weight: 600;">Комментарий</label>
+                                            <label style="font-size: 18px;">{{ review.comments }}</label>
                                         </div>
                                     </div>
                                 </div>
+                                {% endfor %}
                                 <!--  -->                   
                             </div>      
                         </div>

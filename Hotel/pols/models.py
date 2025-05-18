@@ -92,7 +92,8 @@ class Options(models.Model):
     rooms = models.ManyToManyField(Rooms)
 
 class Reviews(models.Model):
-    booking_id = models.ForeignKey(Booking, on_delete=models.CASCADE)
+    booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
+    hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
     stars = models.IntegerField()
     location = models.IntegerField()
     сleanliness = models.IntegerField()

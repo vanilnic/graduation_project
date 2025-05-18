@@ -36,11 +36,11 @@
                     <div class="row">
                         <div class="col-4">
                             <div class="otstup_card">
-                                <div id="carouselExampleIndicators" class="carousel slide">
+                                <div id="carouselExampleIndicators{{ booking.id }}" class="carousel slide">
                                     <div class="carousel-indicators">
-                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                      <button type="button" data-bs-target="#carouselExampleIndicators{{ booking.id }}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                      <button type="button" data-bs-target="#carouselExampleIndicators{{ booking.id }}" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                      <button type="button" data-bs-target="#carouselExampleIndicators{{ booking.id }}" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                     </div>
                                     <div class="carousel-inner">
                                       <div class="carousel-item active">
@@ -59,7 +59,7 @@
                         <div class="info col-8 ps-0">
                             <div class="hotel_address_date row">
                                 <div class="hotel_address col-8">
-                                    <label class="title_hotel"><a href="" class="title_hotel">{{ booking.room.hotel.name }}</a></label> <br>
+                                    <label class="title_hotel"><a href="{% url 'hotel_id_hotel' id_hotel_id=booking.room.hotel.id arrival=arrival departure=departure people=people %}" class="title_hotel">{{ booking.room.hotel.name }}</a></label> <br>
                                     <div class="otstup row">
                                         <div class="ramka col-1">
                                             <label>{{ booking.room.hotel.CSI }}</label>
