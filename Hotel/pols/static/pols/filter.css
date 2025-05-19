@@ -139,7 +139,8 @@ input:focus {
 }
 .filter{
   /* background-color: #041F27; */
-
+  position: sticky;
+  top: 40px;
   border-radius: 15px;
   border: #0F4757 2px solid;
   margin-bottom: 30px;
