@@ -112,7 +112,6 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
                 if user is not None:
                     login(request,user)
                     return redirect('offers_city', city=city, arrival=arrival, departure=departure, people=people)
-                    # return redirect('index')
             else:
                 return redirect('offers')
 
@@ -146,6 +145,10 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
         return render(request, 'pols/filter.html')
 
 def favorites(request, city=None):
+    arrival = datetime.now().strftime("%Y-%m-%d")
+    departure = (datetime.now() + timedelta(1)).strftime("%Y-%m-%d")
+    people = '1 взрослый'
+
     favorites = Favorites.objects.all().filter(user=request.user)
     cities = Hotel.objects.filter(id__in=favorites.values_list('hotel_id', flat=True)).values('city').annotate(count=Count('id')).values_list('city', flat=True)
     # cities = Hotel.objects.all().values('city').annotate(count=Count('id')).values_list('city', flat=True)
@@ -155,7 +158,7 @@ def favorites(request, city=None):
         favorites = Favorites.objects.all().filter(user=request.user, hotel__in=Hotel.objects.all().filter(city=city))
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/favorites.html', {'favorites': favorites, 'cities': cities})
+            return render(request, 'pols/favorites.html', {'favorites': favorites, 'cities': cities, 'arrival': arrival, 'departure':departure, 'people':people})
         else:
             return redirect(request.META.get('HTTP_REFERER'))
 
@@ -310,7 +313,9 @@ def payments(request, id_room, arrival, departure, people):
     if request.method == 'POST':
         if len(request.POST['number_card']) == 19 and len(request.POST['cvv_card']) == 3:
             Booking.objects.create(quantity_people=people_f, arrival=arrival, departure=departure, price_per_room=total_price, user=request.user, room=room)
-            return redirect('index')
+            # messages.success(request, 'booking_success')
+            # return redirect('index')
+            return redirect(reverse('index') + '?booking_success=1')
         else:
             print('lox')
             return render(request, 'pols/payments.html',

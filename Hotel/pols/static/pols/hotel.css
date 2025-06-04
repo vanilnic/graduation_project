@@ -233,9 +233,10 @@ white-space: nowrap;
   margin-top: 20px !important;
 }
 .more_a{
+  width: fit-content !important;
   display: flex;
   justify-content: right;
-  padding-right: 35px !important;
+  padding-right: 25px !important;
   padding-bottom: 15px;
 }
 .info{

@@ -15,7 +15,7 @@ a.title_label{
 .title_label{
     margin-left: 16px;
 }
-.favorites{
+/* .favorites{
     margin-top: 55px !important;
     font-size: 18px;
     font-family:Inter;
@@ -41,7 +41,7 @@ a.suitcase_label{
     color: #041f27;
     text-decoration: none;
     cursor: pointer;
-}
+}*/
 .enter{
     margin-top: 44px !important;
     display: flex;
@@ -56,7 +56,7 @@ a.suitcase_label{
     font-size:20px;
     font-family:Inter;
     font-weight: 350;
-    }
+    } 
 .content{
     margin-top: 60px;
     padding-bottom: 20px;
@@ -287,6 +287,23 @@ textarea.otz_text:focus::-webkit-scrollbar {
     margin-bottom: 30px;
 }
 .submit-btn:hover {
+    background-color: #0d3c49;
+}
+
+.submit-btn2 {
+    background-color: #0F4757;
+    height: 50px;
+    width: 160px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    transition: background-color 0.3s;
+    margin-bottom: 30px;
+}
+.submit-btn2:hover {
     background-color: #0d3c49;
 }
 /*  */

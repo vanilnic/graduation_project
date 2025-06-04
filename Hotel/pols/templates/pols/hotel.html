@@ -26,7 +26,7 @@
             <div class="qwe col-auto p-0"></div>
             <div class="favorites ps-3 col-auto row">
                 <div class="col-auto p-0">
-                    <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/heart_off.png'%}"></a>
+                    <a href="{% url 'favorites' %}" id="favo-btn"><img class="img_favo" src="{% static 'pols/images/heart_off.png'%}"></a>
                 </div>
                 <div class="favo col-auto">
                     <a href="{% url 'favorites' %}" class="favorites_label" id="favorites-btn">Избранное</a>
@@ -35,7 +35,7 @@
             <div class="suitcase col-auto row">
                 <!-- <div class="qw col-2"></div> -->
                 <div class="qw col-auto p-0">
-                    <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/suitcase.png'%}"></a>
+                    <a href="{% url 'travel_history' %}" id="trip-btn"><img class="img_favo" src="{% static 'pols/images/suitcase.png'%}"></a>
                 </div>
                 <div class="favo col-auto">
                     <a href="{% url 'travel_history' %}" class="suitcase_label" id="trips-btn">Мои поездки</a>
@@ -123,6 +123,9 @@
                           </select>
                         <button class="search_button" name="search" type="submit">Показать номера</button>
                     </form>
+                    {% if not rooms %}
+                        <p class="no-reviews-message pt-3 pb-5" style="font-size: 20px;">К сожалению, именно на эти даты и ваше число гостей свободных номеров нет</p>
+                    {% endif %}
                     <!-- карточка номера -->
                     {% for room in rooms %}
                     <div class="card_number">
@@ -165,7 +168,7 @@
                                         <label class="price_label">от {{ room.price_per_night }} ₽</label>
                                     </div>
                                 </div>
-                                <div class="more row">
+                                <div class="more row m-0 mt-4 d-flex justify-content-end">
                                     <a class="more_a" href="{% url 'order_add' id_room=room.id arrival=arrival departure=departure people=people %}">Подробнее о предложении</a>
                                 </div>
                             </div>
@@ -204,16 +207,16 @@
                                 <div class="card_r col">
                                     <div class="cc_rew">
                                         <div class="row m-0">
-                                            <label class="col p-0" style="font-size: 22px;">{{review.booking.user.first_name}}</label>
-                                            <div class="col d-flex justify-content-end p-0">
+                                        <label class="col p-0" style="font-size: 22px;">Анонимный отзыв</label>
+                                            <div class="col-2 d-flex justify-content-end p-0">
                                                 <div>
                                                     <label style="font-size: 22px;">{{ review.stars }}★</label>
                                                 </div>   
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column" style="font-weight: 450;">
-                                            <label class="pt-2" style="font-size: 18px;">{{ review.booking.arrival|date:"j E" }} — {{ review.booking.departure|date:"j E Y" }}</label>
-                                            <label class="pt-1" style="font-size: 18px;">{{ review.booking.room.title }}</label>
+                                            <label class="pt-2" style="font-size: 20px;">{{ review.booking.room.title }}</label>
+                                            <label class="pt-1" style="font-size: 18px;">{{ review.booking.arrival|date:"j E" }} — {{ review.booking.departure|date:"j E Y" }}</label>
                                             <label class="pt-4" style="font-size: 16px;">Расположение — {{ review.location }}</label>
                                             <label style="font-size: 16px;">Чистота номеров — {{ review.сleanliness }}</label>
                                             <label style="font-size: 16px;">Соотношение цены и качества — {{ review.price_quality }}</label>

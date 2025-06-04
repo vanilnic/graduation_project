@@ -45,12 +45,12 @@
                     <div class="card">
                         <div class="qw row">
                             <div class="img_hotel col-4">
-                                <img class="photo image_room" src="{{ favorite.hotel.img1 }}">
+                                <img class="photo image_room" src="{% static favorite.hotel.img1 %}">
                             </div>
                             <div class="info col-8 ps-0">
                                 <div class="title_and_heart row">
                                     <div class="title_hotel col-10">
-                                        <label>{{ favorite.hotel.name }}</label>
+                                        <label>{{ favorite.hotel.name }} {{ favorite.hotel.stars }}★</label>
                                     </div>
                                     <div class="heart col-2">
                                         <form class="qw" method="post">
@@ -73,7 +73,7 @@
                                         <label class="price_p">от {{ favorite.min_price }} ₽</label> <br>
                                         <label class="dop">Цена за ночь</label>
                                     </div>
-                                    <form class="select col" method="get" action="{% url 'hotel_id' id_hotel_id=favorite.hotel.id %}">
+                                    <form class="select col" method="get" action="{% url 'hotel_id_hotel' id_hotel_id=favorite.hotel.id arrival=arrival departure=departure people=people %}">
                                         <button class="select_button" name="select_hotel">Выбрать</button>
                                     </form>
                                 </div>

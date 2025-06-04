@@ -23,7 +23,7 @@
         <div class="qwe col-auto p-0"></div>
         <div class="favorites ps-3 col-auto row">
             <div class="col-auto p-0">
-                <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/heart_off.png'%}"></a>
+                <a href="{% url 'favorites' %}" id="favo-btn"><img class="img_favo" src="{% static 'pols/images/heart_off.png'%}"></a>
             </div>
             <div class="favo col-auto">
                 <a href="{% url 'favorites' %}" class="favorites_label" id="favorites-btn">Избранное</a>
@@ -31,7 +31,7 @@
         </div>
         <div class="suitcase col-auto row">
             <div class="qw col-auto p-0">
-                <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/suitcase.png'%}"></a>
+                <a href="{% url 'travel_history' %}" id="trip-btn"><img class="img_favo" src="{% static 'pols/images/suitcase.png'%}"></a>
             </div>
             <div class="favo col-auto">
                 <a href="{% url 'travel_history' %}" class="suitcase_label" id="trips-btn">Мои поездки</a>
@@ -144,10 +144,10 @@
                                 </div>
                                 <div class="hotel_and_button pt-2 row">
                                     <div class="hotel col ps-0 text-truncate">
-                                        <a class="hotel_a " href="{% url 'hotel_id_hotel' id_hotel_id=room.hotel.id arrival=arrival departure=departure people=people %}">{{ room.hotel.name }}</a>
+                                        <a class="hotel_a " href="{% url 'hotel_id_hotel' id_hotel_id=room.hotel.id arrival=arrival departure=departure people=people %}">{{ room.hotel.name }} {{ room.hotel.stars }}★ <br> {{ room.hotel.CSI }}</a>
                                     </div>
                                     <form class="select_div col-auto" method="get" action="{% url 'order_add' id_room=room.id arrival=arrival departure=departure people=people %}">
-                                        <button class="select_room" >Выбрать</button>
+                                        <button class="select_room">Выбрать</button>
                                     </form>
                                 </div>
                             </div>

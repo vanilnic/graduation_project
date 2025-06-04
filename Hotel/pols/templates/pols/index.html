@@ -24,7 +24,7 @@
             <div class="qwe col-auto p-0"></div>
             <div class="favorites ps-3 col-auto row">
                 <div class="col-auto p-0">
-                    <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/heart_off.png'%}"></a>
+                    <a href="{% url 'favorites' %}" id="favo-btn"><img class="img_favo" src="{% static 'pols/images/heart_off.png'%}"></a>
                 </div>
                 <div class="favo col-auto">
                     <a href="{% url 'favorites' %}" class="favorites_label" id="favorites-btn">Избранное</a>
@@ -33,7 +33,7 @@
             <div class="suitcase col-auto row">
                 <!-- <div class="qw col-2"></div> -->
                 <div class="qw col-auto p-0">
-                    <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/suitcase.png'%}"></a>
+                    <a href="{% url 'travel_history' %}" id="trip-btn"><img class="img_favo" src="{% static 'pols/images/suitcase.png'%}"></a>
                 </div>
                 <div class="favo col-auto">
                     <a href="{% url 'travel_history' %}" class="suitcase_label" id="trips-btn">Мои поездки</a>
@@ -48,8 +48,8 @@
             <form class="search d-flex align-items-center" method="post">
                 {% csrf_token %}
                 <input class="city_input" type="text" placeholder="Город" name="city">
-                <input class="date" type="date" min="2025-06-08" max="2025-07-08" placeholder="Заезд" name="arrival">
-                <input class="date" type="date" min="2025-06-08" max="2025-07-08" placeholder="Выезд" name="departure">
+                <input class="date" type="date" min="{{ arrival }}" max="2025-12-01" placeholder="Заезд" name="arrival">
+                <input class="date" type="date" min="{{ departure }}" max="2025-12-01" placeholder="Выезд" name="departure">
                 <select class="form-select people" aria-label="Пример выбора по умолчанию" name="people">
                     <option class="font_select" selected disabled>Гости</option>
                     <option class="font_select" value="1">1 взрослый</option>
@@ -625,6 +625,22 @@
     </div>
   </div>
   <!--  -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('booking_success') === '1') {
+                var successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle4'));
+                successModal.show();
+                
+                // Очищаем параметр из URL без перезагрузки
+                history.replaceState({}, document.title, window.location.pathname);
+
+                setTimeout(function() {
+                    successModal.hide();
+                }, 5000);  // Закрыть через 5 секунд
+            }
+        });
+    </script>
 
 
     <script>

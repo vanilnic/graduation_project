@@ -50,8 +50,8 @@
                 <div class="main_inf col-8 p-0">
                     <div class="card_order">
 
-                        <div class="title_hotel row">
-                           <a class="title_hotel_a" href="{% url 'hotel_id_hotel' id_hotel_id=hotel arrival=arrival departure=departure people=people %}">{{ room.hotel.name }}</a>
+                        <div class="title_hotel row-auto">
+                           <a class="title_hotel_a" href="{% url 'hotel_id_hotel' id_hotel_id=hotel arrival=arrival departure=departure people=people %}">{{ room.hotel.name }} {{ room.hotel.stars }}★</a>
                         </div>
                         <div class="info row">
                             <div class="title_hotel_info_number col-7">
@@ -79,7 +79,7 @@
                                     <div class="row">
                                         <div class="col">
                                             <label class="tt">с 14:00</label>
-                                            <label class="tire tire_tt">—</label>
+                                            <label class="tire tire_tt ps-5 me-3">-</label>
                                             <label class="tt">до 12:00</label>
                                         </div>
                                     </div>
@@ -162,10 +162,10 @@
                         </div>
                         <div class="furname_name_input row">
                             <div class="col-6">
-                                <input class="input_info" type="text">
+                                <input class="input_info" type="text" name="surname_user">
                             </div>
                             <div class="col-6">
-                                <input class="input_info" type="text">
+                                <input class="input_info" type="text" name="name_user">
                             </div>
                         </div>
                     </div>

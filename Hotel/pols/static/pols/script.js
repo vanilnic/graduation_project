@@ -2,12 +2,13 @@
 document.addEventListener("DOMContentLoaded", function() {
     const favoriteBtn = document.getElementById("favorites-btn");
     const tripsBtn = document.getElementById("trips-btn");
+    const favoBtn = document.getElementById("favo-btn");
+    const tripBtn = document.getElementById("trip-btn");
     // Функция для отображения модального окна
     const showModal = () => {
         const modal = new bootstrap.Modal(document.getElementById("exampleModalToggle"));
         modal.show();
     };
-    // Проверка на авторизацию при нажатии на "Избранное"
     if (favoriteBtn) {
         favoriteBtn.addEventListener("click", function(event) {
             if (!window.isAuthenticated) {
@@ -16,9 +17,24 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
-    // Проверка на авторизацию при нажатии на "Мои поездки"
     if (tripsBtn) {
         tripsBtn.addEventListener("click", function(event) {
+            if (!window.isAuthenticated) {
+                event.preventDefault();
+                showModal();
+            }
+        });
+    }
+    if (favoBtn) {
+        favoBtn.addEventListener("click", function(event) {
+            if (!window.isAuthenticated) {
+                event.preventDefault();
+                showModal();
+            }
+        });
+    }
+    if (tripBtn) {
+        tripBtn.addEventListener("click", function(event) {
             if (!window.isAuthenticated) {
                 event.preventDefault();
                 showModal();
