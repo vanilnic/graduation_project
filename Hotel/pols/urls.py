@@ -18,6 +18,6 @@ urlpatterns = [
     path('make_an_order/<id_room>/<arrival>/<departure>/<people>/', views.order, name='order_add'),
     path('payment/', views.payments, name='payment'),
     path('payment/<id_room>/<arrival>/<departure>/<people>/', views.payments, name='payment_new'),
-    path('successful_payment/', views.successful_payment, name='succefilly'),
+    # path('successful_payment/', views.successful_payment, name='succefilly'),
     path('logout/', LogoutView.as_view(), name='logout'),
 ]

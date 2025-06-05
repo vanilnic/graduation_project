@@ -222,7 +222,6 @@ input:focus {
 }
 .select_img{
   margin-left: 10px;
-  margin-bottom: 5px;
 }
 select{
   cursor: pointer;
@@ -233,7 +232,7 @@ select{
 }
 .custom-select{
   font-size: 20px;
-  margin-left: 3px;
+  /* margin-left: 3px; */
   color: #041F27;
   width: 230px;
   height: 45px;

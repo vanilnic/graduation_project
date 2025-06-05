@@ -703,5 +703,14 @@ body::-webkit-scrollbar {
   .suitcase{
     margin-left: 30px !important;
   }
-  
+  .popular_cities_label{
+    font-size: 22px;
+  }
+  .price_label{
+    font-size: 13px;
+  }
+  .title_city_label{
+    font-size: 13px;
+    font-weight: 400;
+  }
 }

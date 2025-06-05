@@ -69,27 +69,26 @@
                     <div class="filters">
                         <label class="filter_price heading">Цена за 1 ночь</label>
                         <div class="between row pt-2">
-                            <div class="from col">
-                                <input class="price_input" type="text" name="min_price" placeholder="от 0 ₽" maxlength="6">
-                            </div>
-                            <div class="before col">
-                                <input class="price_input" type="text" name="max_price" placeholder="до 100 000 ₽" maxlength="6">
-                            </div>
+                          <div class="from col">
+                            <input class="price_input" type="text" name="min_price" placeholder="от 0 ₽" maxlength="6" value="{{ min_price|default:'' }}">
+                          </div>
+                          <div class="before col">
+                            <input class="price_input" type="text" name="max_price" placeholder="до 100 000 ₽" maxlength="6" value="{{ max_price|default:'' }}">
+                          </div>
                         </div>
                         <br>
                         <label class="stars heading">Звёздность</label>
-                        <div class="cbx_stars pt-2">
-                            <input type="radio" name="star" value="0"> Без звёзд <br>
-                            <input type="radio" name="star" value="1"> 1 ★ <br>
-                            <input type="radio" name="star" value="2"> 2 ★★ <br>
-                            <input type="radio" name="star" value="3"> 3 ★★★ <br>
-                            <input type="radio" name="star" value="4"> 4 ★★★★ <br>
-                            <input type="radio" name="star" value="5"> 5 ★★★★★
-                        </div>
+                          <div class="cbx_stars pt-2">
+                              <label><input type="radio" name="star" value="0" {% if star == "0" %}checked{% endif %}> Без звёзд</label><br>
+                              <label><input type="radio" name="star" value="1" {% if star == "1" %}checked{% endif %}> 1 ★</label><br>
+                              <label><input type="radio" name="star" value="2" {% if star == "2" %}checked{% endif %}> 2 ★★</label><br>
+                              <label><input type="radio" name="star" value="3" {% if star == "3" %}checked{% endif %}> 3 ★★★</label><br>
+                              <label><input type="radio" name="star" value="4" {% if star == "4" %}checked{% endif %}> 4 ★★★★</label><br>
+                              <label><input type="radio" name="star" value="5" {% if star == "5" %}checked{% endif %}> 5 ★★★★★</label>
+                          </div>
                         <br>
-<!--                        <label class="heading">Рейтинг</label> -->
-
                         <br>
+                        <input type="hidden" name="orderby" value="{{ orderby }}">
                         <div class="apply_div">
                             <button class="apply" type="submit" name="filter_btn">Применить</button>
                         </div>
@@ -98,13 +97,35 @@
                 </div>
                 
                 <div class="cards_number col-8 ps-4">
-                    <div class="custom-select-wrapper">
+                    <!-- <div class="custom-select-wrapper">
                         <img class="select_img " src="{% static 'pols/images/sorting.png'%}">
-                        <select class="custom-select" id="pageSelect"><span>qw</span>
-                            <option selected disabled>{{ orderby }}</option>
-                            <option value="{% url 'offers_orderby' city=city arrival=arrival departure=departure people=people orderby='Сначала недорогие' %}">Сначала недорогие</option>
-                            <option value="{% url 'offers_orderby' city=city arrival=arrival departure=departure people=people orderby='Сначала дорогие' %}">Сначала дорогие</option>
+                        <select class="custom-select" onchange="location = this.value;">
+                          <option selected disabled>Сортировка</option>
+                          <option value="{% url 'offers_orderby' city=city arrival=arrival departure=departure people=people orderby='Сначала недорогие' %}" {% if orderby == 'Сначала недорогие' %}selected{% endif %}>
+                            Сначала недорогие
+                          </option>
+                          <option value="{% url 'offers_orderby' city=city arrival=arrival departure=departure people=people orderby='Сначала дорогие' %}" {% if orderby == 'Сначала дорогие' %}selected{% endif %}>
+                            Сначала дорогие
+                          </option>
                         </select>
+                    </div> -->
+                    <div class="custom-select-wrapper d-flex">
+                      <div class="d-flex align-items-center">
+                        <img class="select_img " src="{% static 'pols/images/sorting.png'%}">
+                      </div>
+                      
+                        <form method="post" id="sortForm">
+                            {% csrf_token %}
+                            <input type="hidden" name="filter_btn" value="1">
+                            <input type="hidden" name="min_price" value="{{ min_price }}">
+                            <input type="hidden" name="max_price" value="{{ max_price }}">
+                            <input type="hidden" name="star" value="{{ star }}">
+                            <select class="custom-select" name="orderby" onchange="document.getElementById('sortForm').submit();">
+                                <option disabled {% if orderby == 'Сортировка' %}selected{% endif %}>Сортировка</option>
+                                <option value="Сначала недорогие" {% if orderby == 'Сначала недорогие' %}selected{% endif %}>Сначала недорогие</option>
+                                <option value="Сначала дорогие" {% if orderby == 'Сначала дорогие' %}selected{% endif %}>Сначала дорогие</option>
+                            </select>
+                        </form>
                     </div>
                     {% if not rooms %}
                       <p class="no-filter-message pt-3 pb-5" style="font-size: 20px;">По данным фильтрам номеров нет</p>

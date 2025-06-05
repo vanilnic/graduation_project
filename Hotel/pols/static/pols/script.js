@@ -152,31 +152,31 @@ document.querySelector('.card_date').addEventListener('keydown', function(e) {
 
 // history
 // Обновление значений рядом с ползунками
-document.querySelectorAll('.range-slider').forEach(slider => {
-    const valueDisplay = slider.nextElementSibling;
-    valueDisplay.textContent = slider.value;
+// document.querySelectorAll('.range-slider').forEach(slider => {
+//     const valueDisplay = slider.nextElementSibling;
+//     valueDisplay.textContent = slider.value;
     
-    slider.addEventListener('input', () => {
-        valueDisplay.textContent = slider.value;
-    });
-});
+//     slider.addEventListener('input', () => {
+//         valueDisplay.textContent = slider.value;
+//     });
+// });
 
-// Обработка отправки формы
-document.getElementById('reviewForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+// // Обработка отправки формы
+// document.getElementById('reviewForm').addEventListener('submit', function(e) {
+//     e.preventDefault();
     
-    // Собираем данные формы
-    const formData = {
-        rating: document.querySelector('input[name="rating"]:checked')?.value,
-        location: document.querySelector('input[name="location"]').value,
-        cleanliness: document.querySelector('input[name="cleanliness"]').value,
-        comfort: document.querySelector('input[name="comfort"]').value,
-        staff: document.querySelector('input[name="staff"]').value,
-        value: document.querySelector('input[name="value"]').value,
-        comment: document.getElementById('comment').value
-    };
+//     // Собираем данные формы
+//     const formData = {
+//         rating: document.querySelector('input[name="rating"]:checked')?.value,
+//         location: document.querySelector('input[name="location"]').value,
+//         cleanliness: document.querySelector('input[name="cleanliness"]').value,
+//         comfort: document.querySelector('input[name="comfort"]').value,
+//         staff: document.querySelector('input[name="staff"]').value,
+//         value: document.querySelector('input[name="value"]').value,
+//         comment: document.getElementById('comment').value
+//     };
     
-    console.log('Отправленные данные:', formData);
-    alert('Спасибо за ваш отзыв!');
-    this.reset();
-});
+//     console.log('Отправленные данные:', formData);
+//     alert('Спасибо за ваш отзыв!');
+//     this.reset();
+// });
