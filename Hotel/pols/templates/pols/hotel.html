@@ -70,9 +70,21 @@
                                 </div>
                             </div>
                         </div>
-                        <form class="favorites_hotel col-1 pt-1" method="post">
+                        <!-- <form class="favorites_hotel col-1 pt-1" method="post">
                             {% csrf_token %}
                             <button class="btn_favorites" name="addhotel" type="submit"><img src="{% static 'pols/images/heart_off_max.png' %}"></button>
+                        </form> -->
+                        <form class="favorites_hotel col-1 pt-1" method="post">
+                            {% csrf_token %}
+                            {% if is_favorite %}
+                                <button class="btn_favorites" name="delite" type="submit" value="{{ favorite_id }}">
+                                    <img src="{% static 'pols/images/heart_on.png' %}" alt="Удалить из избранного">
+                                </button>
+                            {% else %}
+                                <button class="btn_favorites" name="addhotel" type="submit">
+                                    <img src="{% static 'pols/images/heart_off_max.png' %}" alt="Добавить в избранное">
+                                </button>
+                            {% endif %}
                         </form>
 
                         <div class="container-fluid">
@@ -111,9 +123,8 @@
                 <div class="search_card_info col-9">
                     <form class="search d-flex align-items-center" method="post">
                         {% csrf_token %}
-                        <input class="date search_input" type="date" min="2024-06-08" max="2024-07-08" placeholder="Заезд" name="arrival" value="{{ arrival }}">
-                        <input class="date search_input" type="date" min="2024-06-08" max="2024-07-08" placeholder="Выезд" name="departure" value="{{ departure }}">
-                        <!-- <input class="people search_input" type="text" placeholder="2 взрослых"> -->
+                        <input class="date search_input" type="date" min="{{ arrival_now }}" max="2025-12-01" placeholder="Заезд" name="arrival" value="{{ arrival }}">
+                        <input class="date search_input" type="date" min="{{ departure_now }}" max="2025-12-01" placeholder="Выезд" name="departure" value="{{ departure }}">
                         <select class="form-select people" aria-label="Пример выбора по умолчанию" name="people" value="{{ people }}">
                             <option selected >{{ people }}</option>
                             <option value="1 взрослый">1 взрослый</option>

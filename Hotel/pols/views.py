@@ -81,6 +81,9 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
     rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city))
     log_in_people = 3
 
+    arrival_now = datetime.now().strftime("%Y-%m-%d")
+    departure_now = (datetime.now() + timedelta(1)).strftime("%Y-%m-%d")
+
     if orderby == 'Сначала недорогие':
         rooms = rooms.order_by('price_per_night')
     elif orderby == 'Сначала дорогие':
@@ -89,9 +92,9 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
     
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/filter.html', {'log_in_people': log_in_people, 'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'people':people, 'orderby': orderby})
+            return render(request, 'pols/filter.html', {'log_in_people': log_in_people, 'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'arrival_now':arrival_now, 'departure_now':departure_now, 'people':people, 'orderby': orderby})
         else:
-            return render(request, 'pols/filter.html', {'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'people':people, 'orderby': orderby})
+            return render(request, 'pols/filter.html', {'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'arrival_now':arrival_now, 'departure_now':departure_now,'people':people, 'orderby': orderby})
 
     if request.method == 'POST':
         if 'register' in request.POST:
@@ -170,6 +173,8 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
                 'min_price': min_price, 
                 'max_price': max_price,
                 'star': star,
+                'arrival_now':arrival_now, 
+                'departure_now':departure_now
             }
 
             if request.user.is_authenticated:
@@ -272,16 +277,29 @@ def hotel(request, id_hotel_id, arrival, departure, people):
     hotels = Hotel.objects.all().filter(id=id_hotel_id)
     rooms = Rooms.objects.all().filter(hotel=id_hotel_id)
     reviews = Reviews.objects.all().filter(hotel=id_hotel_id).order_by('-id')
-    reviews_count = len(reviews)
+    reviews_count = len(reviews)\
+
+    arrival_now = datetime.now().strftime("%Y-%m-%d")
+    departure_now = (datetime.now() + timedelta(1)).strftime("%Y-%m-%d")
+
     print(hotels)
     # print(Rooms.objects.all()
+
+    favorite_id = None
+    if request.user.is_authenticated:
+        fav = Favorites.objects.filter(hotel_id=id_hotel_id, user=request.user).first()
+        if fav:
+            favorite_id = fav.id
+        is_favorite = fav is not None
+    else:
+        is_favorite = False
 
     log_in_people = 3
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'reviews': reviews, 'reviews_count': reviews_count, 'arrival':arrival, 'departure':departure, 'people':people})
+            return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'reviews': reviews, 'reviews_count': reviews_count, 'arrival':arrival, 'departure':departure, 'arrival_now':arrival_now, 'departure_now':departure_now, 'people':people, 'is_favorite': is_favorite, 'favorite_id': favorite_id})
         else:
-            return render(request, 'pols/hotel.html', {'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'reviews': reviews, 'reviews_count': reviews_count, 'arrival':arrival, 'departure':departure, 'people':people})
+            return render(request, 'pols/hotel.html', {'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'reviews': reviews, 'reviews_count': reviews_count, 'arrival':arrival, 'departure':departure, 'arrival_now':arrival_now, 'departure_now':departure_now, 'people':people, 'is_favorite': is_favorite, 'favorite_id': favorite_id})
 
     if request.method == 'POST':
         if 'register' in request.POST:
@@ -322,9 +340,20 @@ def hotel(request, id_hotel_id, arrival, departure, people):
             except:
                 try:
                     Favorites(hotel = Hotel.objects.get(id=id_hotel_id), user = request.user, min_price = price).save()
-                    return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'arrival':arrival, 'departure':departure, 'people':people, 'reviews': reviews, 'reviews_count': reviews_count})
+
+                    fav = Favorites.objects.filter(hotel_id=id_hotel_id, user=request.user).first()
+                    is_favorite = fav is not None
+                    favorite_id = fav.id if fav else None
+
+                    return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'arrival':arrival, 'departure':departure, 'people':people, 'reviews': reviews, 'reviews_count': reviews_count, 'is_favorite': is_favorite, 'favorite_id': favorite_id})
                 except:
                     return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'arrival':arrival, 'departure':departure, 'people':people, 'reviews': reviews, 'reviews_count': reviews_count})
+
+        elif 'delite' in request.POST:
+            favorite_id_to_delete = request.POST.get('delite')
+            if favorite_id_to_delete:
+                Favorites.objects.filter(id=favorite_id_to_delete, user=request.user).delete()
+            return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'arrival':arrival, 'departure':departure, 'people':people, 'reviews': reviews, 'reviews_count': reviews_count})
 
         elif 'search' in request.POST:
             return redirect('hotel_id_hotel', id_hotel_id=id_hotel_id, arrival=request.POST['arrival'], departure=request.POST['departure'], people=request.POST['people'])

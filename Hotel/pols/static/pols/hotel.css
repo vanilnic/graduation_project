@@ -132,7 +132,8 @@ a.suitcase_label{
   /* width: 1400px; */
 }
 .date{
-  padding-left: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
   margin-left: 23px;
   height: 55px;
   width: 200px;
@@ -162,7 +163,7 @@ input.search_input{
   font-size: 20px;
 }
 .form-select {
-  padding-left: 25px !important;
+  padding-left: 15px !important;
   color: #041F27 !important;
   width: 230px !important;
   font-size: 20px !important;
