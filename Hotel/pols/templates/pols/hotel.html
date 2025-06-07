@@ -70,10 +70,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- <form class="favorites_hotel col-1 pt-1" method="post">
-                            {% csrf_token %}
-                            <button class="btn_favorites" name="addhotel" type="submit"><img src="{% static 'pols/images/heart_off_max.png' %}"></button>
-                        </form> -->
                         <form class="favorites_hotel col-1 pt-1" method="post">
                             {% csrf_token %}
                             {% if is_favorite %}
@@ -235,8 +231,6 @@
                                 </div>
                                 {% endfor %}
                             </div>
-
-                            <!-- Кнопка "Показать ещё" -->
                             <div class="text-end mt-1 mb-5">
                                 <button id="loadMoreBtn" class="replace_button">Показать ещё</button>
                             </div>
@@ -311,7 +305,6 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal_window modal-content">
             <div class="close_close">
-                <!-- <button type="button_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
               </div>
             <div class="modal_header">
               <label class="titte_window">Авторизация</label>

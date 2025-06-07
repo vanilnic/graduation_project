@@ -176,7 +176,6 @@
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal_window modal-content">
             <div class="close_close">
-                <!-- <button type="button_close" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
               </div>
             <div class="modal_header">
               <label class="titte_window">Авторизация</label>
@@ -236,8 +235,6 @@
         <div class="modal_header_auth">
           <label class="email_label col">Почта:</label> <br>
           <label class="email col ps-0">{{user.email}}</label>
-
-
           <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next=/offers">
               {% csrf_token %}
             <button class="log_out_modal">Выйти</button>

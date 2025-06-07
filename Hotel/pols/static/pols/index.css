@@ -39,7 +39,6 @@ a.favorites_label{
   cursor: pointer;
 }
 .suitcase{
-  /* background-color: red; */
   margin-top: 55px !important;
   font-size: 18px;
   font-family:Inter;
@@ -52,7 +51,6 @@ a.suitcase_label{
   cursor: pointer;
 }
 .enter{
-  /* background-color: blueviolet; */
   margin-top: 44px !important;
   display: flex;
   justify-content: right;
@@ -68,14 +66,12 @@ a.suitcase_label{
   font-weight: 350;
   }
 
-/* search */
 .search{
   color: #041F27;
   background-color: #0F4757;
   margin-top: 80px;
   height: 110px;
   border-radius: 5px;
-  /* width: 1400px; */
 }
 .city_input{
   padding-left: 25px;
@@ -132,7 +128,6 @@ input:focus {
 }
 ::placeholder{
   font-size: 20px;
-  /* padding-left: 25px; */
   font-family:Inter;
   font-weight: 350;
 }
@@ -146,10 +141,8 @@ input.date{
   font-size: 24px;
   font-family:Inter;
   font-weight: 350;
-  /* background-color: blue; */
 }
 .info_card{
-  /* background-color: aquamarine; */
   height: 340px;
   width: 400px;
   border-radius: 15px;
@@ -159,7 +152,6 @@ input.date{
   margin-top: 35px !important;
 }
 .info_label{
-  /* background-color: red; */
   height: 170px;
   width: 350px;
   text-align: center;
@@ -169,7 +161,6 @@ input.date{
 }
 .popular_cities{
   background-color: #F5F5F5;
-  /* background-color: #0F4757; */
   margin-top: 70px ;
   border-radius: 5px;
   color: #013144;
@@ -187,15 +178,7 @@ input.date{
   margin: 6px;
   height: 425px;
   width: 310px;
-  /* width: calc(25% - 20px);  */
 }
-
-/* .car-2{
-  display: none !important;
-}
-.car-3{
-  display: none !important;
-} */
 
 .price{
   margin-top: 20px;
@@ -230,7 +213,6 @@ input.date{
 }
 .modal_header{
   padding-top: 30px;
-  /* background-color: aqua; */
   display: flex;
   justify-content: center;
 }
@@ -258,7 +240,6 @@ input.modal_input{
 }
 input.modal_input:focus{
   outline: #D9D9D9;
-  /* border: #D9D9D9 3px solid; */
 }
 .modal_login_div{
   margin-top: 50px;
@@ -403,11 +384,6 @@ body::-webkit-scrollbar {
   }
 
 
-
-
-
-
-
 @media (max-width: 1399.98px) {
   /* Шапка */
   .qw{
@@ -504,10 +480,6 @@ body::-webkit-scrollbar {
   }
 }
 @media (max-width: 995.98px) {
-  /* .container{ 
-    max-width: 90% !important;
-    margin: 0% 5% !important;
-  }  */
   /* Шапка */
   .logo_img{
     margin-top: 5px;

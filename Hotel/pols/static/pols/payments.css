@@ -2,7 +2,6 @@ body{
   color: #041f27 !important;
   font-family:Inter;
 }
-  /* start header */
 .header{
   color:#041f27;
 }
@@ -177,9 +176,6 @@ input.card_input:focus{
   border: none;
 }
 /* hover кнопочек и ссылок*/
-
 button.pay_btn:hover{
   background-color: #0d3c49;
 }
-
-/* конец hover */

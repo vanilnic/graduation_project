@@ -2,7 +2,6 @@
     color:#041f27;
 }
 .title{
-    /* background-color: blue; */
     margin-top: 45px !important;
     font-size:32px;
     font-family:Inter;
@@ -13,7 +12,6 @@
     margin-left: 16px;
 }
 .favorites{
-    /* background-color: pink; */
     margin-top: 55px !important;
     font-size: 20px;
     font-family:Inter;
@@ -29,7 +27,6 @@ a.favorites_label{
     cursor: pointer;
 }
 .suitcase{
-    /* background-color: red; */
     margin-top: 55px !important;
     font-size: 20px;
     font-family:Inter;
@@ -42,7 +39,6 @@ a.suitcase_label{
     cursor: pointer;
 }
 .enter{
-    /* background-color: blueviolet; */
     margin-top: 44px !important;
     display: flex;
     justify-content: right;
@@ -103,7 +99,6 @@ a{
     border-radius: 20px !important;
 }
 .img_hotel{
-    /* background-color: red; */
     display: flex;
     align-items: center;
     height: 260px;
@@ -121,7 +116,6 @@ a{
     font-weight: 500;
 }
 .heart{
-    /* background-color: blue; */
     display: flex;
     justify-content: center;
     margin-top: 20px;
@@ -236,10 +230,6 @@ body::-webkit-scrollbar {
     }
 }
 @media (max-width: 995.98px) {
-    /* .container{ 
-        max-width: 90% !important;
-        margin: 0% 5% !important;
-    }  */
     /* Шапка */
     .logo_img{
         margin-top: 5px;

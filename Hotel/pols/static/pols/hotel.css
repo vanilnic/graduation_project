@@ -1,8 +1,6 @@
 body{
-  /* font-style: italic; */
   font-family:Inter;
 }
-/* start header */
 .header{
   color:#041f27;
 }
@@ -11,7 +9,6 @@ a{
   text-decoration: none !important;
 }
 .title{
-  /* background-color: blue; */
   margin-top: 45px !important;
   font-size:32px;
   font-family:Inter;
@@ -26,7 +23,6 @@ a{
   width: 25% !important;
 }
 .favorites{
-  /* background-color: pink; */
   margin-right: 3rem !important;
   margin-top: 55px !important;
   font-size: 18px;
@@ -43,7 +39,6 @@ a.favorites_label{
   cursor: pointer;
 }
 .suitcase{
-  /* background-color: red; */
   margin-top: 55px !important;
   font-size: 18px;
   font-family:Inter;
@@ -56,7 +51,6 @@ a.suitcase_label{
   cursor: pointer;
 }
 .enter{
-  /* background-color: blueviolet; */
   margin-top: 44px !important;
   display: flex;
   justify-content: right;
@@ -85,7 +79,6 @@ a.suitcase_label{
     margin-top: 5px;
 }
 .favorites_hotel{
-    /* background-color: aqua; */
     display: flex;
     justify-content: right;
 }
@@ -121,7 +114,6 @@ a.suitcase_label{
     padding-left: 6px !important;
     margin-top: 15px !important;
 }
-/* end header */
 
 .search{
   color: #041F27;
@@ -129,7 +121,6 @@ a.suitcase_label{
   margin-top: 35px;
   height: 90px;
   border-radius: 5px;
-  /* width: 1400px; */
 }
 .date{
   padding-left: 15px;
@@ -180,7 +171,6 @@ input.search_input:focus {
 }
 .search_input::placeholder{
   font-size: 18px;
-  /* padding-left: 25px; */
   font-family:Inter;
   font-weight: 350;
 }
@@ -268,7 +258,6 @@ white-space: nowrap;
 }
 .similar_card{
   margin-top: 15px;
-  /* height: 70px; */
   width: 294px;
   border-radius: 10px !important;
   border: #DEDEDE 1px solid;
@@ -366,7 +355,6 @@ white-space: nowrap;
   padding-bottom: 7px;
 }
 .replace_button{
-    /* margin-right: 32px; */
     background-color: #0F4757;
     width: 180px;
     height: 40px;
@@ -379,9 +367,7 @@ white-space: nowrap;
 
 .card_review{
   width: 100% !important;
-  /* background-color: aqua; */
   height: fit-content;
-  /* padding: 28px; */
   padding-bottom: 10px;
 }
 .card_r{
@@ -391,7 +377,6 @@ white-space: nowrap;
 .cc_rew{
   width: 100%;
   height: fit-content; 
-  /* background-color: blueviolet; */
   border: 1px solid;
   border-radius: 15px;
   padding: 25px 28px;
@@ -480,7 +465,6 @@ white-space: nowrap;
 }
 .modal_header{
   padding-top: 30px;
-  /* background-color: aqua; */
   display: flex;
   justify-content: center;
 }
@@ -491,7 +475,6 @@ white-space: nowrap;
 }
 .email_div{
   margin-top: 50px;
-  /* font-size: 30px; */
 }
 .password_div{
   margin-top: 30px;
@@ -512,7 +495,6 @@ input.modal_input:focus{
 }
 .modal_input::placeholder{
   font-size: 20px;
-  /* padding-left: 25px; */
   font-family:Inter;
   font-weight: 350;
 }
@@ -614,10 +596,6 @@ body::-webkit-scrollbar {
   }
 }
 @media (max-width: 995.98px) {
-  /* .container{ 
-    max-width: 90% !important;
-    margin: 0% 5% !important;
-  }  */
   /* Шапка */
   .logo_img{
     margin-top: 5px;

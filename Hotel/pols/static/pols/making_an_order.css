@@ -1,7 +1,6 @@
 body{
   font-family:Inter;
 }
-/* start header */
 .header{
   color:#041f27;
 }
@@ -114,7 +113,6 @@ a.suitcase_label{
     padding-left: 9px !important;
     margin-top: 15px !important;
 }
-/* end header */
 
 .content{
   margin-top: 80px !important;
@@ -166,7 +164,6 @@ a.suitcase_label{
 .order_number_img{
   height: 195px;
   width: 330px;
-  /* margin-right: 30px !important; */
   border-radius: 15px;
 }
 .date{
@@ -328,7 +325,6 @@ li{
   display: flex;
   justify-content: center;
   padding-top: 30px;
-  /* padding-left: 24px; */
   font-size: 20px;
   padding-bottom: 20px;
 }
@@ -423,7 +419,6 @@ li{
 }
 .modal_header{
   padding-top: 30px;
-  /* background-color: aqua; */
   display: flex;
   justify-content: center;
 }
@@ -434,7 +429,6 @@ li{
 }
 .email_div{
   margin-top: 50px;
-  /* font-size: 30px; */
 }
 .password_div{
   margin-top: 30px;
@@ -455,7 +449,6 @@ input.modal_input:focus{
 }
 .modal_input::placeholder{
   font-size: 20px;
-  /* padding-left: 25px; */
   font-family:Inter;
   font-weight: 350;
 }
@@ -537,10 +530,6 @@ body::-webkit-scrollbar {
   }
 
 
-
-
-
-
 @media (max-width: 1399.98px) {
   /* Шапка */
   .qw{
@@ -564,10 +553,6 @@ body::-webkit-scrollbar {
   }
 }
 @media (max-width: 995.98px) {
-  /* .container{ 
-    max-width: 90% !important;
-    margin: 0% 5% !important;
-  }  */
   /* Шапка */
   .logo_img{
     margin-top: 5px;

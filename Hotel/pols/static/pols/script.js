@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 // payments
-// для input номера карты
 document.querySelector('.card_number').addEventListener('input', function(e) {
     // Удаляем все нецифровые символы
     let value = e.target.value.replace(/\D/g, '');
@@ -62,7 +61,6 @@ document.querySelector('.card_number').addEventListener('input', function(e) {
     
     e.target.value = formattedValue;
 });
-// Запрещаем ввод нецифровых символов
 document.querySelector('.card_number').addEventListener('keydown', function(e) {
     // Разрешаем: Backspace, Delete, Tab, стрелки
     if ([8, 9, 37, 38, 39, 40, 46].includes(e.keyCode)) {
@@ -99,17 +97,12 @@ function validateDateInput(input) {
     
     // Проверяем заполненность всех частей
     if (input.value.length === 10) {
-        // Проверяем день (1-31)
         if (day < 1 || day > 31) isValid = false;
-        // Проверяем месяц (1-12)
         if (month < 1 || month > 12) isValid = false;
-        // Проверяем год (1900-2099)
         if (year < 1900 || year > 2099) isValid = false;
-        // Дополнительная проверка для месяцев с 30 днями
         if (month === 4 || month === 6 || month === 9 || month === 11) {
             if (day > 30) isValid = false;
         }
-        // Проверка февраля (упрощённая, без учёта високосных годов)
         if (month === 2 && day > 28) isValid = false;
     } else if (input.value.length > 0) {
         // Если введена неполная дата, но есть символы
@@ -145,38 +138,7 @@ document.querySelector('.card_date').addEventListener('keydown', function(e) {
     }
 });
 
-
-
-
-
-
-// history
-// Обновление значений рядом с ползунками
-// document.querySelectorAll('.range-slider').forEach(slider => {
-//     const valueDisplay = slider.nextElementSibling;
-//     valueDisplay.textContent = slider.value;
-    
-//     slider.addEventListener('input', () => {
-//         valueDisplay.textContent = slider.value;
-//     });
-// });
-
-// // Обработка отправки формы
-// document.getElementById('reviewForm').addEventListener('submit', function(e) {
-//     e.preventDefault();
-    
-//     // Собираем данные формы
-//     const formData = {
-//         rating: document.querySelector('input[name="rating"]:checked')?.value,
-//         location: document.querySelector('input[name="location"]').value,
-//         cleanliness: document.querySelector('input[name="cleanliness"]').value,
-//         comfort: document.querySelector('input[name="comfort"]').value,
-//         staff: document.querySelector('input[name="staff"]').value,
-//         value: document.querySelector('input[name="value"]').value,
-//         comment: document.getElementById('comment').value
-//     };
-    
-//     console.log('Отправленные данные:', formData);
-//     alert('Спасибо за ваш отзыв!');
-//     this.reset();
-// });
+document.querySelector('.card_cvv').addEventListener('input', function(e) {
+    // Удаляем все символы, кроме цифр
+    this.value = this.value.replace(/\D/g, '');
+});
