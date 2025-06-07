@@ -16,7 +16,6 @@
         <header class="header row">
             <div class="logo p-0 col-auto">
                 <a href="{% url 'index' %}"><img class="logo_img" src="{% static 'pols/images/logo.png'%}"></a>
-                <!-- <img src="img/logo.png"> -->
             </div>
             <div class="title col-auto p-0">
                 <a class="title_label m-0" href="{% url 'index' %}">HotelHaven</a>
@@ -24,23 +23,17 @@
             <div class="qwe col-auto p-0"></div>
             <div class="favorites ps-3 col-auto row">
                 <div class="col-auto p-0">
-                    <!-- <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/heart_off.png'%}"></a> -->
                 </div>
                 <div class="favo col-auto">
-                    <!-- <a href="{% url 'favorites' %}" class="favorites_label" id="favorites-btn">Избранное</a> -->
                 </div>
             </div>
             <div class="suitcase col-auto row">
-                <!-- <div class="qw col-2"></div> -->
                 <div class="qw col-auto p-0">
-                    <!-- <a href="{% url 'travel_history' %}"><img class="img_favo" src="{% static 'pols/images/suitcase.png'%}"></a> -->
                 </div>
                 <div class="favo col-auto">
-                    <!-- <a href="{% url 'travel_history' %}" class="suitcase_label" id="trips-btn">Мои поездки</a> -->
                 </div>
             </div>
                 <div class="enter col">
-                    <!-- <button class="enter_button" data-bs-toggle="modal" href="#exampleModalToggle{{ log_in_people }}">Личный кабинет</button> -->
                 </div>
         </header>
 
@@ -169,30 +162,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="card_client_info end_str">
-                        <div class="title_eat">
-                            <label>Контактная информация</label>
-                        </div>
-                        <div class="client_info">
-                            <label>Куда отправить информацию о бронировании</label>
-                        </div>
-                        <div class="furname_name row">
-                            <div class="col-6">
-                                <label>Телефон</label>
-                            </div>
-                            <div class="col-6">
-                                <label>Почта</label>
-                            </div>
-                        </div>
-                        <div class="furname_name_input row">
-                            <div class="col-6">
-                                <input class="input_info" type="text">
-                            </div>
-                            <div class="col-6">
-                                <input class="input_info" type="text">
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <div class="result_order col-4 ps-5">
                     <div class="card_order_2">
@@ -279,43 +248,10 @@
           <label class="email_label col">Почта:</label> <br>
           <label class="email col ps-0">{{user.email}}</label>
         </div>
-        <div class="modal-body">
-<!--          <label class="linked_cards col">Привязанные карты</label>-->
-          <!-- сущ карта -->
-<!--          <div class="card_card row">-->
-<!--            <div class="col-5">-->
-<!--                <div class="card_bank ps-0">-->
-<!--                    <div class="number">-->
-<!--                        <label>..2029</label>-->
-<!--                    </div>-->
-<!--                    <div class="date_active">-->
-<!--                        <label>19/02</label>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-7 ps-0">-->
-<!--                <div class="btn_unite">-->
-<!--                    <button class="untie_it">Отвязать</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--          </div>-->
-          <!-- новая карта -->
-<!--          <div class="card_card row">-->
-<!--            <div class="col-5">-->
-<!--                <img src="{% static 'pols/images/add.png' %}">-->
-<!--            </div>-->
-<!--            <div class="col-7 ps-0">-->
-<!--                <div class="btn_unite">-->
-<!--                    <button class="untie_it">Добавить карту</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--          </div>-->
-          <!--  -->
-          <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next=/order">
-              {% csrf_token %}
-            <button class="log_out_modal">Выйти</button>
-          </form>
-        </div>
+        <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next=/order">
+            {% csrf_token %}
+        <button class="log_out_modal">Выйти</button>
+        </form>
       </div>
     </div>
   </div>

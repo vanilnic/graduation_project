@@ -33,9 +33,9 @@
                 <!-- Карточка брони -->
                 {% for booking in bookings %}
                 <div class="card">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="otstup_card">
+                    <div class="row m-0 p-0">
+                        <div class="col-auto d-flex align-items-center" style="height: fit-content;">
+                            <div class="otstup_card ps-2">
                                 <div id="carouselExampleIndicators{{ booking.id }}" class="carousel slide">
                                     <div class="carousel-indicators">
                                       <button type="button" data-bs-target="#carouselExampleIndicators{{ booking.id }}" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -56,7 +56,7 @@
                                 </div>
                               </div>
                         </div>
-                        <div class="info col-8 ps-0">
+                        <div class="info col ps-3 pe-4">
                             <div class="hotel_address_date row">
                                 <div class="hotel_address col-8">
                                     <label class="title_hotel"><a href="{% url 'hotel_id_hotel' id_hotel_id=booking.room.hotel.id arrival=arrival departure=departure people=people %}" class="title_hotel">{{ booking.room.hotel.name }}</a></label> <br>
@@ -72,33 +72,30 @@
                                 </div>
                                 <div class="date col-4">
                                     <label class="date_label">Дата</label> <br>
-                                    <label class="date-date">{{ booking.arrival|date:"j E" }}  —  {{ booking.departure|date:"j E Y" }}</label>
+                                    <label class="date-date">{{ booking.arrival|date:"d.m.Y" }} — {{ booking.departure|date:"d.m.Y" }}</label>
                                 </div>
                             </div>
                             <div class="titlenumber_status row">
                                 <div class="title_number col-8">
                                     <label><a href="{% url 'order_add' id_room=booking.room.id arrival=arrival departure=departure people=people %}">{{ booking.room.title }}</a></label>
                                 </div>
-                                <div class="col-4">
-                                    <div class="status">
-                                        <label>Статус: Завершён</label>
-                                    </div>
+                                    <div class="col-4">
                                 </div>
                             </div>
-                            <div class="price_replace row">
+                            <div class="price_replace row d-flex align-items-end">
                                 <div class="price col-8">
                                     <label>Сумма брони: {{ booking.price_per_room }} ₽</label>
                                 </div>
                                 <div class="replace col-4">
                                     {% if booking.id in reviewed_booking_ids %}
-                                    <button class="replace_button" disabled>
+                                    <button class="replace_button" disabled style="background-color: #64a2b3; cursor: not-allowed !important;">
                                         Отзыв оставлен
                                     </button>
                                     {% else %}
-                                    <button class="replace_button" data-booking-id="{{ booking.id }}" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">
+                                    <button class="replace_button" data-booking-id="{{ booking.id }}" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" style="background-color: #0F4757;">
                                         Оставить отзыв
                                     </button>
-
+                                    <!-- модальное окно для отзыва -->
                                     <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                                             <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
@@ -170,9 +167,8 @@
                                             </div>
                                             </div>
                                         </div>
-                                    
+                                    <!-- конец модалки -->
                                     {% endif %}
-                                    <!-- <button class="replace_button" data-bs-toggle="modal" href="#exampleModalToggle">Оставить отзыв</button> -->
                                 </div>
                             </div>
                         </div>
@@ -183,79 +179,7 @@
             </div>
         </div>
     </div>
-<!-- модальное окно для отзыва -->
-    <!-- <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal_header">
-              <label class="titte_window">Ваш отзыв</label>
-            </div>
-            <form id="reviewForm-{{ booking.id }}" method="POST">
-                {% csrf_token %}
-                <input type="hidden" name="booking_id" value="{{ booking.id }}">
-            <div class="form-group" style="margin-top: 20px;">
-                <label>Общая оценка:</label>
-                <div class=" d-flex justify-content-start">
-                    <div class="star-rating d-flex">
-                        <input type="radio" id="star5" name="rating" value="5">
-                        <label for="star5"><i class="fas fa-star"></i></label>
-                        <input type="radio" id="star4" name="rating" value="4">
-                        <label for="star4"><i class="fas fa-star"></i></label>
-                        <input type="radio" id="star3" name="rating" value="3">
-                        <label for="star3"><i class="fas fa-star"></i></label>
-                        <input type="radio" id="star2" name="rating" value="2">
-                        <label for="star2"><i class="fas fa-star"></i></label>
-                        <input type="radio" id="star1" name="rating" value="1">
-                        <label for="star1"><i class="fas fa-star"></i></label>
-                    </div>
-                </div>
-            </div>
 
-            <div class="form-group">
-                <label>Оценка по критериям (1-10):</label>
-                
-                <div class="criteria">
-                    <div class="criteria-name">Расположение:</div>
-                    <input type="range" class="range-slider" name="location" min="1" max="10" value="5">
-                    <div class="range-value">5</div>
-                </div>
-                
-                <div class="criteria">
-                    <div class="criteria-name">Чистота:</div>
-                    <input type="range" class="range-slider" name="cleanliness" min="1" max="10" value="5">
-                    <div class="range-value">5</div>
-                </div>
-                
-                <div class="criteria">
-                    <div class="criteria-name">Комфорт:</div>
-                    <input type="range" class="range-slider" name="comfort" min="1" max="10" value="5">
-                    <div class="range-value">5</div>
-                </div>
-                
-                <div class="criteria">
-                    <div class="criteria-name">Персонал:</div>
-                    <input type="range" class="range-slider" name="staff" min="1" max="10" value="5">
-                    <div class="range-value">5</div>
-                </div>
-                
-                <div class="criteria">
-                    <div class="criteria-name">Соотношение цены и качества:</div>
-                    <input type="range" class="range-slider" name="value" min="1" max="10" value="5">
-                    <div class="range-value">5</div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="comment">Ваш комментарий:</label>
-                <textarea class="otz_text" id="comment" name="comment" placeholder="Опишите ваши впечатления..." required style="resize: none;" maxlength="800"></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Отправить отзыв</button>
-            </form>
-          </div>
-        </div>
-      </div> -->
-    <!--  -->
     <!-- модальное окно для отмены -->
      <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">

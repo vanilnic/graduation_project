@@ -201,47 +201,38 @@
                             <p class="no-reviews-message pt-3 pb-5" style="font-size: 20px;">Отзывов ещё нет</p>
                         {% endif %}
                         <div class="cards_reviews mt-3 m-0">
-                            <div class="card_review row row-cols-2 justify-content-between p-0">
-                                <!-- карточка с отзывом -->
+                                <div class="card_review reviews-columns" style="column-count: 2; column-gap: 30px;">
                                 {% for review in reviews %}
-                                <div class="card_r col">
-                                    <div class="cc_rew">
-                                        <div class="row m-0">
-                                        <label class="col p-0" style="font-size: 22px;">Анонимный отзыв</label>
-                                            <div class="col-2 d-flex justify-content-end p-0">
-                                                <div>
-                                                    <label style="font-size: 22px;">{{ review.stars }}★</label>
-                                                </div>   
-                                            </div>
-                                        </div>
-                                        <div class="d-flex flex-column" style="font-weight: 450;">
-                                            <label class="pt-2" style="font-size: 20px;">{{ review.booking.room.title }}</label>
-                                            <label class="pt-1" style="font-size: 18px;">{{ review.booking.arrival|date:"j E" }} — {{ review.booking.departure|date:"j E Y" }}</label>
-                                            <label class="pt-4" style="font-size: 16px;">Расположение — {{ review.location }}</label>
-                                            <label style="font-size: 16px;">Чистота номеров — {{ review.сleanliness }}</label>
-                                            <label style="font-size: 16px;">Соотношение цены и качества — {{ review.price_quality }}</label>
-                                            <label style="font-size: 16px;">Качество обслуживания — {{ review.service }}</label>
-                                            <label style="font-size: 16px;">Качество WiFi — {{ review.wifi }}</label>
-                                            <label class="pt-3" style="font-size: 18px; font-weight: 600;">Комментарий</label>
-                                            <label style="font-size: 18px;">{{ review.comments }}</label>
-                                        </div>
+                                <div class="card_r review-item mb-4" style="break-inside: avoid;">
+                                <div class="cc_rew">
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <label style="font-size: 22px;">Анонимный отзыв</label>
+                                        <label style="font-size: 22px;">{{ review.stars }}★</label>
+                                    </div>
+                                    <div class="d-flex flex-column" style="font-weight: 450;">
+                                        <label class="pt-2" style="font-size: 20px;">{{ review.booking.room.title }}</label>
+                                        <label class="pt-1" style="font-size: 18px;">{{ review.booking.arrival|date:"j E" }} — {{ review.booking.departure|date:"j E Y" }}</label>
+                                        <label class="pt-4" style="font-size: 16px;">Расположение — {{ review.location }}</label>
+                                        <label style="font-size: 16px;">Чистота номеров — {{ review.сleanliness }}</label>
+                                        <label style="font-size: 16px;">Цена/качество — {{ review.price_quality }}</label>
+                                        <label style="font-size: 16px;">Обслуживание — {{ review.service }}</label>
+                                        <label style="font-size: 16px;">WiFi — {{ review.wifi }}</label>
+                                        <label class="pt-3" style="font-size: 18px; font-weight: 600;">Комментарий</label>
+                                        <label style="font-size: 18px;">{{ review.comments }}</label>
                                     </div>
                                 </div>
+                                </div>
                                 {% endfor %}
-                                <!--  -->                   
-                            </div>      
+                            </div>
+
+                            <!-- Кнопка "Показать ещё" -->
+                            <div class="text-end mt-1 mb-5">
+                                <button id="loadMoreBtn" class="replace_button">Показать ещё</button>
+                            </div>
                         </div>
                     </div>
-                <!-- </div> -->
                 
                 <div class="similar_estimation col-3 pe-0 ps-4">
-                    <div class="similar">
-<!--                        <label class="similar_label">Похожие отели</label>-->
-                        <div class="hotels">
-                        <!-- Карточка похожего отеля -->
-
-                        </div>
-                    </div>
                     <div class="estimation">
                         <label class="similar_label">Гостям понравилось</label>
                         <div class="list_estimation">
@@ -370,43 +361,10 @@
           <label class="email_label col">Почта:</label> <br>
           <label class="email col ps-0">{{user.email}}</label>
         </div>
-        <div class="modal-body">
-<!--          <label class="linked_cards col">Привязанные карты</label>-->
-          <!-- сущ карта -->
-<!--          <div class="card_card row">-->
-<!--            <div class="col-5">-->
-<!--                <div class="card_bank ps-0">-->
-<!--                    <div class="number">-->
-<!--                        <label>..2029</label>-->
-<!--                    </div>-->
-<!--                    <div class="date_active">-->
-<!--                        <label>19/02</label>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-7 ps-0">-->
-<!--                <div class="btn_unite">-->
-<!--                    <button class="untie_it">Отвязать</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--          </div>-->
-          <!-- новая карта -->
-<!--          <div class="card_card row">-->
-<!--            <div class="col-5">-->
-<!--                <img src="{% static 'pols/images/add.png' %}">-->
-<!--            </div>-->
-<!--            <div class="col-7 ps-0">-->
-<!--                <div class="btn_unite">-->
-<!--                    <button class="untie_it">Добавить карту</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--          </div>-->
-          <!--  -->
-          <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next=/hotel">
-              {% csrf_token %}
-            <button class="log_out_modal">Выйти</button>
-          </form>
-        </div>
+        <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next=/hotel">
+            {% csrf_token %}
+        <button class="log_out_modal">Выйти</button>
+        </form>
       </div>
     </div>
   </div>
@@ -417,5 +375,29 @@
         window.isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}" === "true";
     </script>
     <script src="{% static 'pols/script.js' %}"></script>
+
+    <script>
+        const reviews = document.querySelectorAll('.review-item');
+        const loadMoreBtn = document.getElementById('loadMoreBtn');
+        let reviewsToShow = 6;
+
+        function showReviews() {
+            reviews.forEach((el, index) => {
+            el.style.display = index < reviewsToShow ? 'block' : 'none';
+            });
+
+            if (reviewsToShow >= reviews.length) {
+            loadMoreBtn.style.display = 'none';
+            }
+        }
+
+        showReviews();
+
+        loadMoreBtn.addEventListener('click', () => {
+            reviewsToShow += 6;
+            showReviews();
+        });
+    </script>
+
 </body>
 </html>

@@ -72,7 +72,7 @@ a.suitcase_label{
 }
 .card{
     border-color: #041F27;
-    margin-top: 45px;
+    margin-top: 30px;
     border-radius: 10px !important;
 }
 .otstup_card{
@@ -82,11 +82,10 @@ a.suitcase_label{
   .image_number{
     height: 250px;
     width: 360px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
   }
 .title_hotel{
-    margin-top: 15px;
     font-size: 24px;
     font-weight: 500;
 }
@@ -106,20 +105,27 @@ a.suitcase_label{
     justify-content: center;
     align-items: center;
 }
+.hotel_address{
+    margin-top: 15px;
+    height: fit-content;
+}
 .address{
     margin-top: 10px;
 }
 .date_label{
     color: #041F27;
     margin-top: 15px;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 400;
 }
+/* .date{
+    flex-direction: column !important;
+} */
 .date-date{
     color: #041F27;
     font-size: 20px;
     font-weight: 400;
-    padding-right: 20px;
+    /* padding-right: 20px; */
 }
 .titlenumber_status{
     margin-top: 30px;
@@ -141,21 +147,23 @@ a.suitcase_label{
     color: #041F27;
 }
 .price_replace{
-    margin-top: 20px;
+    /* height: fit-content; */
+    margin-top: 30px;
 }
 .price{
-    margin-top: 10px;
+    /* margin-top: 20px; */
+    height: fit-content;
     font-size: 22px;
     color: #041F27;
     font-weight: 400;
 }
 .replace{
+    margin-top: 10px;
     display: flex;
     justify-content: right;
-    padding-bottom: 25px;
 }
 .replace_button{
-    margin-right: 32px;
+    /* margin-right: 32px; */
     background-color: #0F4757;
     width: 180px;
     height: 40px;
@@ -163,8 +171,11 @@ a.suitcase_label{
     color: #fff;
     font-size: 16px;
     border: none;
-    
 }
+.replace_button:disabled {
+    cursor: pointer !important;
+}
+
 a{
     color: #041F27 !important;
     text-decoration: none;

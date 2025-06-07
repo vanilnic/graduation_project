@@ -135,21 +135,17 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
 
             orderby = request.POST.get('orderby', 'Сортировка')
 
-            # Для фильтрации — отдельные переменные
             try:
                 filter_min = int(min_price) if min_price else 0
             except ValueError:
                 filter_min = 0
 
             try:
-                filter_max = int(max_price) if max_price else 1000000
+                filter_max = int(max_price) if max_price else 100000
             except ValueError:
-                filter_max = 1000000
-                
-
+                filter_max = 100000
             #print(Hotel.objects.all().filter(stars=request.POST['star']))
             # rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city), price_per_night__range=(request.POST['min_price'], request.POST['max_price']))
-
             rooms = Rooms.objects.filter(
                 hotel__city=city,
                 price_per_night__gte=filter_min,
@@ -163,7 +159,6 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
                 rooms = rooms.order_by('price_per_night')
             elif orderby == 'Сначала дорогие':
                 rooms = rooms.order_by('-price_per_night')
-            # print(Hotel.objects.all().filter(city=city))
 
             context = {
                 'rooms': rooms,
@@ -172,7 +167,7 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
                 'departure': departure,
                 'people': people,
                 'orderby': orderby,
-                'min_price': min_price,  # строка — то, что вводилось
+                'min_price': min_price, 
                 'max_price': max_price,
                 'star': star,
             }
@@ -181,22 +176,6 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
                 context['log_in_people'] = log_in_people
 
             return render(request, 'pols/filter.html', context)
-
-            # if request.POST['star']:
-            #     if request.POST['min_price'] and request.POST['max_price']:
-            #         if request.POST['star']:
-            #             rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city), price_per_night__range=(request.POST['min_price'], request.POST['max_price'])).filter(hotel__in=Hotel.objects.all().filter(stars=request.POST['star']))
-            #         else:
-            #             rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city),
-            #                                                price_per_night__range=(
-            #                                                request.POST['min_price'], request.POST['max_price']))
-            #     else:
-            #         rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city)).filter(hotel__in=Hotel.objects.all().filter(stars=request.POST['star']))
-            # if request.user.is_authenticated:
-            #     return render(request, 'pols/filter.html', {'log_in_people': log_in_people, 'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'people':people, 'orderby': orderby})
-            # else:
-            #     return render(request, 'pols/filter.html',
-            #                   {'rooms': rooms, 'city': city, 'arrival': arrival, 'departure': departure, 'people': people, 'orderby': orderby})
     else:
         return render(request, 'pols/filter.html')
 
@@ -239,7 +218,7 @@ def travel_history(request):
     departure = (datetime.now() + timedelta(1)).strftime("%Y-%m-%d")
     people = '1 взрослый'
 
-    bookings = Booking.objects.all().filter(user=request.user)
+    bookings = Booking.objects.all().filter(user=request.user).order_by('-arrival')
     reviewed_booking_ids = Reviews.objects.filter(booking__in=bookings).values_list('booking_id', flat=True)
     # print(bookings)
 
@@ -292,7 +271,7 @@ class PostDetailView(DetailView):
 def hotel(request, id_hotel_id, arrival, departure, people):
     hotels = Hotel.objects.all().filter(id=id_hotel_id)
     rooms = Rooms.objects.all().filter(hotel=id_hotel_id)
-    reviews = Reviews.objects.all().filter(hotel=id_hotel_id)
+    reviews = Reviews.objects.all().filter(hotel=id_hotel_id).order_by('-id')
     reviews_count = len(reviews)
     print(hotels)
     # print(Rooms.objects.all()

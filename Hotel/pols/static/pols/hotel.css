@@ -364,17 +364,27 @@ white-space: nowrap;
   padding-top: 15px;
   padding-bottom: 7px;
 }
-
+.replace_button{
+    /* margin-right: 32px; */
+    background-color: #0F4757;
+    width: 180px;
+    height: 40px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    
+}
 
 .card_review{
   width: 100% !important;
   /* background-color: aqua; */
   height: fit-content;
   /* padding: 28px; */
-  padding-bottom: 50px;
+  padding-bottom: 10px;
 }
 .card_r{
-  width: 49% !important;
+  width: 100% !important;
   margin-bottom: 20px;
 }
 .cc_rew{

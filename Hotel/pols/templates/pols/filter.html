@@ -97,18 +97,6 @@
                 </div>
                 
                 <div class="cards_number col-8 ps-4">
-                    <!-- <div class="custom-select-wrapper">
-                        <img class="select_img " src="{% static 'pols/images/sorting.png'%}">
-                        <select class="custom-select" onchange="location = this.value;">
-                          <option selected disabled>Сортировка</option>
-                          <option value="{% url 'offers_orderby' city=city arrival=arrival departure=departure people=people orderby='Сначала недорогие' %}" {% if orderby == 'Сначала недорогие' %}selected{% endif %}>
-                            Сначала недорогие
-                          </option>
-                          <option value="{% url 'offers_orderby' city=city arrival=arrival departure=departure people=people orderby='Сначала дорогие' %}" {% if orderby == 'Сначала дорогие' %}selected{% endif %}>
-                            Сначала дорогие
-                          </option>
-                        </select>
-                    </div> -->
                     <div class="custom-select-wrapper d-flex">
                       <div class="d-flex align-items-center">
                         <img class="select_img " src="{% static 'pols/images/sorting.png'%}">
@@ -248,39 +236,8 @@
         <div class="modal_header_auth">
           <label class="email_label col">Почта:</label> <br>
           <label class="email col ps-0">{{user.email}}</label>
-        </div>
-        <div class="modal-body">
-<!--          <label class="linked_cards col">Привязанные карты</label>-->
-          <!-- сущ карта -->
-<!--          <div class="card_card row">-->
-<!--            <div class="col-5">-->
-<!--                <div class="card_bank ps-0">-->
-<!--                    <div class="number">-->
-<!--                        <label>..2029</label>-->
-<!--                    </div>-->
-<!--                    <div class="date_active">-->
-<!--                        <label>19/02</label>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="col-7 ps-0">-->
-<!--                <div class="btn_unite">-->
-<!--                    <button class="untie_it">Отвязать</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--          </div>-->
-          <!-- новая карта -->
-<!--          <div class="card_card row">-->
-<!--            <div class="col-5">-->
-<!--                <img src="{% static 'pols/images/add.png' %}">-->
-<!--            </div>-->
-<!--            <div class="col-7 ps-0">-->
-<!--                <div class="btn_unite">-->
-<!--                    <button class="untie_it">Добавить карту</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--          </div>-->
-          <!--  -->
+
+
           <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next=/offers">
               {% csrf_token %}
             <button class="log_out_modal">Выйти</button>
