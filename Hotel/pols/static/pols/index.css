@@ -483,11 +483,12 @@ body::-webkit-scrollbar {
   /* Шапка */
   .logo_img{
     margin-top: 5px;
+    margin-left: 20px !important;
     height: 95px;
     width: 125px;
   }
   .title{
-    font-size:28px;
+    font-size: 26px;
   }
   .favorites, .suitcase{
     font-size: 16px;
@@ -596,7 +597,7 @@ body::-webkit-scrollbar {
   }
   .favorites{
     margin-top: 30px !important;
-    margin-left: 0px !important;
+    margin-left: 20px !important;
   }
   .suitcase{
     margin-top: 30px !important;
@@ -679,10 +680,10 @@ body::-webkit-scrollbar {
     font-size: 22px;
   }
   .price_label{
-    font-size: 13px;
+    font-size: 14px;
   }
   .title_city_label{
-    font-size: 13px;
+    font-size: 15px;
     font-weight: 400;
   }
 }

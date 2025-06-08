@@ -20,7 +20,7 @@ a.title_label{
     display: flex;
     justify-content: right;
 }
-.enter_button{
+.back_button{
     height: 60px;
     width: 210px;
     border-radius: 30px;
@@ -273,7 +273,7 @@ textarea.otz_text:focus::-webkit-scrollbar {
 /*  */
 
 /* hover кнопочек и ссылок*/
-button.enter_button:hover{
+button.back_button:hover{
     background-color: #e2e2e2;
 }
 button.replace_button:hover{
@@ -308,26 +308,30 @@ body::-webkit-scrollbar {
 }
 @media (max-width: 995.98px) {
 /* Шапка */
-.logo_img{
-    margin-top: 5px;
-    height: 95px;
-    width: 125px;
-}
-.title{
-    font-size:28px;
-}
-.enter_button{
-    font-size: 0 !important;
-    color: transparent !important;
-    background-color: transparent;
-    background-image: url(../pols/images/profile.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 40px;
-    width: 40px !important;
-    height: 40px !important;
-    padding: 0 !important;
-}
+    .logo{
+        padding-right: 0px !important;
+    }
+    .logo_img{
+        margin-top: 5px;
+        margin-left: 20px;
+        height: 95px;
+        width: 125px !important;
+    }
+    .title{
+        font-size:26px;
+    }
+    .back_button{
+        font-size: 0 !important;
+        color: transparent !important;
+        background-color: transparent;
+        background-image: url(../pols/images/back.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 40px;
+        width: 40px !important;
+        height: 40px !important;
+        padding: 0 !important;
+    }
 }
 @media (max-width: 767.98px) {
     /* шапка */
@@ -340,10 +344,104 @@ body::-webkit-scrollbar {
 }
 @media (max-width: 575.98px) {
 /* шапка */
-.header{
-    width: 100%;
-}
-.enter{
-    margin-top: 45px !important;
-}
+    .header{
+        width: 100%;
+    }
+    .enter{
+        margin-top: 45px !important;
+    }
+    .content{
+        margin-top: 30px !important;
+    }
+    .history_label{
+        font-size: 24px;
+    }
+    .phone_row{
+        display: flex;
+        flex-direction: column;
+    }
+    .phone_col{
+        width: 100%;
+    }
+    .otstup_card{
+        padding: 0px !important;
+    }
+    .image_number{
+        height: fit-content !important;
+        width: 100% !important;
+    }
+    .info{
+        padding: 0px 12px !important;
+        padding-bottom: 12px !important;
+    }
+    .hotel_address_date{
+        display: flex;
+        flex-direction: column;
+    }
+    .hotel_address{
+        width: 100%;
+        margin: 0px;
+    }
+    .address{
+        padding: 0px !important;
+    }
+    .ramka{
+        margin-top: 10px;
+        height: 25px;
+        width: 35px;
+        font-size: 14px;
+    }
+    .address{
+        width: 100%;
+    }
+    .img_geo {
+        padding-right: 24px !important;
+        display: flex;
+        align-items: flex-start; 
+        gap: 6px; 
+        flex-wrap: nowrap;
+    }
+    .img_geo img {
+        width: 16px;
+        height: 16px;
+        margin-top: 2px;
+        flex-shrink: 0;
+    }
+    .img_geo label {
+        font-size: 16px;
+        line-height: 1.3;
+        word-break: break-word;
+    }
+    .date{
+        width: 100%;
+    }
+    .date_label{
+        font-size: 18px;
+    }
+    .date-date{
+        font-size: 18px;
+    }
+    .titlenumber_status{
+        margin-top: 15px;
+    }
+    .title_number{
+        width: 100%;
+        font-size: 20px;
+    }
+    .price_replace{
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+    .price{
+        width: 100%;
+        font-size: 18px;
+    }
+    .replace{
+        width: 100%;
+    }
+    .replace_button{
+        font-size: 15px;
+        height: 35px;
+    }
 }

@@ -15,13 +15,13 @@
     <div class="container p-0">
         <header class="header row">
             <div class="logo ps-0 col-auto">
-                <a href="{% url 'index' %}"><img src="{% static 'pols/images/logo.png'%}"></a>
+                <a href="{% url 'index' %}"><img class="logo_img" src="{% static 'pols/images/logo.png'%}"></a>
             </div>
             <div class="title col-auto p-0">
                 <a class="title_label m-0" href="{% url 'index' %}">HotelHaven</a>
             </div>
             <div class="enter col">
-                 <a class="enter_button" href="{{ back_url }}">Назад</a>
+                 <a class="back_button" href="{{ back_url }}">Назад</a>
             </div>
         </header>
 
@@ -43,7 +43,7 @@
                     <!-- Карточка -->
                     {% for favorite in favorites %}
                     <div class="card">
-                        <div class="qw row">
+                        <div class="qw phone_qw row">
                             <div class="img_hotel col-4">
                                 <img class="photo image_room" src="{% static favorite.hotel.img1 %}">
                             </div>

@@ -16,13 +16,13 @@
     <div class="container p-0">
         <header class="header row">
             <div class="logo ps-0 col-auto">
-                <a href="{% url 'index' %}"><img src="{% static 'pols/images/logo.png'%}"></a>
+                <a href="{% url 'index' %}"><img class="logo_img" src="{% static 'pols/images/logo.png'%}"></a>
             </div>
             <div class="title col-auto p-0">
                 <a class="title_label m-0" href="{% url 'index' %}">HotelHaven</a>
             </div>
             <div class="enter col">
-                <button class="enter_button" type="submit" onclick="window.history.back()">Назад</button>
+                <button class="back_button" type="submit" onclick="window.history.back()">Назад</button>
             </div>
         </header>
 
@@ -33,8 +33,8 @@
                 <!-- Карточка брони -->
                 {% for booking in bookings %}
                 <div class="card">
-                    <div class="row m-0 p-0">
-                        <div class="col-auto d-flex align-items-center" style="height: fit-content;">
+                    <div class="phone_row row m-0 p-0">
+                        <div class="phone_col col-auto d-flex align-items-center" style="height: fit-content;">
                             <div class="otstup_card ps-2">
                                 <div id="carouselExampleIndicators{{ booking.id }}" class="carousel slide">
                                     <div class="carousel-indicators">
@@ -59,14 +59,18 @@
                         <div class="info col ps-3 pe-4">
                             <div class="hotel_address_date row">
                                 <div class="hotel_address col-8">
-                                    <label class="title_hotel"><a href="{% url 'hotel_id_hotel' id_hotel_id=booking.room.hotel.id arrival=arrival departure=departure people=people %}" class="title_hotel">{{ booking.room.hotel.name }}</a></label> <br>
+                                    <label class="title_hotel"><a href="{% url 'hotel_id_hotel' id_hotel_id=booking.room.hotel.id arrival=arrival departure=departure people=people %}" class="title_hotel">{{ booking.room.hotel.name }} {{ booking.room.hotel.stars }}★</a></label> <br>
                                     <div class="otstup row">
                                         <div class="ramka col-1">
                                             <label>{{ booking.room.hotel.CSI }}</label>
                                         </div>
                                         <div class="address col-11">
-                                            <img src="{% static 'pols/images/geo.png'%}">
-                                            <label>{{ booking.room.hotel.address }}</label>
+                                            <div class="adres row">
+                                                <div class="img_geo col-12">
+                                                    <img src="{% static 'pols/images/geo.png'%}">
+                                                    <label>{{ booking.room.hotel.address }}</label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +92,7 @@
                                 </div>
                                 <div class="replace col-4">
                                     {% if booking.id in reviewed_booking_ids %}
-                                    <button class="replace_button" disabled style="background-color: #64a2b3; cursor: not-allowed !important;">
+                                    <button class="replace_button" disabled style="background-color: #597f8a; cursor: not-allowed !important;">
                                         Отзыв оставлен
                                     </button>
                                     {% else %}
