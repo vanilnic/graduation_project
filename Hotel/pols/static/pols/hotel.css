@@ -66,10 +66,13 @@ a.suitcase_label{
   font-weight: 350;
   }
 .card{
-    background-color: #F5F5F5 !important;
-    border-color: #F5F5F5 !important;
-    border-radius: 30px !important;
-    margin-top: 55px;
+  background-color: #F5F5F5 !important;
+  border-color: #F5F5F5 !important;
+  border-radius: 30px !important;
+  margin-top: 55px;
+}
+.otstup{
+  padding: 1.5rem;
 }
 .hotel_title{
     font-size: 32px;
@@ -190,7 +193,7 @@ input.search_input:focus {
 }
 .image_room{
   border-radius: 10px !important;
-  height: 250px;
+  height: 210px !important;
   width: 360px;
 }
 .number_info{
@@ -380,6 +383,10 @@ white-space: nowrap;
   border: 1px solid;
   border-radius: 15px;
   padding: 25px 28px;
+}
+.similar_estimation{
+  padding-left: 1.5rem !important;
+  padding-right: 0px !important;
 }
 
 /* модалка авторизованного пользователя */
@@ -599,11 +606,12 @@ body::-webkit-scrollbar {
   /* Шапка */
   .logo_img{
     margin-top: 5px;
+    margin-left: 20px !important;
     height: 95px;
     width: 125px;
   }
   .title{
-    font-size:28px;
+    font-size:26px;
   }
   .favorites, .suitcase{
     font-size: 16px;
@@ -638,7 +646,7 @@ body::-webkit-scrollbar {
   }
   .favorites{
     margin-top: 30px !important;
-    margin-left: 0px !important;
+    margin-left: 20px !important;
   }
   .suitcase{
     margin-top: 30px !important;
@@ -646,9 +654,6 @@ body::-webkit-scrollbar {
   .enter{
     margin-top: 20px !important;
   }
-}
-@media (max-width: 385.98px) {
-  /* шапка */
   a.suitcase_label, a.favorites_label {
     display: none !important;
   }
@@ -659,5 +664,209 @@ body::-webkit-scrollbar {
   }
   .suitcase{
     margin-left: 30px !important;
+  }
+  .otstup{
+    padding: 12px !important;
+  }
+  .card{
+    margin-top: 30px;
+  }
+  .hotel_title{
+    font-size: 24px;
+  }
+  .btn_favorites{
+    height: 23px;
+    width: 23px;
+  }
+  .ramka_main{
+    width: 35px !important;
+    font-size: 14px !important;
+    border-radius: 10px;
+    padding: 0px !important;
+  }
+  .address {
+    flex-wrap: wrap;
+  }
+  .address > .col-auto {
+    margin-top: 10px;
+    flex: 0 0 auto;
+    width: auto;
+  }
+  .address > .col {
+    margin-top: 10px;
+    margin-left: 4px;
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  .img_geo {
+    display: flex;
+    align-items: flex-start; 
+    gap: 6px; 
+    flex-wrap: nowrap;
+  }
+  .img_geo img {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .img_geo label {
+    font-size: 16px;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+  .photoes_hotel{
+    flex-direction: column;
+  }
+  .main_img{
+    width: 100% !important;
+  }
+  .photo_1{
+    width: 100% !important;
+    height: fit-content !important;
+  }
+  .phone_img{
+    padding: 0px 12px !important;
+    margin-top: 10px !important;
+    width: 100% !important;
+  }
+  .more_photo{
+    margin: 0px !important;
+    padding: 0px !important;
+    gap: 10px;
+  }
+  .more_photo_2{
+    margin-top: 10px !important;
+    padding: 0px 12px !important;
+    gap: 10px;
+  }
+  .photo_1{
+    padding: 0px 12px;
+  }
+  .photo_2{
+    width: 100% !important;
+    height: 105px !important;
+  }
+  .go{
+    margin-left: 0px !important;
+  }
+  .row > .main_img{
+    padding: 0px !important;
+  }
+  .m_img{
+    padding: 0px !important;
+  }
+  .search_card_info{
+    width: 100% !important;
+    order: 2;
+  }
+  .similar_estimation {
+    padding: 0px 12px !important;
+    width: 100% !important;
+    order: 1;
+  }
+  .estimation{
+    margin-top: 20px !important;
+  }
+  .similar_label{
+    font-size: 20px;
+  }
+  .estimations{
+    padding-top: 8px !important;
+  }
+  .estimations_label{
+    font-size: 16px;
+  }
+  .search {
+    margin-top: 40px;
+    flex-direction: column;
+    height: auto;
+    padding: 15px 10px !important;
+  }
+  .city_input, .date, .people, .search_button {
+    width: 100% !important;
+    margin: 5px 0 !important;
+    height: 50px !important;
+  }
+  .search_button {
+    margin-top: 10px !important;
+    font-size: 20px !important;
+  }
+  .phone_row{
+    display: flex;
+    flex-direction: column;
+  }
+  .img{
+    width: 100% !important;
+  }
+  .otstup_card{
+    padding: 0px !important;
+  }
+  .image_room{
+    padding: 12px 0px;
+    width: 100% !important;
+  }
+  .number_info{
+    width: 100% !important;
+    padding-left: 12px !important;
+    padding-bottom: 12px !important;
+  }
+  .number_title{
+    padding: 0px;
+  }
+  .s{
+    margin-top: 10px;
+  }
+  .beds_price{
+    margin-top: 10px !important;
+    display: flex;
+    flex-direction: column;
+  }
+  .beds{
+    width: 100% !important;
+  }
+  .price{
+    margin-top: 10px !important;
+    width: 100% !important;
+  }
+  .price_label{
+    font-size: 20px;
+    padding: 0px !important;
+  }
+  .more{
+    padding-right: 12px;
+    margin-top: 10px !important;
+  }
+  .more_a{
+    padding: 0px !important;
+  }
+  .info{
+    margin-top: 20px;
+  }
+  .content_info{
+    font-size: 16px;
+  }
+  .reviews-columns {
+    column-count: 1 !important;
+    column-gap: 0 !important;
+    display: flex;
+    flex-direction: column;
+  }
+  .review-item {
+    break-inside: avoid;
+    width: 100%;
+  }
+  .cc_rew{
+    padding: 12px;
+  }
+  .name_r{
+    font-size: 20px !important;
+  }
+  .replace_button{
+    font-size: 16px;
+    height: 35px;
+    width: 150px;
+    margin-right: 0px;
+    margin-bottom: 12px;
   }
 }

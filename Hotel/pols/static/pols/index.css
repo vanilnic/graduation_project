@@ -651,6 +651,10 @@ body::-webkit-scrollbar {
   .card{
     width: 94%
   }
+  .qw{
+    display: flex;
+    justify-content: center;
+  }
   .carousel-control-next, .carousel-control-prev {
     width: 15% !important;
     background-color: #041f27;

@@ -554,13 +554,17 @@ body::-webkit-scrollbar {
 }
 @media (max-width: 995.98px) {
   /* Шапка */
+  .logo{
+    padding-right: 0px !important;
+  }
   .logo_img{
     margin-top: 5px;
+    margin-left: 20px;
     height: 95px;
-    width: 125px;
+    width: 125px !important;
   }
   .title{
-    font-size:28px;
+    font-size:26px;
   }
   .favorites, .suitcase{
     font-size: 16px;
@@ -603,8 +607,6 @@ body::-webkit-scrollbar {
   .enter{
     margin-top: 20px !important;
   }
-}
-@media (max-width: 385.98px) {
   /* шапка */
   a.suitcase_label, a.favorites_label {
     display: none !important;
@@ -616,5 +618,8 @@ body::-webkit-scrollbar {
   }
   .suitcase{
     margin-left: 30px !important;
+  }
+  .content{
+    margin-top: 10px !important;
   }
 }

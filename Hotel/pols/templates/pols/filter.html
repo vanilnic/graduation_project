@@ -61,7 +61,7 @@
         
         <div class="container-fluid">
             <div class="content row">
-                <div class="col-4">
+                <div class="phone_filt col-4">
                 <form class="filter" method="post">
                     {% csrf_token %}
                     <label class="filter_label">Фильтры: </label>
@@ -79,15 +79,13 @@
                         <br>
                         <label class="stars heading">Звёздность</label>
                           <div class="cbx_stars pt-2">
-                              <label><input type="radio" name="star" value="0" {% if star == "0" %}checked{% endif %}> Без звёзд</label><br>
-                              <label><input type="radio" name="star" value="1" {% if star == "1" %}checked{% endif %}> 1 ★</label><br>
-                              <label><input type="radio" name="star" value="2" {% if star == "2" %}checked{% endif %}> 2 ★★</label><br>
-                              <label><input type="radio" name="star" value="3" {% if star == "3" %}checked{% endif %}> 3 ★★★</label><br>
-                              <label><input type="radio" name="star" value="4" {% if star == "4" %}checked{% endif %}> 4 ★★★★</label><br>
-                              <label><input type="radio" name="star" value="5" {% if star == "5" %}checked{% endif %}> 5 ★★★★★</label>
+                              <label class="inp_text"><input class="inp_inp" type="radio" name="star" value="0" {% if star == "0" %}checked{% endif %}> Без звёзд</label>
+                              <label class="inp_text"><input class="inp_inp" type="radio" name="star" value="1" {% if star == "1" %}checked{% endif %}> 1 ★</label>
+                              <label class="inp_text"><input class="inp_inp" type="radio" name="star" value="2" {% if star == "2" %}checked{% endif %}> 2 ★★</label>
+                              <label class="inp_text"><input class="inp_inp" type="radio" name="star" value="3" {% if star == "3" %}checked{% endif %}> 3 ★★★</label>
+                              <label class="inp_text"><input class="inp_inp" type="radio" name="star" value="4" {% if star == "4" %}checked{% endif %}> 4 ★★★★</label>
+                              <label class="inp_text"><input class="inp_inp" type="radio" name="star" value="5" {% if star == "5" %}checked{% endif %}> 5 ★★★★★</label>
                           </div>
-                        <br>
-                        <br>
                         <input type="hidden" name="orderby" value="{{ orderby }}">
                         <div class="apply_div">
                             <button class="apply" type="submit" name="filter_btn">Применить</button>
@@ -96,12 +94,11 @@
                 </form>
                 </div>
                 
-                <div class="cards_number col-8 ps-4">
+                <div class="cards_number col-8">
                     <div class="custom-select-wrapper d-flex">
                       <div class="d-flex align-items-center">
                         <img class="select_img " src="{% static 'pols/images/sorting.png'%}">
                       </div>
-                      
                         <form method="post" id="sortForm">
                             {% csrf_token %}
                             <input type="hidden" name="filter_btn" value="1">
@@ -121,8 +118,8 @@
                     <!-- карточка номеров -->
                     {% for room in rooms %}
                     <div class="card">
-                        <div class="qw row">
-                            <div class="room_img col-5 d-flex align-items-center">
+                        <div class="phone_row row m-0 p-0">
+                            <div class="phone_col col-auto d-flex align-items-center">
                                 <div class="otstup_card">
                                 <div id="carouselExampleIndicators{{ room.id }}" class="carousel slide">
                                     <div class="carousel-indicators">
@@ -132,27 +129,27 @@
                                     </div>
                                     <div class="carousel-inner">
                                       <div class="carousel-item active">
-                                        <img class="image_room" src="{% static room.img1 %}">
+                                        <img class="image_number" src="{% static room.img1 %}">
                                       </div>
                                       <div class="carousel-item">
-                                        <img class="image_room" src="{% static room.img2 %}">
+                                        <img class="image_number" src="{% static room.img2 %}">
                                       </div>
                                       <div class="carousel-item">
-                                        <img class="image_room" src="{% static room.img3 %}">
+                                        <img class="image_number" src="{% static room.img3 %}">
                                       </div>
                                     </div>
                                 </div>
                               </div>
                             </div>
-                            <div class="info ps-0 col">
-                                <div class="title_room pt-3 row">
-                                    <label class="ps-0">{{ room.title }}</label>
+                            <div class="info col">
+                                <div class="title_room row" style="height: fit-content !important;">
+                                    <label class="phone_price" style="height: fit-content;">{{ room.title }}</label>
                                 </div>
                                 <div class="price_room">
                                     <label>{{ room.price_per_night }} ₽</label>
                                 </div>
-                                <div class="hotel_and_button pt-2 row">
-                                    <div class="hotel col ps-0 text-truncate">
+                                <div class="hotel_and_button row">
+                                    <div class="hotel col text-truncate">
                                         <a class="hotel_a " href="{% url 'hotel_id_hotel' id_hotel_id=room.hotel.id arrival=arrival departure=departure people=people %}">{{ room.hotel.name }} {{ room.hotel.stars }}★ <br> {{ room.hotel.CSI }}</a>
                                     </div>
                                     <form class="select_div col-auto" method="get" action="{% url 'order_add' id_room=room.id arrival=arrival departure=departure people=people %}">

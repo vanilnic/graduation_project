@@ -180,8 +180,15 @@ input:focus {
   font-size: 20px;
   color: #041F27;
 }
+.cbx_stars{
+  display: flex;
+  flex-direction: column;
+}
 .apply_div{
-  margin-left: 200px;
+  padding-top: 30px;
+  padding-right: 23px;
+  display: flex;
+  justify-content: end;
   padding-bottom: 20px;
 }
 .apply{
@@ -204,17 +211,6 @@ input:focus {
   border-radius: 5px;
   border: #0F4757 2px solid;
 }
-.otstup_card{
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  width: 320px;
-}
-.image_room{
-  border-radius: 5px;
-  height: 170px;
-  width: 310px;
-}
 .select_img{
   margin-left: 10px;
 }
@@ -235,23 +231,36 @@ select{
 .card{
   color: #041F27 !important;
   margin-top: 20px !important;
-  height: 200px;
+  /* height: 200px; */
+}
+.otstup_card{
+  padding-left: 8px;
+  width: 320px;
+  /* padding-left: 20px; */
+}
+.image_number{
+  height: 170px;
+  width: 310px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.info{
+  padding: 0px 24px 12px 16px !important;
 }
 .title_room{
   height: 100px !important;
   font-size: 20px;
-  margin-right: 20px !important;
+  padding-top: 15px;
 }
 .price_room{
+  padding-top: 48px;
   font-size: 20px;
   display: flex;
   justify-content: right;
-  margin-right: 20px;
 }
 .hotel_and_button{
   display: flex;
   align-items: end;
-  padding-bottom: 20px;
 }
 .hotel{
   display: flex;
@@ -269,7 +278,6 @@ a:hover{
 .select_div{
     display: flex;
     justify-content: end;
-    margin-right: 20px;
 }
 .select_room{
     background-color: #ECECEC;
@@ -314,6 +322,7 @@ a:hover{
     border: none !important;
   }
   .cards_number{
+    padding-left: 1.5rem !important;
     margin-bottom: 30px
   }
   .number{
@@ -524,11 +533,12 @@ body::-webkit-scrollbar {
     /* Шапка */
     .logo_img{
       margin-top: 5px;
+      margin-left: 20px !important;
       height: 95px;
       width: 125px;
     }
     .title{
-      font-size:28px;
+      font-size: 26px;
     }
     .favorites, .suitcase{
       font-size: 16px;
@@ -582,7 +592,7 @@ body::-webkit-scrollbar {
     }
     .favorites{
       margin-top: 30px !important;
-      margin-left: 0px !important;
+      margin-left: 20px !important;
     }
     .suitcase{
       margin-top: 30px !important;
@@ -606,8 +616,6 @@ body::-webkit-scrollbar {
       margin-top: 10px !important;
       font-size: 20px !important;
     }
-  }
-  @media (max-width: 385.98px) {
     /* шапка */
     a.suitcase_label, a.favorites_label {
       display: none !important;
@@ -620,5 +628,132 @@ body::-webkit-scrollbar {
     .suitcase{
       margin-left: 30px !important;
     }
-    
+    .content{
+      margin-top: 20px !important;
+      display: flex;
+      flex-direction: column;
+    }
+    .phone_filt{
+      width: 100% !important;
+    }
+    .filter_label{
+      font-size: 22px;
+      margin: 0px;
+      padding: 12px 0px 0px 12px;
+    }
+    .filters{
+      margin: 0px;
+      padding: 0px 12px 12px 12px;
+    }
+    .filter_price{
+      font-size: 18px;
+      margin-top: 15px;
+    }
+    .price_input{
+      font-size: 16px;
+      height: 40px;
+      width: 140px;
+    }
+    .price_input::placeholder{
+      font-size: 16px;
+      font-family:Inter;
+      font-weight: 350;
+    }
+    .heading{
+      font-size: 18px;
+    }
+    .apply_div{
+      width: 100%;
+      padding: 0px;
+    }
+    .apply{
+      font-size: 16px;
+      height: 35px;
+      width: 120px;
+    }
+    .inp_text{
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+    }
+    .inp_inp{
+      margin-right: 10px;
+      width: 15px;
+      height: 15px;
+    }
+    .custom-select-wrapper{
+      padding: 0px;
+      width: 200px;
+      height: 36px;
+      border-radius: 5px;
+      border: #0F4757 2px solid;
+    }
+    .select_img{
+      margin-left: 5px;
+      width: 25px;
+      height: 25px;
+    }
+    .custom-select{
+      padding-left: 5px !important;
+      padding-right: 7px;
+      width: 100% !important;
+      height: 100% !important;
+      font-size: 17px !important;
+      font-weight: 450;
+    }
+    .cards_number{
+      display: flex;
+      flex-direction: column;
+      margin-top: -12px !important;
+      padding-left: 12px !important;
+      width: 100% !important;
+    }
+    .phone_row{
+      display: flex;
+      flex-direction: column;
+    }
+    .phone_col{
+      width: 100%;
+    }
+    .otstup_card{
+      padding: 0px !important;
+    }
+    .image_number{
+      width: 100% !important;
+    }
+    .info{
+      padding: 0em !important;
+      padding: 0px 12px !important;
+      padding-bottom: 12px !important;
+    }
+    .title_room{
+      padding: 0px;
+      margin: 0px !important;
+    }
+    .price_room{
+      font-size: 18px;
+      padding-top: 10px !important;
+    }
+    .phone_price{
+      padding: 0px !important;
+    }
+    .hotel_and_button{
+      padding-left: 12px;
+      padding-right: 12px;
+    }
+    .hotel{
+      padding: 0px !important;
+    }
+    .hotel_a{
+      font-size: 18px !important;
+      font-weight: 400;
+    }
+    .select_div{
+      padding: 0px !important;
+    }
+    .select_room{
+      font-size: 15px;
+      height: 35px;
+    }
   }
