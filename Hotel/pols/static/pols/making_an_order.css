@@ -134,6 +134,9 @@ a.suitcase_label{
   font-size: 30px;
   font-weight: 500;
 }
+.reiting_address{
+  padding-left: .5rem !important;
+}
 .ramka{
   background-color: #5895A7;
   color: #fff;
@@ -188,8 +191,9 @@ a.suitcase_label{
   font-size: 20px;
 }
 .info2{
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-top: 1rem !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
   margin-top: 10px !important;
 }
 .title_number_info{
@@ -278,6 +282,7 @@ li{
 
 
 .result_order{
+  padding-left: 3rem !important;
   position: relative;
   padding-right: 0px !important;
 }
@@ -620,6 +625,121 @@ body::-webkit-scrollbar {
     margin-left: 30px !important;
   }
   .content{
+    display: flex;
+    flex-direction: column;
     margin-top: 10px !important;
+  }
+  .main_inf{
+    margin-top: 15px !important;
+    width: 100% !important;
+    order: 2;
+  }
+  .result_order{
+    width: 100% !important;
+    padding: 0px 12px !important;
+    order: 1;
+  }
+  .card_order_2{
+    padding: 0px !important;
+  }
+  .title_itog{
+    font-size: 22px;
+    padding: 12px !important;
+  }
+  .count_nigth_price{
+    padding: 12px !important;
+    font-size: 18px !important;
+  }
+  .price{
+    padding-right: 12px !important;
+  }
+  .button_itog{
+    padding: 12px 0px !important;
+  }
+  .button_finish{
+    font-size: 16px;
+    height: 35px;
+    width: 160px;
+  }
+  .title_hotel{
+    padding: 12px !important;
+  }
+  .reiting_address{
+    padding: 0px !important;
+  }
+  .title_hotel_a{
+    font-size: 24px !important;
+  }
+  .info{
+    display: flex;
+    flex-direction: column;
+    padding-top: 0px !important;
+    padding: 0px 12px !important;
+  }
+  .title_hotel_info_number{
+    width: 100% !important;
+    padding: 0px !important;
+  }
+  .ramka{
+    margin-left: 0px;
+    height: 25px;
+    width: 35px;
+    font-size: 14px;
+  }
+  .img_geo {
+    display: flex;
+    align-items: flex-start; 
+    gap: 6px; 
+    flex-wrap: nowrap;
+  }
+  .img_geo img {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+  .img_geo label {
+    font-size: 16px;
+    line-height: 1.3;
+    word-break: break-word;
+  }
+  .address{
+    padding-right: 0px !important;
+  }
+  .title_room{
+    margin-top: 15px;
+    font-size: 20px;
+  }
+  .date{
+    font-size: 16px !important;
+  }
+  .people{
+    font-size: 18px;
+  }
+  .photo_date{
+    margin-top: 10px !important;
+    width: 60% !important;
+    padding: 0px !important;
+  }
+  .order_number_img{
+    width: 100%;
+    height: fit-content;
+  }
+  .info2{
+    margin: 0px !important;
+    padding: 0px 12px !important;
+  }
+  .title_number_info{
+    padding: 0px !important;
+    margin-top: 16px !important;
+    font-size: 20px;
+  }
+  .number_info{
+    margin-top: 5px !important;
+    padding: 0px !important;
+    font-size: 16px;
+  }
+  .card_client_info{
+    margin-top: 15px !important;
   }
 }

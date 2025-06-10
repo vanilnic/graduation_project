@@ -15,10 +15,13 @@
     <div class="container p-0">
         <header class="header row">
             <div class="logo ps-0 col-auto">
-                <a href="{% url 'index' %}"><img src="{% static 'pols/images/logo.png'%}"></a>
+                <a href="{% url 'index' %}"><img class="logo_img" src="{% static 'pols/images/logo.png'%}"></a>
             </div>
             <div class="title col-auto p-0">
                 <a class="title_label m-0" href="{% url 'index' %}">HotelHaven</a>
+            </div>
+            <div class="enter col">
+                 <!-- <a class="back_button" href="{{ back_url }}">Назад</a> -->
             </div>
         </header>
     </div>

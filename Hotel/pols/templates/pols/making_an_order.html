@@ -14,27 +14,15 @@
 <body>
     <div class="container p-0">
         <header class="header row">
-            <div class="logo p-0 col-auto">
+            <div class="logo ps-0 col-auto">
                 <a href="{% url 'index' %}"><img class="logo_img" src="{% static 'pols/images/logo.png'%}"></a>
             </div>
             <div class="title col-auto p-0">
                 <a class="title_label m-0" href="{% url 'index' %}">HotelHaven</a>
             </div>
-            <div class="qwe col-auto p-0"></div>
-            <div class="favorites ps-3 col-auto row">
-                <div class="col-auto p-0">
-                </div>
-                <div class="favo col-auto">
-                </div>
+            <div class="enter col">
+                 <!-- <a class="back_button" href="{{ back_url }}">Назад</a> -->
             </div>
-            <div class="suitcase col-auto row">
-                <div class="qw col-auto p-0">
-                </div>
-                <div class="favo col-auto">
-                </div>
-            </div>
-                <div class="enter col">
-                </div>
         </header>
 
         <div class="container-fluid">
@@ -46,16 +34,17 @@
                         <div class="title_hotel row-auto">
                            <a class="title_hotel_a" href="{% url 'hotel_id_hotel' id_hotel_id=hotel arrival=arrival departure=departure people=people %}">{{ room.hotel.name }} {{ room.hotel.stars }}★</a>
                         </div>
-                        <div class="info row">
+                        <div class="info row m-0">
                             <div class="title_hotel_info_number col-7">
-                                <div class="reiting_address row ps-2">
+                                <div class="reiting_address row m-0">
                                     <div class="col-1 p-0">
                                         <div class="ramka ">
                                             <label class="reiting">{{ room.hotel.CSI }}</label>
                                         </div>
                                     </div>
-                                    <div class="address col-11">
-                                        <label class="adres"><img class="geoo" src="{% static 'pols/images/geo.png'%}">{{ room.hotel.address }}</label>
+                                    <div class="img_geo col-11">
+                                        <img src="{% static 'pols/images/geo.png'%}">
+                                        <label>{{ room.hotel.address }}</label>
                                     </div>
                                 </div>
                                 <div class="title_room">
@@ -105,7 +94,7 @@
 
                             </div>
                         </div>
-                        <div class="info2 row pt-3">
+                        <div class="info2 row m-0">
                             <div class="title_number_info">
                                 <label>Описание номера</label>
                             </div>
@@ -137,7 +126,7 @@
 
                     </div>
 
-                    <div class="card_client_info end_str">
+                    <!-- <div class="card_client_info end_str">
                         <div class="title_eat">
                             <label>Данные гостей</label>
                         </div>
@@ -160,9 +149,9 @@
                                 <input class="input_info" type="text" name="name_user">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
-                <div class="result_order col-4 ps-5">
+                <div class="result_order col-4">
                     <div class="card_order_2">
                         <div class="title_itog">
                             <label>Итоговая стоимость:</label>
