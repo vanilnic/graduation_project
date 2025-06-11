@@ -44,13 +44,13 @@
                                     </div>
                                     <div class="carousel-inner">
                                       <div class="carousel-item active">
-                                        <img class="image_number" src="{% static booking.room.img1 %}">
+                                        <img class="image_number" src="{% static booking.room_img1 %}">
                                     </div>
                                       <div class="carousel-item">
-                                        <img class="image_number" src="{% static booking.room.img2 %}">
+                                        <img class="image_number" src="{% static booking.room_img2 %}">
                                     </div>
                                       <div class="carousel-item">
-                                        <img class="image_number" src="{% static booking.room.img3 %}">
+                                        <img class="image_number" src="{% static booking.room_img3 %}">
                                       </div>
                                     </div>
                                 </div>
@@ -59,16 +59,16 @@
                         <div class="info col ps-3 pe-4">
                             <div class="hotel_address_date row">
                                 <div class="hotel_address col-8">
-                                    <label class="title_hotel"><a href="{% url 'hotel_id_hotel' id_hotel_id=booking.room.hotel.id arrival=arrival departure=departure people=people %}" class="title_hotel">{{ booking.room.hotel.name }} {{ booking.room.hotel.stars }}★</a></label> <br>
+                                    <label class="title_hotel"><a href="{% url 'hotel_id_hotel' id_hotel_id=booking.room_hotel_id arrival=arrival departure=departure people=people %}" class="title_hotel">{{ booking.room_hotel_name }} {{ booking.room_hotel_stars }}★</a></label> <br>
                                     <div class="otstup row">
                                         <div class="ramka col-1">
-                                            <label>{{ booking.room.hotel.CSI }}</label>
+                                            <label>{{ booking.room_hotel_CSI }}</label>
                                         </div>
                                         <div class="address col-11">
                                             <div class="adres row">
                                                 <div class="img_geo col-12">
                                                     <img src="{% static 'pols/images/geo.png'%}">
-                                                    <label>{{ booking.room.hotel.address }}</label>
+                                                    <label>{{ booking.room_hotel_address }}</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@
                             </div>
                             <div class="titlenumber_status row">
                                 <div class="title_number col-8">
-                                    <label><a href="{% url 'order_add' id_room=booking.room.id arrival=arrival departure=departure people=people %}">{{ booking.room.title }}</a></label>
+                                    <label><a href="{% url 'order_add' id_room=booking.room_id arrival=arrival departure=departure people=people %}">{{ booking.room_title }}</a></label>
                                 </div>
                                     <div class="col-4">
                                 </div>
@@ -91,14 +91,25 @@
                                     <label>Сумма брони: {{ booking.price_per_room }} ₽</label>
                                 </div>
                                 <div class="replace col-4">
+                                    {% if booking.disable_btn_cancel == "true" %}
+                                    <button type="submit" disabled>Отменить бронь</button>
+                                    {% else %}
+                                    <button type="submit" data-bs-toggle="modal" href="#exampleModalToggle{{ booking.id }}">Отменить бронь</button>
+                                    {% endif %}
                                     {% if booking.id in reviewed_booking_ids %}
                                     <button class="replace_button" disabled style="background-color: #597f8a; cursor: not-allowed !important;">
                                         Отзыв оставлен
                                     </button>
                                     {% else %}
+                                    {% if booking.disable_btn_cancel == "true" %}
                                     <button class="replace_button" data-booking-id="{{ booking.id }}" data-bs-toggle="modal" data-bs-target="#exampleModalToggle" style="background-color: #0F4757;">
                                         Оставить отзыв
                                     </button>
+                                    {% else %}
+                                    <button class="replace_button" disabled style="background-color: #597f8a; cursor: not-allowed !important;">
+                                        Оставить отзыв
+                                    </button>
+                                    {% endif %}
                                     <!-- модальное окно для отзыва -->
                                     <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
                                             <div class="modal-dialog modal-dialog-centered">
@@ -184,8 +195,9 @@
         </div>
     </div>
 
+    {% for booking in bookings %}
     <!-- модальное окно для отмены -->
-     <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+     <div class="modal fade" id="exampleModalToggle{{ booking.id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <br>
@@ -195,12 +207,13 @@
             <br>
             <div class="d-flex justify-content-between">
                 <button type="button" class="submit-btn2" data-bs-dismiss="modal">Закрыть</button>
-                <button type="submit" class="submit-btn2">Подтвердить</button>
+                <form method="post" action="{% url 'travel_history' %}?delete={{ booking.id }}">{% csrf_token %}<button type="submit" class="submit-btn2">Подтвердить</button></form>
             </div>
           </div>
         </div>
       </div>
     <!--  -->
+    {% endfor %}
 
       <script>
         document.querySelectorAll('.range-slider').forEach(slider => {

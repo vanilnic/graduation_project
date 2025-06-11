@@ -390,6 +390,13 @@ white-space: nowrap;
 }
 
 /* модалка авторизованного пользователя */
+.label_message{
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: red;
+}
 .modal_header_auth{
   margin-top: 20px !important;
   padding-left: 50px;

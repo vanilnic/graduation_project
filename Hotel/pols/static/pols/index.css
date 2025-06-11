@@ -205,6 +205,13 @@ input.date{
 }
 
 /* модальное окно авторизации/регистрации */
+.label_message{
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: red;
+}
 .close_close{
   padding-top: 10px;
   padding-right: 10px;

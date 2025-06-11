@@ -57,7 +57,7 @@
                             </div>
                             <div class="address row ps-2">
                                 <div class="ramka_main col-auto">
-                                    <label>{{ hotel.CSI }}</label>
+                                    <label>{{ ratings.stars }}</label>
                                 </div>
                                 <div class="reviews col-auto">
                                     <a href="#review_section" style="font-weight: 600;">Отзывы ({{reviews_count}})</a>
@@ -245,50 +245,50 @@
                                     <label class="estimations_label">Расположение</label>
                                 </div>
                                 <div class="estimation_location_procent col-2">
-                                    <label class="estimations_procent">97%</label>
+                                    <label class="estimations_procent">{{ ratings.location }}%</label>
                                 </div>
                             </div>
-                            <div class="location_line line"></div>
+                            <div class="location_line line" style="width: {{ ratings.location }}%;"></div>
                             <!--  -->
                             <div class="estimations row">
                                 <div class="estimation_purity_div col-10">
                                     <label class="estimations_label">Чистота номеров</label>
                                 </div>
                                 <div class="estimation_purity_procent col-2">
-                                    <label class="estimations_procent">89%</label>
+                                    <label class="estimations_procent">{{ ratings.cleanliness }}%</label>
                                 </div>
                             </div>
-                            <div class="line purity_line"></div>
+                            <div class="line purity_line" style="width: {{ ratings.cleanliness }}%;"></div>
                             
                             <div class="estimations row">
                                 <div class="estimation_price_div col-10">
                                     <label class="estimations_label">Соотношение цены и качества</label>
                                 </div>
                                 <div class="lestimation_price_procent col-2">
-                                    <label class="estimations_procent">88%</label>
+                                    <label class="estimations_procent">{{ ratings.price_quality }}%</label>
                                 </div>
                             </div>
-                            <div class="price_line line"></div>
+                            <div class="price_line line" style="width: {{ ratings.price_quality }}%;"></div>
 
                             <div class="estimations row">
                                 <div class="estimation_quality_div col-10">
                                     <label class="estimations_label">Качество обслуживания</label>
                                 </div>
                                 <div class="estimation_quality_procent col-2">
-                                    <label class="estimations_procent">80%</label>
+                                    <label class="estimations_procent">{{ ratings.service }}%</label>
                                 </div>
                             </div>
-                            <div class="quality_line line"></div>
+                            <div class="quality_line line" style="width: {{ ratings.service }}%;"></div>
 
                             <div class="estimations row">
                                 <div class="estimation_wifi_div col-10">
                                     <label class="estimations_label">Качество WiFi</label>
                                 </div>
                                 <div class="col-2">
-                                    <label class="estimations_procent">70%</label>
+                                    <label class="estimations_procent">{{ ratings.wifi }}%</label>
                                 </div>
                             </div>
-                            <div class="wifi_line line"></div>
+                            <div class="wifi_line line" style="width: {{ ratings.wifi }}%;"></div>
                         </div>
                     </div>
                 </div>
@@ -315,6 +315,7 @@
               <div class="password_div d-flex justify-content-center">
                 <input class="modal_input" type="password" placeholder="Пароль" name="password_aut" id="password_aut">
               </div>
+              <div class="label_message"> {{ error_login }}</div>
               <div class="modal_login_div d-flex justify-content-center">
                 <button class="log_in_modal" type="submit" name="login">Войти</button>
               </div>
@@ -342,6 +343,7 @@
               <div class="password_div_2 d-flex justify-content-center">
                 <input class="modal_input" type="password" placeholder="Повторите пароль" name="password2" id="password2">
               </div>
+              <div class="label_message">{{ error_register }}</div>
               <div class="modal_login_div d-flex justify-content-center">
                 <button class="reg_in_modal" type="submit" name="register">Зарегистрироваться</button>
               </div>
@@ -363,7 +365,7 @@
           <label class="email_label col">Почта:</label> <br>
           <label class="email col ps-0">{{user.email}}</label>
         </div>
-        <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next=/hotel">
+        <form class="modal_logout_div d-flex justify-content-center" method="post" action="{% url 'logout' %}?next={% url 'hotel_id_hotel' id_hotel_id=id_hotel_id arrival=arrival departure=departure people=people %}">
             {% csrf_token %}
         <button class="log_out_modal">Выйти</button>
         </form>
@@ -400,6 +402,34 @@
             showReviews();
         });
     </script>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const registerError = "{{ error_register }}";
+            const registerDone = "{{ done_register }}";
+            const loginError = "{{ error_login }}";
+            if (registerError) {
+                var successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+                successModal.show();
+                
+                // Очищаем параметр из URL без перезагрузки
+                history.replaceState({}, document.title, window.location.pathname);
+            }
+            if (registerDone) {
+                var successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+                successModal.show();
+                
+                // Очищаем параметр из URL без перезагрузки
+                history.replaceState({}, document.title, window.location.pathname);
+            }
+            if (loginError) {
+                var successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+                successModal.show();
+                
+                // Очищаем параметр из URL без перезагрузки
+                history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+    </script>
 </body>
 </html>

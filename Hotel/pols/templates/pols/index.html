@@ -513,11 +513,7 @@
               <div class="password_div d-flex justify-content-center">
                 <input class="modal_input" type="password" placeholder="Пароль" name="password_aut" id="password_aut">
               </div>
-              {% if error %}
-                <div class="alert alert-danger">
-                    {{ error }}
-                </div>
-                {% endif %}
+              <div class="label_message"> {{ error_login }}</div>
               <div class="modal_login_div d-flex justify-content-center">
                 <button class="log_in_modal" type="submit" name="login">Войти</button>
               </div>
@@ -545,11 +541,7 @@
               <div class="password_div_2 d-flex justify-content-center">
                 <input class="modal_input" type="password" placeholder="Повторите пароль" name="password2" id="password2">
               </div>
-              {% if error %}
-                <div class="alert alert-danger">
-                    {{ error }}
-                </div>
-                {% endif %}
+                <div class="label_message">{{ error_register }}</div>
               <div class="modal_login_div d-flex justify-content-center">
                 <button class="reg_in_modal" type="submit" name="register">Зарегистрироваться</button>
               </div>
@@ -598,6 +590,30 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
+            const registerError = "{{ error_register }}";
+            const registerDone = "{{ done_register }}";
+            const loginError = "{{ error_login }}";
+             if (loginError) {
+                var successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+                successModal.show();
+                
+                // Очищаем параметр из URL без перезагрузки
+                history.replaceState({}, document.title, window.location.pathname);
+            }
+            if (registerDone) {
+                var successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
+                successModal.show();
+                
+                // Очищаем параметр из URL без перезагрузки
+                history.replaceState({}, document.title, window.location.pathname);
+            }
+            if (registerError) {
+                var successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
+                successModal.show();
+                
+                // Очищаем параметр из URL без перезагрузки
+                history.replaceState({}, document.title, window.location.pathname);
+            }
             if (urlParams.get('booking_success') === '1') {
                 var successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle4'));
                 successModal.show();
@@ -609,6 +625,7 @@
                     successModal.hide();
                 }, 5000); 
             }
+
         });
     </script>
 

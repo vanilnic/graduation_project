@@ -308,7 +308,6 @@ body::-webkit-scrollbar {
     .img_hotel{
         padding-top: 12px;
         margin-left: 12px !important;  
-        width: 100%;
         height: fit-content;
     }
     .photo{
