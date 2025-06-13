@@ -87,14 +87,14 @@
                                 </div>
                             </div>
                             <div class="price_replace row d-flex align-items-end">
-                                <div class="price col-8">
+                                <div class="price col-6">
                                     <label>Сумма брони: {{ booking.price_per_room }} ₽</label>
                                 </div>
-                                <div class="replace col-4">
+                                <div class="replace col-6">
                                     {% if booking.disable_btn_cancel == "true" %}
-                                    <button type="submit" disabled>Отменить бронь</button>
+                                    <button type="submit" disabled style="background-color: #597f8a; cursor: not-allowed !important; width: 180px; height: 40px; border-radius: 10px; color: #fff; font-size: 16px; border: none;">Отменить бронь</button>
                                     {% else %}
-                                    <button type="submit" data-bs-toggle="modal" href="#exampleModalToggle{{ booking.id }}">Отменить бронь</button>
+                                    <button class="replace_button" type="submit" data-bs-toggle="modal" href="#exampleModalToggle{{ booking.id }}">Отменить бронь</button>
                                     {% endif %}
                                     {% if booking.id in reviewed_booking_ids %}
                                     <button class="replace_button" disabled style="background-color: #597f8a; cursor: not-allowed !important;">
@@ -136,6 +136,7 @@
                                                             <label for="star1"><i class="fas fa-star"></i></label>
                                                         </div>
                                                     </div>
+                                                    <span class="error-message rating-error" style="color: red; display: none;"></span>
                                                 </div>
 
                                                 <div class="form-group">
@@ -174,7 +175,8 @@
 
                                                 <div class="form-group">
                                                     <label for="comment">Ваш комментарий:</label>
-                                                    <textarea class="otz_text" id="comment" name="comment" placeholder="Опишите ваши впечатления..." required style="resize: none;" maxlength="800"></textarea>
+                                                    <textarea class="otz_text" id="comment" name="comment" placeholder="Опишите ваши впечатления..." style="resize: none;" maxlength="800"></textarea>
+                                                    <span class="error-message comment-error" style="color: red; display: none;"></span>
                                                 </div>
 
                                                 <button type="submit" class="submit-btn">Отправить отзыв</button>
@@ -214,29 +216,76 @@
       </div>
     <!--  -->
     {% endfor %}
-
-      <script>
-        document.querySelectorAll('.range-slider').forEach(slider => {
-            const valueDisplay = slider.nextElementSibling;
-            valueDisplay.textContent = slider.value;
-            
-            slider.addEventListener('input', () => {
+    
+    <!-- форма отзыва -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Отображение значения слайдеров
+            document.querySelectorAll('.range-slider').forEach(slider => {
+                const valueDisplay = slider.nextElementSibling;
                 valueDisplay.textContent = slider.value;
-            });
-        });
 
-        document.getElementById('reviewForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                rating: document.querySelector('input[name="rating"]:checked')?.value,
-                location: document.querySelector('input[name="location"]').value,
-                cleanliness: document.querySelector('input[name="cleanliness"]').value,
-                comfort: document.querySelector('input[name="comfort"]').value,
-                staff: document.querySelector('input[name="staff"]').value,
-                value: document.querySelector('input[name="value"]').value,
-                comment: document.getElementById('comment').value
-            };  
+                slider.addEventListener('input', () => {
+                    valueDisplay.textContent = slider.value;
+                });
+            });
+
+            // Валидация всех форм с id вида reviewForm-...
+            document.querySelectorAll('form[id^="reviewForm-"]').forEach(form => {
+                const commentInput = form.querySelector('textarea[name="comment"]');
+                const ratingInputs = form.querySelectorAll('input[name="rating"]');
+                const commentError = form.querySelector('.comment-error');
+                const ratingError = form.querySelector('.rating-error');
+
+                // Очистка ошибки при вводе комментария
+                if (commentInput) {
+                    commentInput.addEventListener('input', () => {
+                        commentInput.style.borderColor = '';
+                        if (commentError) {
+                            commentError.style.display = 'none';
+                            commentError.textContent = '';
+                        }
+                    });
+                }
+
+                // Очистка ошибки при выборе рейтинга
+                ratingInputs.forEach(input => {
+                    input.addEventListener('change', () => {
+                        if (ratingError) {
+                            ratingError.style.display = 'none';
+                            ratingError.textContent = '';
+                        }
+                    });
+                });
+
+                form.addEventListener("submit", function (e) {
+                    let isValid = true;
+
+                    const ratingChecked = form.querySelector('input[name="rating"]:checked');
+                    const comment = commentInput?.value.trim();
+
+                    if (!ratingChecked) {
+                        isValid = false;
+                        if (ratingError) {
+                            ratingError.textContent = "Пожалуйста, выберите общую оценку.";
+                            ratingError.style.display = "block";
+                        }
+                    }
+
+                    if (!comment) {
+                        isValid = false;
+                        if (commentError) {
+                            commentError.textContent = "Пожалуйста, напишите комментарий.";
+                            commentError.style.display = "block";
+                            commentInput.style.borderColor = "red";
+                        }
+                    }
+
+                    if (!isValid) {
+                        e.preventDefault();
+                    }
+                });
+            });
         });
     </script>
 

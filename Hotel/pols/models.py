@@ -57,7 +57,6 @@ class Favorites(models.Model):
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     min_price = models.DecimalField(max_digits=10, decimal_places=2, null=True)
-    # date = models.DateField(null=True)
 
 class Rooms(models.Model):
     title = models.CharField(max_length=100)
@@ -71,26 +70,14 @@ class Rooms(models.Model):
     img3 = SizedTextField(size_class=3, null=True)
     hotel = models.ForeignKey(Hotel, on_delete=models.CASCADE)
 
-# class Card(models.Model):
-#     number = models.CharField(max_length=16)
-#     validity_period = models.DateField()
-#     CVV = models.IntegerField()
-#     user = models.ForeignKey(User, on_delete=models.CASCADE)
-
 class Booking(models.Model):
     quantity_people = models.IntegerField()
     arrival = models.DateTimeField()
     departure = models.DateTimeField()
     price_per_room = models.DecimalField(max_digits=10, decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
-    # status = models.CharField(max_length=100, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Rooms, on_delete=models.CASCADE)
-
-# class Options(models.Model):
-#     title = models.CharField(max_length=45)
-#     description = models.TextField()
-#     rooms = models.ManyToManyField(Rooms)
 
 class Reviews(models.Model):
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE)

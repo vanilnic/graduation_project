@@ -83,6 +83,7 @@ a.suitcase_label{
 .date{
   font-size: 22px !important;
   padding-left: 25px;
+  padding-right: 10px;
   margin-left: 23px;
   height: 70px;
   width: 200px;

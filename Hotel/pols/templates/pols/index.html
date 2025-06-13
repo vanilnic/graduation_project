@@ -57,6 +57,7 @@
                   </select>
                 <button class="search_button" name="search" type="submit">Найти</button>
             </form>
+            <div id="date-error" class="text-danger mt-2" style="display: none;"></div>
         </div>
 
         <div class="container-fluid">
@@ -586,7 +587,7 @@
       </div>
     </div>
   </div>
-  <!--  -->
+  <!-- ошибки при авторизации -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -625,7 +626,30 @@
                     successModal.hide();
                 }, 5000); 
             }
+        });
+    </script>
+    <!-- проверка поиска -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form.search");
+            const arrivalInput = form.querySelector("input[name='arrival']");
+            const departureInput = form.querySelector("input[name='departure']");
+            const errorDiv = document.getElementById("date-error");
 
+            form.addEventListener("submit", function (e) {
+                const arrivalDate = new Date(arrivalInput.value);
+                const departureDate = new Date(departureInput.value);
+
+                if (arrivalInput.value && departureInput.value && departureDate <= arrivalDate) {
+                    e.preventDefault();
+                    errorDiv.style.display = "block";
+                    errorDiv.textContent = "Дата выезда должна быть позже даты заезда.";
+                    departureInput.focus();
+                } else {
+                    errorDiv.style.display = "none";
+                    errorDiv.textContent = "";
+                }
+            });
         });
     </script>
 

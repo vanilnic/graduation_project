@@ -57,7 +57,7 @@
                             </div>
                             <div class="address row ps-2">
                                 <div class="ramka_main col-auto">
-                                    <label>{{ ratings.stars }}</label>
+                                    <label>{{ hotel.CSI }}</label>
                                 </div>
                                 <div class="reviews col-auto">
                                     <a href="#review_section" style="font-weight: 600;">Отзывы ({{reviews_count}})</a>
@@ -128,6 +128,7 @@
                           </select>
                         <button class="search_button" name="search" type="submit">Показать номера</button>
                     </form>
+                    <div id="date-error" class="text-danger mt-2" style="display: none;"></div>
                     {% if not rooms %}
                         <p class="no-reviews-message pt-3 pb-5" style="font-size: 20px;">К сожалению, именно на эти даты и ваше число гостей свободных номеров нет</p>
                     {% endif %}
@@ -174,7 +175,7 @@
                                     </div>
                                 </div>
                                 <div class="more row m-0 mt-4 d-flex justify-content-end">
-                                    <a class="more_a" href="{% url 'order_add' id_room=room.id arrival=arrival departure=departure people=people %}">Подробнее о предложении</a>
+                                    <a class="more_a more_room_link" href="{% url 'order_add' id_room=room.id arrival=arrival departure=departure people=people %}">Подробнее о предложении</a>
                                 </div>
                             </div>
                         </div>
@@ -374,12 +375,14 @@
   </div>
   <!-- конец окна -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
     <script>
         window.isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}" === "true";
     </script>
+    
     <script src="{% static 'pols/script.js' %}"></script>
-
+    <!-- отзывы -->
     <script>
         const reviews = document.querySelectorAll('.review-item');
         const loadMoreBtn = document.getElementById('loadMoreBtn');
@@ -402,6 +405,7 @@
             showReviews();
         });
     </script>
+    <!-- ошибки в окнах -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -419,16 +423,38 @@
                 var successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle2'));
                 successModal.show();
                 
-                // Очищаем параметр из URL без перезагрузки
                 history.replaceState({}, document.title, window.location.pathname);
             }
             if (loginError) {
                 var successModal = new bootstrap.Modal(document.getElementById('exampleModalToggle'));
                 successModal.show();
                 
-                // Очищаем параметр из URL без перезагрузки
                 history.replaceState({}, document.title, window.location.pathname);
             }
+        });
+    </script>
+    <!-- проверка поиска -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form.search");
+            const arrivalInput = form.querySelector("input[name='arrival']");
+            const departureInput = form.querySelector("input[name='departure']");
+            const errorDiv = document.getElementById("date-error");
+
+            form.addEventListener("submit", function (e) {
+                const arrivalDate = new Date(arrivalInput.value);
+                const departureDate = new Date(departureInput.value);
+
+                if (arrivalInput.value && departureInput.value && departureDate <= arrivalDate) {
+                    e.preventDefault();
+                    errorDiv.style.display = "block";
+                    errorDiv.textContent = "Дата выезда должна быть позже даты заезда.";
+                    departureInput.focus();
+                } else {
+                    errorDiv.style.display = "none";
+                    errorDiv.textContent = "";
+                }
+            });
         });
     </script>
 </body>

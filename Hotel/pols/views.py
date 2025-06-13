@@ -138,7 +138,7 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
         elif 'filter_btn' in request.POST:
             min_price = request.POST.get('min_price')
             max_price = request.POST.get('max_price')
-            star = request.POST.get('star')
+            star = request.POST.get('star', '')
             
             min_price = request.POST.get('min_price', '')
             max_price = request.POST.get('max_price', '')
@@ -205,13 +205,6 @@ def favorites(request, city=None):
 
     favorites = Favorites.objects.filter(user=request.user)
 
-    # averages = Reviews.objects.filter(hotel_id=favorites.values_list('hotel_id', flat=True)).aggregate(stars_avg=Avg('stars'))
-
-    # averages = Reviews.objects.filter(hotel_id__in=favorites.values_list('hotel_id', flat=True)).aggregate(
-    # stars_avg=Avg('stars'))
-
-    # formatted = {'stars': round(averages['stars_avg'], 1) if averages['stars_avg'] else 0}
-
     cities = Hotel.objects.filter(id__in=favorites.values_list('hotel_id', flat=True)) \
         .values_list('city', flat=True).distinct()
 
@@ -265,7 +258,6 @@ def travel_history(request):
         })
 
     reviewed_booking_ids = Reviews.objects.filter(booking__in=bookings).values_list('booking_id', flat=True)
-    # print(bookings)
 
     if request.method == 'POST':
         if 'delete' in request.GET:
@@ -291,6 +283,20 @@ def travel_history(request):
                     wifi=int(request.POST.get("value")),
                     comments=request.POST.get("comment")
                 )
+                hotel_id = booking.room.hotel
+
+                averages = Reviews.objects.filter(hotel_id=hotel_id).aggregate(stars_avg=Avg('stars'))
+                formatted = round(averages['stars_avg'], 1)
+
+                print(formatted)
+
+                try:
+                    hotel_id.CSI = formatted
+                    hotel_id.save()
+                    print('Сохранилось')
+                except Exception as e:
+                    print('Ошибка при сохранении CSI:', e)
+
 
                 return redirect('travel_history')
         return render(request, 'pols/history.html', {'bookings': bookings_new, 'arrival': arrival, 'departure':departure, 'people':people, 'reviewed_booking_ids':reviewed_booking_ids})
@@ -344,9 +350,6 @@ def hotel(request, id_hotel_id, arrival, departure, people):
     }
 
     print(formatted)
-
-    print(hotels)
-    # print(Rooms.objects.all()
 
     favorite_id = None
     if request.user.is_authenticated:
@@ -449,7 +452,6 @@ def order(request, id_room, arrival, departure, people):
                 if password == password2:
                     User = get_user_model()
                     user = User.objects.create_user(email=email, password=password)
-                # profile = Profile.objects.create(user=user, email=email)
                 else:
                     return redirect('order')
             return redirect('order')
@@ -464,7 +466,6 @@ def order(request, id_room, arrival, departure, people):
                 if user is not None:
                     login(request, user)
                     return render(request, 'pols/making_an_order.html', {'log_in_people': log_in_people})
-                    # return redirect('index')
             else:
                 return redirect('order')
     else:
@@ -488,19 +489,3 @@ def payments(request, id_room, arrival, departure, people):
             return render(request, 'pols/payments.html',
                           {'room': room, 'arrival': arrival, 'departure': departure, 'people': people,
                            'total_price': total_price})
-
-        # print(len(request.POST['number_card']))
-        # print(request.POST['date_card'])
-        # print(request.POST['cvv_card'])
-
-# def successful_payment(request):
-#     if request.method == 'GET':
-#         if request.user.is_authenticated:
-#             return render(request, 'pols/successfully.html')
-
-# def registrarion(request):
-    # if request.method == 'POST':
-    #     user_form = SignUpForm
-    #     if user_form.is_valid():
-    #         user_form.save()
-    #     return redirect('index')

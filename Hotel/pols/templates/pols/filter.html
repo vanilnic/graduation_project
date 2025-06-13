@@ -57,6 +57,7 @@
                   </select>
                 <button class="search_button" type="submit" name="search">Найти</button>
             </form>
+            <div id="date-error" class="text-danger mt-2" style="display: none;"></div>
         </div>
         
         <div class="container-fluid">
@@ -153,7 +154,7 @@
                                         <a class="hotel_a " href="{% url 'hotel_id_hotel' id_hotel_id=room.hotel.id arrival=arrival departure=departure people=people %}">{{ room.hotel.name }} {{ room.hotel.stars }}★ <br> {{ room.hotel.CSI }}</a>
                                     </div>
                                     <form class="select_div col-auto" method="get" action="{% url 'order_add' id_room=room.id arrival=arrival departure=departure people=people %}">
-                                        <button class="select_room">Выбрать</button>
+                                        <button class="select_room more_room_link">Выбрать</button>
                                     </form>
                                 </div>
                             </div>
@@ -243,6 +244,7 @@
     </div>
   </div>
   <!-- конец окна -->
+  <!-- ошибки авторизации -->
   <script>
         document.addEventListener('DOMContentLoaded', function() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -270,6 +272,30 @@
                 // Очищаем параметр из URL без перезагрузки
                 history.replaceState({}, document.title, window.location.pathname);
             }
+        });
+    </script>
+    <!-- проверка поиска -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form.search");
+            const arrivalInput = form.querySelector("input[name='arrival']");
+            const departureInput = form.querySelector("input[name='departure']");
+            const errorDiv = document.getElementById("date-error");
+
+            form.addEventListener("submit", function (e) {
+                const arrivalDate = new Date(arrivalInput.value);
+                const departureDate = new Date(departureInput.value);
+
+                if (arrivalInput.value && departureInput.value && departureDate <= arrivalDate) {
+                    e.preventDefault();
+                    errorDiv.style.display = "block";
+                    errorDiv.textContent = "Дата выезда должна быть позже даты заезда.";
+                    departureInput.focus();
+                } else {
+                    errorDiv.style.display = "none";
+                    errorDiv.textContent = "";
+                }
+            });
         });
     </script>
 

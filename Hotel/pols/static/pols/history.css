@@ -128,6 +128,7 @@ a.title_label{
     margin-top: 10px;
     display: flex;
     justify-content: right;
+    gap: 10px;
 }
 .replace_button{
     background-color: #0F4757;
