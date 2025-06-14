@@ -13,6 +13,26 @@ def index(request, title='/'):
     arrival = datetime.now().strftime("%Y-%m-%d")
     departure = (datetime.now() + timedelta(1)).strftime("%Y-%m-%d")
     people = '1 взрослый'
+
+    city_data = {
+        'moscow': 'Москва',
+        'saint_petersburg': 'Санкт-Петербург',
+        'sochi': 'Сочи',
+        'kazan': 'Казань',
+        'anapa': 'Анапа',
+        'rostov_on_don': 'Ростов-на-Дону',
+        'nizhniy_novgorod': 'Нижний Новгород',
+        'gelendzhik': 'Геленджик',
+    }
+
+    city_prices = {}
+    for key, city_name in city_data.items():
+        min_price = (
+            Hotel.objects.filter(city=city_name, rooms__isnull=False)
+            .aggregate(price=Min('rooms__price_per_night'))['price']
+        )
+        city_prices[key] = min_price if min_price else 0
+
     try:
         if request.method == 'POST':
             print(request.POST['arrival'])
@@ -29,9 +49,9 @@ def index(request, title='/'):
     log_in_people = 3
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/index.html', {'log_in_people': log_in_people, 'arrival': arrival, 'departure': departure, 'people': people})
+            return render(request, 'pols/index.html', {'log_in_people': log_in_people, 'arrival': arrival, 'departure': departure, 'people': people,'city_prices':city_prices,})
         else:
-            return render(request, 'pols/index.html',{'arrival': arrival, 'departure': departure, 'people': people})
+            return render(request, 'pols/index.html',{'arrival': arrival, 'departure': departure, 'people': people,'city_prices':city_prices,})
 
     if request.method == 'POST':
         if 'register' in request.POST:
@@ -45,11 +65,11 @@ def index(request, title='/'):
                     User = get_user_model()
                     try:
                         user = User.objects.create_user(email=email, password=password)
-                        return render(request, 'pols/index.html', {'arrival':arrival, 'departure':departure, 'people':people, 'done_register': '1'})
+                        return render(request, 'pols/index.html', {'arrival':arrival, 'departure':departure, 'people':people, 'city_prices':city_prices, 'done_register': '1'})
                     except:
-                        return render(request, 'pols/index.html', {'arrival':arrival, 'departure':departure, 'people':people, 'error_register': 'Данный пользователь существует!'})
+                        return render(request, 'pols/index.html', {'arrival':arrival, 'departure':departure, 'people':people,'city_prices':city_prices, 'error_register': 'Данный пользователь существует!'})
                 else:
-                    return  render(request, 'pols/index.html', {'arrival':arrival, 'departure':departure, 'people':people, 'error_register': 'Пароли не совпадают!'})
+                    return  render(request, 'pols/index.html', {'arrival':arrival, 'departure':departure, 'people':people,'city_prices':city_prices, 'error_register': 'Пароли не совпадают!'})
             return redirect('index')
 
         elif 'login' in request.POST:
@@ -61,7 +81,7 @@ def index(request, title='/'):
                     login(request, user)
                     return redirect('index')
                 else:
-                    return render(request, 'pols/index.html', {'arrival':arrival, 'departure':departure, 'people':people, 'error_login': 'Неверные логин или пароль!'})
+                    return render(request, 'pols/index.html', {'arrival':arrival, 'departure':departure, 'people':people,'city_prices':city_prices, 'error_login': 'Неверные логин или пароль!'})
 
         elif 'search' in request.POST:
             print('123')
@@ -74,10 +94,19 @@ def index(request, title='/'):
             return redirect('offers_city', city=request.POST['city'], arrival=request.POST['arrival'], departure=request.POST['departure'], people=f"{request.POST['people']} взрослый")
 
     else:
-        return render(request, 'pols/index.html', {'arrival': arrival, 'departure': departure, 'people': people})
+        return render(request, 'pols/index.html', {'arrival': arrival, 'departure': departure, 'people': people, 'city_prices':city_prices,})
 
 def offers(request, city, arrival, departure, people, orderby='Сортировка'):
-    rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city))
+    import re
+    def extract_people_count(people_str):
+        match = re.search(r'\d+', people_str)
+        return int(match.group()) if match else 1
+
+    guests_amount = extract_people_count(people)
+
+    # rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city))
+    rooms = Rooms.objects.filter(hotel__city=city, beds_amount__gte=guests_amount)
+
     log_in_people = 3
 
     arrival_now = datetime.now().strftime("%Y-%m-%d")
@@ -110,14 +139,10 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
                         return render(request, 'pols/filter.html', {'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'arrival_now':arrival_now, 'departure_now':departure_now,'people':people, 'orderby': orderby, 'done_register': '1'})
                     except:
                         return render(request, 'pols/filter.html', {'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'arrival_now':arrival_now, 'departure_now':departure_now,'people':people, 'orderby': orderby, 'error_register': 'Данный пользователь существует!'})
-                # profile = Profile.objects.create(user=user, email=email)
                 else:
                     return render(request, 'pols/filter.html', {'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'arrival_now':arrival_now, 'departure_now':departure_now,'people':people, 'orderby': orderby, 'error_register': 'Пароли не совпадают!'})
 
             return render(request, 'pols/filter.html', {'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'arrival_now':arrival_now, 'departure_now':departure_now,'people':people, 'orderby': orderby})
-
-        # else:
-        #     return render(request, 'pols/filter.html')
 
         elif 'login' in request.POST:
             user_form = SignInForm(data=request.POST)
@@ -154,12 +179,12 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
                 filter_max = int(max_price) if max_price else 100000
             except ValueError:
                 filter_max = 100000
-            #print(Hotel.objects.all().filter(stars=request.POST['star']))
-            # rooms = Rooms.objects.all().filter(hotel__in=Hotel.objects.all().filter(city=city), price_per_night__range=(request.POST['min_price'], request.POST['max_price']))
+
             rooms = Rooms.objects.filter(
                 hotel__city=city,
                 price_per_night__gte=filter_min,
-                price_per_night__lte=filter_max
+                price_per_night__lte=filter_max,
+                beds_amount__gte=guests_amount
             )
 
             if star is not None and star != '':
@@ -222,7 +247,6 @@ def favorites(request, city=None):
         'departure': departure,
         'people': people,
         'selected_city': city,
-        # 'formatted': formatted,
         'back_url': request.session.get('favorites_back_url', '/') 
     })
 
@@ -322,8 +346,18 @@ class PostDetailView(DetailView):
         return Hotel.objects.get(id=self.kwargs['id_hotel_id'])
 
 def hotel(request, id_hotel_id, arrival, departure, people):
+    import re
+    def extract_people_count(people_str):
+        match = re.search(r'\d+', people_str)
+        return int(match.group()) if match else 1
+
+    guests_amount = extract_people_count(people)
+
+
     hotels = Hotel.objects.all().filter(id=id_hotel_id)
-    rooms = Rooms.objects.all().filter(hotel=id_hotel_id)
+    # rooms = Rooms.objects.all().filter(hotel=id_hotel_id)
+    rooms = Rooms.objects.filter(hotel=id_hotel_id, beds_amount__gte=guests_amount)
+
     reviews = Reviews.objects.all().filter(hotel=id_hotel_id).order_by('-id')
     reviews_count = len(reviews)\
 
@@ -361,6 +395,7 @@ def hotel(request, id_hotel_id, arrival, departure, people):
         is_favorite = False
 
     log_in_people = 3
+
     if request.method == 'GET':
         if request.user.is_authenticated:
             return render(request, 'pols/hotel.html', {'log_in_people': log_in_people, 'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'reviews': reviews, 'reviews_count': reviews_count, 'arrival':arrival, 'departure':departure, 'arrival_now':arrival_now, 'departure_now':departure_now, 'people':people, 'is_favorite': is_favorite, 'favorite_id': favorite_id, 'ratings': formatted})
@@ -401,9 +436,6 @@ def hotel(request, id_hotel_id, arrival, departure, people):
                 return redirect('hotel_id')
         elif 'addhotel' in request.POST:
             User = get_user_model()
-            # print(1)
-            # print(Hotel.objects.get(id=id_hotel_id))
-            # print(User.objects.all().filter(email=request.user))
             price = Rooms.objects.all().filter(hotel=Hotel.objects.get(id=id_hotel_id)).order_by("price_per_night")[0].price_per_night
             try:
                 print(Favorites.objects.all().filter(hotel = Hotel.objects.get(id=id_hotel_id), user = request.user)[0])

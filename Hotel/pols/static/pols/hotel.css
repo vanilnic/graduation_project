@@ -730,7 +730,7 @@ body::-webkit-scrollbar {
   }
   .photo_1{
     width: 100% !important;
-    height: fit-content !important;
+    height: 230px !important;
   }
   .phone_img{
     padding: 0px 12px !important;

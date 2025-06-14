@@ -55,17 +55,25 @@ a.suitcase_label{
   display: flex;
   justify-content: right;
 }
-.enter_button{
-  height: 60px;
-  width: 210px;
-  border-radius: 30px;
-  border: #ECECEC;
-  background-color: #ECECEC;
-  font-size:20px;
-  font-family:Inter;
-  font-weight: 350;
-  }
-
+  a.back_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+.back_button{
+    height: 60px;
+    width: 210px;
+    border-radius: 30px;
+    border: #ECECEC;
+    background-color: #ECECEC;
+    font-size:20px;
+    font-family:Inter;
+    font-weight: 350;
+    }
+  button.back_button:hover{
+    background-color: #e2e2e2;
+} 
 .card{
     background-color: #F8F8F8 !important;
     border-color: #F8F8F8 !important;
@@ -102,7 +110,10 @@ a.suitcase_label{
 .photo_2{
     height: 175px !important;
     width: 290px !important;
-} 
+}
+ .photo_date{
+  padding-right: 0px !important;
+ } 
 .go{
     margin-left: 10px;
 }
@@ -575,11 +586,11 @@ body::-webkit-scrollbar {
     font-size: 16px;
     font-weight: 450;
   }
-  .enter_button{
+  .back_button{
     font-size: 0 !important;
     color: transparent !important;
     background-color: transparent;
-    background-image: url(../pols/images/profile.png);
+    background-image: url(../pols/images/back.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 40px;
@@ -610,7 +621,7 @@ body::-webkit-scrollbar {
     margin-top: 30px !important;
   }
   .enter{
-    margin-top: 20px !important;
+    margin-top: 45px !important;
   }
   /* шапка */
   a.suitcase_label, a.favorites_label {

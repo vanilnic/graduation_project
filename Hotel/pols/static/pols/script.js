@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const tripsBtn = document.getElementById("trips-btn");
     const favoBtn = document.getElementById("favo-btn");
     const tripBtn = document.getElementById("trip-btn");
+    const favoBtnHotel = document.getElementById("favo_btn_hotel");
 
     const moreRoomLinks = document.querySelectorAll(".more_room_link");
     // Функция для отображения модального окна
@@ -37,6 +38,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     if (tripBtn) {
         tripBtn.addEventListener("click", function(event) {
+            if (!window.isAuthenticated) {
+                event.preventDefault();
+                showModal();
+            }
+        });
+    }
+    if (favoBtnHotel) {
+        favoBtnHotel.addEventListener("click", function(event) {
             if (!window.isAuthenticated) {
                 event.preventDefault();
                 showModal();
@@ -82,9 +91,7 @@ document.querySelector('.card_number').addEventListener('keydown', function(e) {
     }
 });
 
-// =====================
 // Форматирование и валидация даты (MM/YY)
-// =====================
 document.querySelector('.card_date').addEventListener('input', function(e) {
     let input = e.target;
     let value = input.value.replace(/\D/g, ''); // только цифры
@@ -139,9 +146,7 @@ document.querySelector('.card_date').addEventListener('keydown', function(e) {
     }
 });
 
-// =====================
 // Валидация при отправке формы
-// =====================
 document.querySelector('form')?.addEventListener('submit', function(e) {
     const dateInput = document.querySelector('.card_date');
     if (!validateExpiryDate(dateInput)) {
@@ -150,9 +155,7 @@ document.querySelector('form')?.addEventListener('submit', function(e) {
     }
 });
 
-// =====================
 // Валидация CVV (только цифры)
-// =====================
 document.querySelector('.card_cvv').addEventListener('input', function(e) {
     this.value = this.value.replace(/\D/g, '');
 });
