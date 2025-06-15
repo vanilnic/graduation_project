@@ -374,7 +374,6 @@ body::-webkit-scrollbar {
         padding: 0px !important;
     }
     .image_number{
-        height: fit-content !important;
         width: 100% !important;
     }
     .info{

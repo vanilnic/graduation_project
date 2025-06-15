@@ -733,8 +733,8 @@ body::-webkit-scrollbar {
     padding: 0px !important;
   }
   .order_number_img{
+    height: 140px !important;
     width: 100%;
-    height: fit-content;
   }
   .info2{
     margin: 0px !important;
