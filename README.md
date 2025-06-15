@@ -42,7 +42,9 @@ DATABASES = {
 ```bash
 pip install -r requirements.txt
 ```
-5) Запуск проекта
+5) Загрузка базы данных
+* Запустить скрипт из файла DB.sql в MySQL Workbench
+7) Запуск проекта
 ```bash
 cd Hotel
 python manage.py runserver
