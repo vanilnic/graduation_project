@@ -255,6 +255,13 @@ def travel_history(request):
     departure = (datetime.now() + timedelta(1)).strftime("%Y-%m-%d")
     people = '1 взрослый'
 
+    referer = request.META.get('HTTP_REFERER', '')
+    if 'travel_history' not in referer:
+        request.session['history_back_url'] = referer
+
+    if not request.user.is_authenticated:
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
     bookings = Booking.objects.all().filter(user=request.user).order_by('-arrival')
     bookings_new = []
     for booking in bookings:
@@ -323,11 +330,11 @@ def travel_history(request):
 
 
                 return redirect('travel_history')
-        return render(request, 'pols/history.html', {'bookings': bookings_new, 'arrival': arrival, 'departure':departure, 'people':people, 'reviewed_booking_ids':reviewed_booking_ids})
+        return render(request, 'pols/history.html', {'bookings': bookings_new, 'arrival': arrival, 'departure':departure, 'people':people, 'reviewed_booking_ids':reviewed_booking_ids, 'back_url': request.session.get('history_back_url', '/') })
 
     if request.method == 'GET':
         if request.user.is_authenticated:
-            return render(request, 'pols/history.html', {'bookings': bookings_new, 'arrival': arrival, 'departure':departure, 'people':people, 'reviewed_booking_ids':reviewed_booking_ids})
+            return render(request, 'pols/history.html', {'bookings': bookings_new, 'arrival': arrival, 'departure':departure, 'people':people, 'reviewed_booking_ids':reviewed_booking_ids, 'back_url': request.session.get('history_back_url', '/')})
         return redirect(request.META.get('HTTP_REFERER'))
 
 

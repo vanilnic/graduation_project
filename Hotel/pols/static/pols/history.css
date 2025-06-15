@@ -29,7 +29,13 @@ a.title_label{
     font-size:20px;
     font-family:Inter;
     font-weight: 350;
-    } 
+    }
+a.back_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size:20px;
+} 
 .content{
     margin-top: 60px;
     padding-bottom: 20px;
@@ -442,7 +448,7 @@ body::-webkit-scrollbar {
         width: 100%;
     }
     .replace_button{
-        font-size: 15px;
-        height: 35px;
+        font-size: 15px !important;
+        height: 35px !important; 
     }
 }

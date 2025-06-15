@@ -22,7 +22,7 @@
                 <a class="title_label m-0" href="{% url 'index' %}">HotelHaven</a>
             </div>
             <div class="enter col">
-                <button class="back_button" type="submit" onclick="window.history.back()">Назад</button>
+                <a class="back_button" href="{{ back_url }}">Назад</a>
             </div>
         </header>
 
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="replace col-6">
                                     {% if booking.disable_btn_cancel == "true" %}
-                                    <button type="submit" disabled style="background-color: #597f8a; cursor: not-allowed !important; width: 180px; height: 40px; border-radius: 10px; color: #fff; font-size: 16px; border: none;">Отменить бронь</button>
+                                    <button class="replace_button" type="submit" disabled style="background-color: #597f8a; cursor: not-allowed !important; width: 180px; height: 40px; border-radius: 10px; color: #fff; font-size: 16px; border: none;">Отменить бронь</button>
                                     {% else %}
                                     <button class="replace_button" type="submit" data-bs-toggle="modal" href="#exampleModalToggle{{ booking.id }}">Отменить бронь</button>
                                     {% endif %}
