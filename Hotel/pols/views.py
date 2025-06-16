@@ -61,6 +61,15 @@ def index(request, title='/'):
                 password = request.POST.get('password')
                 password2 = request.POST.get('password2')
 
+                if len(password) < 8:
+                    return render(request, 'pols/index.html', {
+                        'arrival': arrival,
+                        'departure': departure,
+                        'people': people,
+                        'city_prices': city_prices,
+                        'error_register': 'Пароль должен содержать не менее 8 символов!'
+                    })
+
                 if password == password2:
                     User = get_user_model()
                     try:
@@ -131,6 +140,9 @@ def offers(request, city, arrival, departure, people, orderby='Сортиров�
                 email = request.POST.get('email')
                 password = request.POST.get('password')
                 password2 = request.POST.get('password2')
+
+                if len(password) < 8:
+                    return render(request, 'pols/filter.html', {'rooms': rooms, 'city':city, 'arrival':arrival, 'departure':departure, 'arrival_now':arrival_now, 'departure_now':departure_now,'people':people, 'orderby': orderby, 'error_register': 'Пароль должен содержать не менее 8 символов!'})
 
                 if password == password2:
                     User = get_user_model()
@@ -416,6 +428,9 @@ def hotel(request, id_hotel_id, arrival, departure, people):
                 email = request.POST.get('email')
                 password = request.POST.get('password')
                 password2 = request.POST.get('password2')
+
+                if len(password) < 8:
+                    return render(request, 'pols/hotel.html', {'hotels': hotels, 'id_hotel_id': id_hotel_id, 'rooms': rooms, 'reviews': reviews, 'reviews_count': reviews_count, 'arrival':arrival, 'departure':departure, 'arrival_now':arrival_now, 'departure_now':departure_now, 'people':people, 'is_favorite': is_favorite, 'favorite_id': favorite_id, 'ratings': formatted, 'error_register': 'Пароль должен содержать не менее 8 символов!'})
 
                 if password == password2:
                     User = get_user_model()
